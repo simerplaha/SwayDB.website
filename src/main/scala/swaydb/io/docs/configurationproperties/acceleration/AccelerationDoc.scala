@@ -115,7 +115,7 @@ object AccelerationDoc {
         "."
       ),
       <.h4("1. ", RouterController.router.link(Page.Cruise)("Accelerator.cruise (non-blocking)")),
-      <.h4("2. ", RouterController.router.link(Page.NoBrake)("Accelerator.noBrake (non-blocking)")),
+      <.h4("2. ", RouterController.router.link(Page.NoBrakes)("Accelerator.noBrake (non-blocking)")),
       <.h4("3. ", RouterController.router.link(Page.Brake)("Accelerator.brake (blocking)"))
     )
 }

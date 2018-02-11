@@ -60,7 +60,7 @@ object MapSizeDoc {
       ),
       <.p(
         "Currently the default setting uses ",
-        RouterController.router.link(Page.NoBrake)("Accelerator.noBrake"),
+        RouterController.router.link(Page.NoBrakes)("Accelerator.noBrake"),
         " which disables blocking back-pressure ",
         RouterController.router.link(Page.Brake)("(Accelerator.brake)"),
         " but doubles the size of the Map if the number of in-memory Maps is greater then 5 with a maximum Map size set of 24.mb.",

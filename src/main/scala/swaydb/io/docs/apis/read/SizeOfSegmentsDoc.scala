@@ -36,6 +36,16 @@ object SizeOfSegmentsDoc {
         RouterController.router.link(Page.Segment)("Segments"),
         " in the database."
       ),
+      <.p(
+        "For Persistent ",
+        RouterController.router.link(Page.Level)("Levels"),
+        " it returns total byte size of all the Segment files on disk. "
+      ),
+      <.p(
+        "For Memory ",
+        RouterController.router.link(Page.Level)("Levels"),
+        " it returns total byte size of keys & values in-memory."
+      ),
       <.pre(
         <.code(^.className := "scala")(
           """

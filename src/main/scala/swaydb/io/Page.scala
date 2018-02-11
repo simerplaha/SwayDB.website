@@ -446,7 +446,7 @@ object Page {
     override val name: String = "Custom key ordering"
     override val subPages: Seq[Page] = Seq()
 
-    override val url: String = "#key-ordering"
+    override val url: String = "#custom-key-ordering"
 
     override def render(): VdomElement = CustomKeyOrderingDoc()
   }
@@ -481,9 +481,9 @@ object Page {
   }
 
   object EventSourcing extends Page {
-    override val name: String = "Event-sourcing "
+    override val name: String = "Event-sourcing"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "#examples/eventsourcing"
+    override val url: String = "#examples/event-sourcing"
 
     override def render(): VdomElement = EventSourcingDoc()
   }
@@ -573,7 +573,7 @@ object Page {
   object Level0Meter extends Page {
     override val name: String = "Level0Meter"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "#terminology/meters/level-0-meter"
+    override val url: String = "#terminology/meters/level0Meter"
 
     override def render(): VdomElement = Level0MeterDoc()
   }
@@ -581,7 +581,7 @@ object Page {
   object LevelMeter extends Page {
     override val name: String = "LevelMeter"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "#terminology/meters/level-meter"
+    override val url: String = "#terminology/meters/levelMeter"
 
     override def render(): VdomElement = LevelMeterDoc()
   }
@@ -655,7 +655,7 @@ object Page {
 
   object Acceleration extends Page {
     override val name: String = "acceleration"
-    override val subPages: Seq[Page] = Seq(Cruise, NoBrake, Brake)
+    override val subPages: Seq[Page] = Seq(Cruise, NoBrakes, Brake)
     override val url: String = "#configuring-levels/acceleration"
 
     override def render(): VdomElement = AccelerationDoc()
@@ -669,10 +669,10 @@ object Page {
     override def render(): VdomElement = BrakeDoc()
   }
 
-  object NoBrake extends Page {
-    override val name: String = "No brake"
+  object NoBrakes extends Page {
+    override val name: String = "No brakes"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "#configuring-levels/acceleration/no-brakes"
+    override val url: String = "#configuring-levels/acceleration/noBrakes"
 
     override def render(): VdomElement = NoBrakeDoc()
   }
@@ -792,7 +792,7 @@ object Page {
   object ScalaJSNative extends Page {
     override val name: String = "Scala.js & Scala Native"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "#scala-js-native"
+    override val url: String = "#scalajs-scala-native"
 
     override def render(): VdomElement = ScalaJSScalaNativeDoc()
   }
@@ -800,7 +800,7 @@ object Page {
   object GitHubProjects extends Page {
     override val name: String = "GitHub projects"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "#projects"
+    override val url: String = "#github-projects"
 
     override def render(): VdomElement = GitHubProjectsDoc()
   }
