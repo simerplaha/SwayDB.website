@@ -36,7 +36,7 @@ object CreatingTablesDoc {
 
       <.h3("Creating Tables using keys & values"),
       <.a(
-        ^.href := "https://github.com/simerplaha/SwayDBApps/blob/master/src/test/scala/creatingtables/TableSpec.scala",
+        ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/creatingtables/TableSpec.scala",
         ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - TableSpec.scala")),
         ^.target := "blank",
         ^.className := "btn btn-xs btn-info",
@@ -45,7 +45,7 @@ object CreatingTablesDoc {
 
       <.h3("Creating Tables using a Set database with partial data ordering"),
       <.a(
-        ^.href := "https://github.com/simerplaha/SwayDBApps/blob/master/src/test/scala/creatingtables/set/SetTableSpec.scala",
+        ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/creatingtables/set/SetTableSpec.scala",
         ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - SetTableSpec.scala")),
         ^.target := "blank",
         ^.className := "btn btn-xs btn-info",

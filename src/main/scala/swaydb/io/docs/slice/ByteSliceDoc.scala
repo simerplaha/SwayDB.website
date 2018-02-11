@@ -99,7 +99,7 @@ object ByteSliceDoc {
         <.span(^.className := "snippet", "Slice[Byte]"),
         ".",
         <.a(
-          ^.href := "https://github.com/simerplaha/SwayDBApps/blob/master/src/test/scala/slicereader/SliceReaderSpec.scala",
+          ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/slicereader/SliceReaderSpec.scala",
           ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - SliceReaderSpec")),
           ^.role := "button",
           ^.className := "btn btn-xs btn-info pull-right",

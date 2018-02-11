@@ -41,7 +41,7 @@ object StoringDataInChunksDoc {
       <.p(^.className := "heading")(
         "Splitting a 3.mb in-memory data-set into 3 slices of 1.mb each without creating 3 copies of the original array.",
         <.a(
-          ^.href := "https://github.com/simerplaha/SwayDBApps/blob/master/src/test/scala/chunk/ChunkSpec.scala",
+          ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/chunk/ChunkSpec.scala",
           ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - Chunks")),
           ^.role := "button",
           ^.className := "btn btn-xs btn-info pull-right",

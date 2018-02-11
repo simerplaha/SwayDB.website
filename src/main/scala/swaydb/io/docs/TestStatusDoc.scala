@@ -30,9 +30,29 @@ object TestStatusDoc {
       <.div(^.className := "page-header",
         <.h2(^.id := "setup", "Test status")
       ),
+      <.h3("Unit tests"),
+      <.p("Implemented for functions."),
+
+      <.h3("Integration tests"),
+      <.p("Implemented for higher types."),
+
+      <.h3("Stress tests"),
+      <.p("Implemented for higher types."),
+
+      <.h3("Performance tests"),
+      <.p("Implemented for higher types."),
+
+      <.h3("Failure tests"),
+      <.p(
+        "Implemented for most functions implementing failure recovery behavior. ",
+        "These tests are also implemented for higher types as part of integration tests."
+      ),
+      <.p(
+        "JVM crash tests were performed manually. Automated tests are required with sbt-multi-jvm."
+      ),
+
       <.h3("Code coverage"),
       <.p("TODO")
-
     )
   }
 

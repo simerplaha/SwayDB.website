@@ -64,7 +64,7 @@ object EventSourcingDoc {
       ),
 
       <.a(
-        ^.href := "https://github.com/simerplaha/SwayDBApps/blob/master/src/test/scala/eventsourcing/EventSourcingSpec.scala",
+        ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/eventsourcing/EventSourcingSpec.scala",
         ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - EventSourcingSpec.scala")),
         ^.target := "blank",
         ^.className := "btn btn-xs btn-info",
