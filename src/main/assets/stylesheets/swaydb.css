@@ -1,0 +1,238 @@
+/*
+ * Copyright 2018 Simer Plaha (@simerplaha)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+ * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
+ * OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+
+body {
+    padding-top: 50px;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #ededed;
+}
+
+.sub-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.main {
+    font-size: 16px;
+}
+
+pre {
+    font-size: 13px;
+}
+
+a {
+    color: #9527ca;
+}
+
+h4 > a, h3 > a, h2 > a {
+    color: #333;
+}
+
+.logo {
+    color: #e6e5e5;
+}
+
+.logo img {
+    height: 100%;
+}
+
+.navbar-fixed-top {
+    border: 0;
+}
+
+.alert-info {
+    color: #464646;
+    background-color: #faedff;
+    border-color: #eec9ff;
+}
+
+.navbar-brand {
+    padding: 10px 15px;
+}
+
+.dark-logo {
+    margin-top: -10px;
+    float: right;
+}
+
+.navbar-toggle .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border: 1px solid white;
+}
+
+.sidebar {
+    display: none;
+}
+
+.btn-info {
+    color: #f1f1f1;
+    background-color: #900ec8;
+    border-color: #880cc1;
+}
+
+.btn-info:focus, .btn-info:hover {
+    color: #f1f1f1;
+    background-color: #9d0fc8;
+    border-color: #880cc1;
+}
+
+.snippet {
+    background-color: #f3d6ff;
+    font-style: italic;
+}
+
+.sidebar-show {
+    position: fixed;
+    top: 51px;
+    min-width: 250px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    body {
+        max-width: 80%;
+    }
+}
+
+.nav-sidebar {
+    margin-right: -21px;
+    margin-bottom: 20px;
+    margin-left: -25px;
+}
+
+.nav > li > a {
+    padding-right: 20px;
+    color: #a9b7c6;
+    border-bottom: 1px solid #2f2f2f;
+}
+
+.nav > .active > a {
+    color: white;
+}
+
+.nav > .active > a:hover {
+    background-color: transparent !important;
+}
+
+.nav > .active > a:focus {
+    background-color: transparent !important;
+}
+
+ul.nav a:hover {
+    background-color: transparent !important;
+    color: white;
+}
+
+.lead {
+    margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+    .main {
+        padding-right: 40px;
+        margin-left: 240px;
+    }
+
+    .lead {
+        font-size: 19px;
+    }
+
+    .navbar-header {
+        float: none;
+    }
+}
+
+.main .page-header {
+    margin-top: 0;
+    border-bottom: 1px solid #dedcdc;
+}
+
+.placeholders {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.placeholders h4 {
+    margin-bottom: 0;
+}
+
+.placeholder {
+    margin-bottom: 20px;
+}
+
+.placeholder img {
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.nav-bar {
+    color: white;
+}
+
+.top-nav {
+    background-image: linear-gradient(to bottom, #9a14d2 0, #6b00a2 100%);
+    border-color: rgba(255, 255, 255, 0);
+    box-shadow: 1px 0px 2px #333;
+}
+
+.top-nav a {
+    color: #fdf9ff;
+}
+
+.sidebar {
+    background-color: #282828;
+    top: 45px;
+    max-width: 235px;
+    box-shadow: 1px 0 5px #151515;
+}
+
+.sub-nav {
+    background-color: #2a2e36;
+}
+
+span.glyphicon {
+    font-size: 0.8em;
+    padding-top: 3px;
+}
+
+.heading {
+    font-size: 18px;
+}
