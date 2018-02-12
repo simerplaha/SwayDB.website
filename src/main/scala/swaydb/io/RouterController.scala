@@ -38,5 +38,4 @@ object RouterController {
         //this should never really occur since SJSMain.layout sets the router and the apply is protected to this package.
         throw new Exception("Router is not set")
     }
-
 }

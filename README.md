@@ -63,8 +63,6 @@ RouterController.router.link(Page.MyPage)("My Page")
 
 ## Building & running
 
-[Scala.js documentation on building](https://www.scala-js.org/doc/project/building.html).
-
 ```scala
 sbt fastOptJS
 ```
@@ -81,3 +79,5 @@ sbt ~fastOptJS
 
 All output JS files and other static files are added to the `docs` folder. To run the website
 open `index.html` in your browser.
+
+Read more on [Scala.js documentation on building](https://www.scala-js.org/doc/project/building.html).

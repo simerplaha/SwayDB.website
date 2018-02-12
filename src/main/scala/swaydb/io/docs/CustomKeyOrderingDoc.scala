@@ -23,8 +23,7 @@ package swaydb.io.docs
 import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^._
-import swaydb.io.ga.GoogleAnalytics
-import swaydb.io.{Main, Page, RouterController}
+import swaydb.io.Main
 
 object CustomKeyOrderingDoc {
 
