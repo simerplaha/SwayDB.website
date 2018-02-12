@@ -27,10 +27,21 @@ import swaydb.io.menu.{SideMenuComponent, TopMenuComponent}
 import Page._
 import japgolly.scalajs.react.Callback
 import swaydb.io.ga.{GA, GoogleAnalytics}
+import dom.ext._
+import org.scalajs.dom.Element
 
 object Main {
 
   val analytics = new GA("UA-113654756-1")
+
+  /**
+    * On a small screen this will close the side menu if open on click.
+    */
+  def hideSideBarIfOpen() =
+    dom.document.getElementsByClassName("sidebar-show").foreach {
+      node =>
+        node.asInstanceOf[Element].classList.remove("sidebar-show")
+    }
 
   val routerConfig = RouterConfigDsl[Page].buildConfig { dsl =>
     import dsl._
@@ -48,7 +59,11 @@ object Main {
       .renderWith(layout)
       .onPostRender {
         case (_, currentPage) =>
-          Callback(analytics.pageView(currentPage))
+          Callback {
+            hideSideBarIfOpen()
+            analytics.pageView(currentPage)
+            println("apdsosodoso")
+          }
       }
   }
 
