@@ -62,7 +62,6 @@ object Main {
           Callback {
             hideSideBarIfOpen()
             analytics.pageView(currentPage)
-            println("apdsosodoso")
           }
       }
   }
