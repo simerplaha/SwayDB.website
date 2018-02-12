@@ -40,7 +40,9 @@ object SetupDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |libraryDependencies += "io.swaydb" %% "swaydb" % "0.1.0"
+            |resolvers += Opts.resolver.sonatypeReleases
+            |
+            |libraryDependencies += "io.swaydb" %% "swaydb" % "0.1"
             |
             |""".stripMargin
         )

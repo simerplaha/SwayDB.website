@@ -32,6 +32,8 @@ object ReadAPIDoc {
         <.h2("Read API")
       ),
       GetDoc(),
+      GetKeyDoc(),
+      GetKeyValueDoc(),
       ContainsDoc(),
       MightContainDoc(),
       IsEmptyNonEmptyDoc(),

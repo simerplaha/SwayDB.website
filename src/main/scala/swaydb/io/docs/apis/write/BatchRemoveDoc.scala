@@ -28,7 +28,7 @@ object BatchRemoveDoc {
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("batch")
+        <.h2("batchRemove")
       ),
       WriteAPIDoc.note(showNote),
       BatchDoc.guarantee,

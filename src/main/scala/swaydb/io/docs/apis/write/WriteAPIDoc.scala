@@ -41,6 +41,8 @@ object WriteAPIDoc {
       ),
       note(),
       PutDoc(showNote = false),
+      BatchPutDoc(showNote = false),
+      BatchRemoveDoc(showNote = false),
       BatchDoc(showNote = false)
     )
   }

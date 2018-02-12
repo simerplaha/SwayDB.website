@@ -44,7 +44,7 @@ object TestStatusDoc {
 
       <.h3("Failure tests"),
       <.p(
-        "Implemented for most functions implementing failure recovery behavior. ",
+        "Unit tests are implemented for functions implementing failure/corruption handling behavior. ",
         "These tests are also implemented for higher types as part of integration tests."
       ),
       <.p(
