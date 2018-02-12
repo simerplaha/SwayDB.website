@@ -47,7 +47,7 @@ object TopMenuComponent {
             <.span(
               <.a(
                 ^.className := "logo pull-right",
-                ^.padding := "9px 15px",
+                ^.padding := "9px 10px",
                 ^.height := "50px",
                 ^.href := "https://www.facebook.com/Swaydb01",
                 ^.target := "blank",
@@ -77,7 +77,7 @@ object TopMenuComponent {
             <.span(
               <.a(
                 ^.className := "logo pull-right",
-                ^.padding := "9px 15px",
+                ^.padding := "9px 10px",
                 ^.height := "50px",
                 ^.href := "https://github.com/simerplaha/SwayDB",
                 ^.target := "blank",
