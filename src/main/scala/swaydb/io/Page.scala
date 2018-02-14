@@ -222,11 +222,25 @@ object Page {
   }
 
   object API extends Page {
-    override val name: String = "Read, Write & Iteration API"
-    override val subPages: Seq[Page] = Seq(WriteAPI, ReadAPI, IterationAPI)
+    override val name: String = "API"
+    override val subPages: Seq[Page] =
+      Seq(
+        WriteAPI,
+        ReadAPI,
+        IterationAPI,
+        RepairAppendix
+      )
     override val url: String = "#api"
 
     override def render(): VdomElement = APIDoc()
+  }
+
+  object RepairAppendix extends Page {
+    override val name: String = "repairAppendix"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "#api/repairAppendix"
+
+    override def render(): VdomElement = RepairAppendixDoc()
   }
 
   object WriteAPI extends Page {
@@ -463,6 +477,7 @@ object Page {
 
     override def render(): VdomElement = ExamplesDoc()
   }
+
 
   object CreatingTables extends Page {
     override val name: String = "Creating tables"

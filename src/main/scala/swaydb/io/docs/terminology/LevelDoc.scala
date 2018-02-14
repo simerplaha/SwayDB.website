@@ -53,6 +53,29 @@ object LevelDoc {
           RouterController.router.link(Page.Segment)("Appendix"),
           " file which stores information about every Segment in the Level."
         )
+      ),
+
+      <.h3("How are Segments committed to a Level ?"),
+      <.p(
+        "During the ",
+        RouterController.router.link(Page.Compaction)("Compaction"),
+        " process ",
+        RouterController.router.link(Page.Segment)("Segments"),
+        " are pushed from upper Levels to lower Level which creates new Segments and old Segments are deleted from the Level. ",
+        "Each Level maintains an ",
+        RouterController.router.link(Page.Appendix)("Appendix"),
+        " file that contains information about all the Segments that exists in that Level. "
+      ),
+      <.p(
+        "In case of failure when writing to the Appendix file, the Level will revert the current Compaction by deleting ",
+        "the newly created Segments. ",
+        "If JVM gets terminated during the revert process orphan Segments (Segments not in the appendix file) are deleted on ",
+        "database reboot therefore, always reverting back to the previous stable state of the Level."
+      ),
+      <.p(
+        "In case of Appendix file corruption, ",
+        RouterController.router.link(Page.RepairAppendix)(<.span(^.className := "snippet", "repairAppendix")),
+        " can be executed on the Level to re-create a new Appendix file."
       )
     )
 }

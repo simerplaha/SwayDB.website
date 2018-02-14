@@ -22,6 +22,7 @@ package swaydb.io.docs.terminology
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.{Page, RouterController}
 
 object SegmentDoc {
 
@@ -36,6 +37,8 @@ object SegmentDoc {
 
       <.h3("In-memory Segments"),
       <.p("Stores key-values in an in-memory skip-list."),
+
+
 
     )
 }
