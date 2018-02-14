@@ -69,7 +69,7 @@ object LevelDoc {
       <.p(
         "In case of failure when writing to the Appendix file, the Level will revert the current Compaction by deleting ",
         "the newly created Segments. ",
-        "If JVM gets terminated during the revert process orphan Segments (Segments not in the appendix file) are deleted on ",
+        "If JVM gets terminated during the revert process, orphan Segments (Segments not in the appendix file) are deleted on ",
         "database reboot therefore, always reverting back to the previous stable state of the Level."
       ),
       <.p(

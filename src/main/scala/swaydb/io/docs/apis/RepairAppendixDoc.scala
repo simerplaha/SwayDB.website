@@ -96,7 +96,7 @@ object RepairAppendixDoc {
       ),
       <.h4("Success(OverlappingSegments)"),
       <.p(
-        "Returns when the Level contains no conflicting Segments with overlapping keys and ",
+        "Returns when the Level contains conflicting Segments with overlapping keys and ",
         <.span(^.className := "snippet", "AppendixRepairStrategy.Report"),
         " repair strategy is selected. ",
         "This result contains the following information about the overlapping Segments that can be used for manual inspection ",
