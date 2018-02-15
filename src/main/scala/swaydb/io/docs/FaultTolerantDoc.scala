@@ -68,6 +68,15 @@ object FaultTolerantDoc {
         "."
       ),
 
+      <.h4(RouterController.router.link(Page.Appendix)("Appendix (.log)")),
+      <.p(
+        "Corrupted ",
+        RouterController.router.link(Page.Appendix)("Appendix"),
+        " files can be fixed with ",
+        RouterController.router.link(Page.RepairAppendix)(<.span(^.className := "snippet", "repairAppendix")),
+        "."
+      ),
+
       <.h3("Handling missing files"),
       <.p(
         "On database reboot all files are validated before successfully initialising the database. ",

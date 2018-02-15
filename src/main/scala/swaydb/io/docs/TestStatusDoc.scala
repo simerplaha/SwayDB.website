@@ -20,8 +20,10 @@
 
 package swaydb.io.docs
 
+import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.Main
 
 object TestStatusDoc {
 
@@ -37,10 +39,26 @@ object TestStatusDoc {
       <.p("Implemented for higher types."),
 
       <.h3("Stress tests"),
-      <.p("Implemented for higher types."),
+      <.p("Implemented for higher types internally in the core module."),
+      <.p(
+        "System stress tests are implemented in ",
+        <.a(
+          ^.href := "https://github.com/simerplaha/SwayDB.stress",
+          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - SwayDB.stress")),
+          ^.target := "blank")("SwayDB.stress"),
+        " project."
+      ),
 
       <.h3("Performance tests"),
-      <.p("Implemented for higher types."),
+      <.p("Implemented for higher types internally in the core module."),
+      <.p(
+        "System performance tests are implemented in ",
+        <.a(
+          ^.href := "https://github.com/simerplaha/SwayDB.benchmark",
+          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - SwayDB.benchmark")),
+          ^.target := "blank")("SwayDB.benchmark"),
+        " project."
+      ),
 
       <.h3("Failure tests"),
       <.p(
@@ -48,7 +66,12 @@ object TestStatusDoc {
         "These tests are also implemented for higher types as part of integration tests."
       ),
       <.p(
-        "JVM crash tests were performed manually. Automated tests are required with sbt-multi-jvm."
+        "JVM crash tests were performed manually. Automated tests will eventually be implemented with ",
+        <.a(
+          ^.href := "https://github.com/sbt/sbt-multi-jvm",
+          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - sbt-multi-jvm")),
+          ^.target := "blank")("sbt-multi-jvm"),
+        "."
       ),
 
       <.h3("Code coverage"),

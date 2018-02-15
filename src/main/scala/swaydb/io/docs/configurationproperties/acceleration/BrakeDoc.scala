@@ -29,7 +29,7 @@ object BrakeDoc {
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2("Accelerator.Brake (blocking)")
+        <.h2("Accelerator.brake (blocking)")
       ),
       <.div(
         ^.className := "alert alert-info",
