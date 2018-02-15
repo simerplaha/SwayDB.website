@@ -43,13 +43,42 @@ object SegmentSizeDoc {
         RouterController.router.link(Page.Level)("Level"),
         "."
       ),
+
       <.p(
-        "Smaller Segments can get created if the Level is empty and newly added key-values's total Segment size is small. ",
-        "Deleting majority of the key-values from a Segment can also create smaller Segments."
-      ),
-      <.p(
-        "Smaller Segments eventually get merged into one of the existing Segments from the Level during ",
+        <.strong("Increasing"),
+        " the ",
+        <.span(^.className := "snippet", "segmentSize"),
+        """ on an existing Level in the database will trigger "Segment collapsing" for the Level which gets run on database reboot and during """,
         RouterController.router.link(Page.Compaction)("Compaction"),
+        ". This merges all small Segments in the ",
+        RouterController.router.link(Page.Level)("Level"),
+        " into one or multiple larger Segments. ",
       ),
+      <.p(
+        "On database reboot small Segments are ",
+        <.strong("eagerly"),
+        " merged into larger Segments before the Level's Compaction process is started."
+      ),
+
+      <.p(
+        "Deleting majority of the key-values from a Level can also create smaller Segments that will eventually get merged into larger ",
+        "Segments during the Compaction process."
+      ),
+
+      <.p(
+        "If all the Segments in the Level are smaller than updated ",
+        <.span(^.className := "snippet", "segmentSize"),
+        ", then the small Segments will get merged into one of the ",
+        " existing smaller Segment in the Level to create a larger Segment or Segments."
+      ),
+
+      <.p(
+        <.strong("Decreasing"),
+        " the ",
+        <.span(^.className := "snippet", "segmentSize"),
+        " on an existing Level in the database gets applied when new Segments get added to the Level during the ",
+        RouterController.router.link(Page.Compaction)("Compaction"),
+        " process which will eventually result in all large Segments being split in to multiple smaller Segments."
+      )
     )
 }
