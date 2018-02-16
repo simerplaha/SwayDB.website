@@ -31,6 +31,11 @@ object RepairAppendixDoc {
       <.div(^.className := "page-header",
         <.h2("repairAppendix")
       ),
+      <.div(
+        ^.className := "alert alert-info",
+        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
+        <.i(" Be sure to backup the database before executing this function.")
+      ),
       <.p(
         <.span(^.className := "snippet", "repairAppendix"),
         " can be used to create a new ",
@@ -59,7 +64,7 @@ object RepairAppendixDoc {
         RouterController.router.link(Page.Level)("Level"),
         " documentation - ",
         RouterController.router.link(Page.Segment)("Segments"),
-        " that are not in the Appendix file (orphan Segments) get deleted on database reboot.",
+        " that are not in the Level's Appendix file (orphan Segments) get deleted on database reboot.",
         " But when Appendix file becomes unreadable it becomes hard to distinguish between active and orphan Segments. ",
         "In this case ",
         <.span(^.className := "snippet", "repairAppendix"),
@@ -72,11 +77,7 @@ object RepairAppendixDoc {
         <.span(^.className := "snippet", "Try[RepairResult[T]]"),
         " because repairs can fail if the input ",
         <.span(^.className := "snippet", "levelPath"),
-        " is incorrect or if the Level contains multiple Segments with overlapping keys ",
-        " which were created during ",
-        RouterController.router.link(Page.Compaction)("Compaction"),
-        " but did not get committed to the Appendix file due to early JVM termination",
-        " or due to Appendix file corruption."
+        " is incorrect."
       ),
 
       <.h3("RepairResult"),
@@ -96,7 +97,7 @@ object RepairAppendixDoc {
       ),
       <.h4("Success(OverlappingSegments)"),
       <.p(
-        "Returns when the Level contains conflicting Segments with overlapping keys and ",
+        "Returned when the Level contains conflicting Segments with overlapping keys and ",
         <.span(^.className := "snippet", "AppendixRepairStrategy.Report"),
         " repair strategy is selected. ",
         "This result contains the following information about the overlapping Segments that can be used for manual inspection ",
@@ -121,7 +122,7 @@ object RepairAppendixDoc {
       ),
 
       <.h3("AppendixRepairStrategy"),
-      <.p("One of the following repair strategies can be used to rebuild the appendix file."),
+      <.p("One of the following repair strategies can be used to re-create the appendix file."),
       <.h4("Report"),
       <.p(
         "Successfully re-creates the appendix file if the Level contains no conflicting Segments with overlapping key ranges."
@@ -138,7 +139,8 @@ object RepairAppendixDoc {
           <.span(^.className := "snippet", "Report"),
           " setting results in ",
           <.span(^.className := "snippet", "RepairResult.OverlappingSegments"),
-          "."
+          ". It fixes the Level's Appendix file to create a stable Level state without any duplicate Segments with overlapping keys. ",
+          "All redundant Segments (if any) will eventually get deleted as the Compaction continues."
         )
       ),
 

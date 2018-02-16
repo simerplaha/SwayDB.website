@@ -33,9 +33,9 @@ object PerformanceDoc {
       ),
       <.div(
         ^.className := "alert alert-info",
-        <.strong("Note: "),
+        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
         <.i(
-          "Performance tests on more machines with different configurations are required. ",
+          " Performance tests on more machines with different configurations are required. ",
           "This section will document performance results with the machine & the configuration used. ",
           "With enough performance tests data gathered eventually a better database configuration can be compiled."
         )

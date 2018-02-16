@@ -22,16 +22,26 @@ package swaydb.io.docs.apis.write
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.{Page, RouterController}
 
 object WriteAPIDoc {
 
   def note(show: Boolean = true) =
     <.div(
       ^.className := "alert alert-info",
-      <.strong("Info: "),
-      <.i("All write operations return "),
-      <.span(^.className := "snippet", "Level0Meter"),
-      <.i(" that can be used to apply back-pressure via external streaming libraries."),
+      <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
+      <.i(
+        " All write operations return ",
+        RouterController.router.link(Page.Level0Meter)(<.span(^.className := "snippet", "Level0Meter")),
+        " that can be used to apply back-pressure via external streaming libraries or ",
+        <.strong(
+          "blocking ",
+          <.span(^.className := "glyphicon glyphicon-alert")
+        ),
+        " back-pressure (",
+        RouterController.router.link(Page.Brake)(<.span(^.className := "snippet", "brake")),
+        ") can be used."
+      )
     ).when(show)
 
   def apply(): VdomElement = {

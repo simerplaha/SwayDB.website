@@ -32,8 +32,8 @@ object GetKeyValueDoc {
       ),
       <.p(
         "Fetches the key-value for the input partial key. ",
-        "This function is used mostly for databases that have partial ordering on the keys. ",
-        "Supplying a partial key to this function will retrieve the full key and value."
+        "This function is used mostly for databases that have partial data ordering. ",
+        "Supplying a partial key to this function will retrieve the full key and it's value."
       ),
       <.pre(
         <.code(^.className := "scala")(

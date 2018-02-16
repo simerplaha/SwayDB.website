@@ -22,6 +22,7 @@ package swaydb.io.docs.apis.read
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.{Page, RouterController}
 
 object LevelMeterDoc {
 
@@ -30,7 +31,13 @@ object LevelMeterDoc {
       <.div(^.className := "page-header",
         <.h2("levelMeter")
       ),
-      <.p("Returns the number of Segments and the total size (in bytes) of all the Segments in a Level"),
+      <.p(
+        "Returns the number ",
+        RouterController.router.link(Page.Segment)("Segments"),
+        " and the total size (in bytes) of all the Segments in the input ",
+        RouterController.router.link(Page.Level)("Level"),
+        "."
+      ),
       <.pre(
         <.code(^.className := "scala")(
           """

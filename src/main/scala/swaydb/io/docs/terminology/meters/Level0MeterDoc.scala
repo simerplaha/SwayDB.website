@@ -40,8 +40,8 @@ object Level0MeterDoc {
 
       <.div(
         ^.className := "alert alert-info",
-        <.strong("Note: "),
-        <.i("All write requests also return Level0Meter which can be used to apply asynchronous back-pressure.")
+        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
+        <.i(" All write requests also return Level0Meter which can be used to apply asynchronous back-pressure.")
       ),
 
       <.p(

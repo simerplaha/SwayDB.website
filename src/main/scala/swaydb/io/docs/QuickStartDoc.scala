@@ -32,18 +32,20 @@ object QuickStartDoc {
       <.div(^.className := "page-header",
         <.h2(^.id := "quick-start", "Quick start")
       ),
-      <.p(
-        "Clone ",
+      <.div(
+        ^.className := "alert alert-info",
+        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
+        " Clone ",
         <.a(
           ^.href := "https://github.com/simerplaha/SwayDB.examples",
           ^.target := "blank",
           ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - SwayDB.examples")),
           "SwayDB.examples"
         ),
-        " to see implementations of all examples."
+        " to view all examples."
       ),
       SetupDoc.body,
-      <.p("Quick start demo app",
+      <.p("Quick start demo app.",
         <.a(
           ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/quickstart/QuickStartSpec.scala",
           ^.role := "button",

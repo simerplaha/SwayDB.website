@@ -22,7 +22,6 @@ package swaydb.io.docs.apis.read
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.{Page, RouterController}
 
 object ReadAPIDoc {
 

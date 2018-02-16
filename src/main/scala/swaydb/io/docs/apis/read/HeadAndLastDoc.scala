@@ -22,6 +22,7 @@ package swaydb.io.docs.apis.read
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.{Page, RouterController}
 
 object HeadAndLastDoc {
 
@@ -35,8 +36,19 @@ object HeadAndLastDoc {
         <.span(^.className := "snippet", "last"),
         " - uses ",
         <.strong("reverse"),
-        " iteration and are much slower then forward iterations for persistent databases. For memory databases forward & reverse iterations have ",
-        " comparable performance."
+        " iteration that are much slower then forward iterations. The performance of ",
+        <.span(^.className := "snippet", "last"),
+        " depends on the number of deleted key-values in upper ",
+        RouterController.router.link(Page.Level)("Levels"),
+        ". If there are fewer deleted key-values then the performance of ",
+        <.span(^.className := "snippet", "last"),
+        " is comparable to ",
+        <.span(^.className := "snippet", "head"),
+        ". For memory databases ",
+        <.span(^.className := "snippet", "head"),
+        " and ",
+        <.span(^.className := "snippet", "last"),
+        " have similar performance."
       ),
       <.pre(
         <.code(^.className := "scala")(

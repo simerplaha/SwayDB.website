@@ -31,7 +31,13 @@ object Level1MeterDoc {
       <.div(^.className := "page-header",
         <.h2("level1Meter")
       ),
-      <.p("Returns the number of Segments and the total size (in bytes) of all the Segments in Level1"),
+      <.p(
+        "Returns the number ",
+        RouterController.router.link(Page.Segment)("Segments"),
+        " and the total size (in bytes) of all the Segments in ",
+        RouterController.router.link(Page.Level)("Level1"),
+        "."
+      ),
       <.pre(
         <.code(^.className := "scala")(
           """

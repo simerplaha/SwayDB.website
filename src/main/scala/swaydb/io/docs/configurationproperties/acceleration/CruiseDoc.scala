@@ -33,9 +33,9 @@ object CruiseDoc {
       ),
       <.div(
         ^.className := "alert alert-info",
-        <.strong("Info: "),
+        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
         <.i(
-          "This setting can be used to completely disable any changes to Level0 during runtime and for applying ",
+          " This setting can be used to completely disable any changes to Level0 during runtime and for applying ",
           " back-pressure with external streaming libraries."
         )
       ),

@@ -33,9 +33,9 @@ object CreatingDatabaseDoc {
       ),
       <.div(
         ^.className := "alert alert-info",
-        <.strong("Note: "),
+        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
         <.i(
-          """Default databases were configured experimenting on a MacBook Pro laptop.
+          """ Default databases were configured experimenting on a MacBook Pro laptop.
             |Further tuning of these configurations on production quality servers would
             |result in better performance.""".stripMargin
         )

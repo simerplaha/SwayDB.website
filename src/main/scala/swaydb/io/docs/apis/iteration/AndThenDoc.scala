@@ -33,8 +33,8 @@ object AndThenDoc {
       <.div(
         <.div(
           ^.className := "alert alert-info",
-          <.strong("Note: "),
-          <.i("All APIs expected from a Scala collection (foreach, map, fold etc) are supported. The following documents SwayDB specific APIs only."),
+          <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
+          <.i(" All APIs expected from a Scala collection (foreach, map, fold etc) are supported. The following documents SwayDB specific APIs only."),
         ),
         <.p(
           <.i("APIs ending with "),

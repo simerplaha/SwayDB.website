@@ -32,7 +32,13 @@ object Level0MeterDoc {
         <.h2("level0Meter")
       ),
 
-      <.p("Returns the size of the current Map & the total number of Maps in Level0."),
+      <.p(
+        "Returns the size of the current ",
+        RouterController.router.link(Page.Map)("Map"),
+        " & the total number of Maps ",
+        RouterController.router.link(Page.Level0)("Level0"),
+        "."
+      ),
       <.pre(
         <.code(^.className := "scala")(
           """

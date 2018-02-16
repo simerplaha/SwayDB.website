@@ -33,9 +33,9 @@ object BrakeDoc {
       ),
       <.div(
         ^.className := "alert alert-info",
-        <.strong("Note: "),
+        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
         <.i(
-          "This setting will ",
+          " This setting will ",
           <.span(^.className := "snippet", "brake"),
           " (blocking back-pressure) and update the ",
           <.span(^.className := "snippet", "nextMapSize"),

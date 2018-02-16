@@ -33,9 +33,9 @@ object NoBrakeDoc {
       ),
       <.div(
         ^.className := "alert alert-info",
-        <.strong("Info: "),
+        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
         <.i(
-          "This setting only updates the ",
+          " This setting only updates the ",
           <.span(^.className := "snippet", "nextMapSize"),
           " and disables ",
           <.span(^.className := "snippet", "brake"),

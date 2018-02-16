@@ -98,9 +98,9 @@ object CustomKeyOrderingDoc {
 
       <.div(
         ^.className := "alert alert-info",
-        <.strong("Note: "),
+        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
         <.i(
-          "Typed sort ordering can be less performant (depending on the serializing speed) than ordering directly on raw bytes ",
+          " Typed sort ordering can be less performant (depending on the serializing speed) than ordering directly on raw bytes ",
           <.span(^.className := "snippet", "Ordering[Slice[Byte]]"),
           ". This sort order function is used frequently for reading & write data and during compaction.",
           " A slow ordering function can have noticeable performance impact."

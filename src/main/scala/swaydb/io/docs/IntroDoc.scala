@@ -106,7 +106,7 @@ object IntroDoc {
         ") that can be used to implement asynchronous ",
         "back-pressure with external streaming libraries. An implementation of blocking back-pressure (",
         RouterController.router.link(Page.Brake)("Acceleration.brake"),
-        ") is provided for quick starts."
+        ") is provided to get up and running quickly."
       ),
 
       <.h3(^.id := "multi-disks", "Multiple disks"),

@@ -66,14 +66,16 @@ object OtherDirsDoc {
         """. This will result in "/Disk2/db" storing 75% of the data and root directory will store the remaining 25%. """
       ),
       <.p(
-        "Distribution ratio for the root directory can also be provided by adding it to ",
+        "Distribution ratio for the root directory ",
+        RouterController.router.link(Page.Dir)("(dir: Path)"),
+        " can also be provided by adding it to ",
         <.span(^.className := "snippet", "otherDirs"),
         "."
       ),
       <.div(
         ^.className := "alert alert-info",
-        <.strong("Note: "),
-        <.i("This setting is used when a machine has disks of variable sizes. ")
+        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
+        <.i(" This setting is used when a machine has disks of variable sizes. ")
       ),
     )
 }

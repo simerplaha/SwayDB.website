@@ -32,7 +32,7 @@ object GetKeyDoc {
       ),
       <.p(
         "Fetches the key for the input partial key. ",
-        "This function is used mostly for databases that have partial ordering on the keys. ",
+        "This function is used mostly for databases that have partial data ordering. ",
         "Supplying a partial key to this function will retrieve the full key."
       ),
       <.pre(

@@ -42,7 +42,11 @@ object PersistentDatabaseDoc {
         )
       ),
 
-      <.p("""An 8 leveled persistent database configured to store 2 times more data in "Disks/db"."""),
+      <.p(
+        """An 8 leveled persistent database configured to store 2 times more data in "Disks/db". Read more on distribution ratio at """,
+        RouterController.router.link(Page.OtherDirs)("otherDirs: Seq[Dir]"),
+        "."
+      ),
 
       <.h3("Key-value database"),
       <.pre(

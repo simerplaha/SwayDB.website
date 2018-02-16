@@ -36,8 +36,8 @@ object CustomDatabaseDoc {
       <.p("Databases can also be initialised on custom configurations. Refer to ",
         RouterController.router.link(Page.ConfiguringLevels)("Configuring Levels"),
         " documentation on how ",
-        <.span(^.className := "snippet", "ConfigWizard "),
-        "can be used to build custom Level hierarchies."
+        <.span(^.className := "snippet", "ConfigWizard"),
+        " can be used to build custom Level hierarchies."
       ),
       <.pre(
         <.code(^.className := "scala")(

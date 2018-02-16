@@ -36,7 +36,7 @@ object SetupDoc {
 
   def body = {
     <.div(
-      <.p("""Add SwayDB's jar dependency to your build file."""),
+      <.p("""Add SwayDB's jar dependency to the build file."""),
       <.pre(
         <.code(^.className := "scala")(
           """
