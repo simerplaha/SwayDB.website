@@ -31,7 +31,12 @@ object SizeDoc {
       <.div(^.className := "page-header",
         <.h2("size")
       ),
-      <.p("Returns the count of all key-values in the database, including deleted & updated key-values."),
+      <.p(
+        "Returns the count of all key-values in the database, including updated key-values & deleted key-values ",
+        "that are no physically deleted i.e. key-values in upper ",
+        RouterController.router.link(Page.Segment)("Levels"),
+        "."
+      ),
       <.p(
         <.i(
           "Note: For persistent databases this function requires all ",
