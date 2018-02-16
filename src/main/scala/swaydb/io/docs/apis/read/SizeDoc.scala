@@ -33,7 +33,7 @@ object SizeDoc {
       ),
       <.p(
         "Returns the count of all key-values in the database, including updated key-values & deleted key-values ",
-        "that are no physically deleted i.e. key-values in upper ",
+        "that are not physically deleted i.e. key-values in upper ",
         RouterController.router.link(Page.Segment)("Levels"),
         "."
       ),
