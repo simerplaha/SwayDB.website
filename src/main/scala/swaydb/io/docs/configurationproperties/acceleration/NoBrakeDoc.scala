@@ -29,7 +29,7 @@ object NoBrakeDoc {
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2("Accelerator.noBrake (non-blocking)")
+        <.h2("Accelerator.noBrakes (non-blocking)")
       ),
       <.div(
         ^.className := "alert alert-info",

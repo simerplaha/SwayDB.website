@@ -677,7 +677,7 @@ object Page {
   }
 
   object Brake extends Page {
-    override val name: String = "Brake"
+    override val name: String = "brake"
     override val subPages: Seq[Page] = Seq()
     override val url: String = "#configuring-levels/acceleration/brake"
 
@@ -685,7 +685,7 @@ object Page {
   }
 
   object NoBrakes extends Page {
-    override val name: String = "No brakes"
+    override val name: String = "noBrakes"
     override val subPages: Seq[Page] = Seq()
     override val url: String = "#configuring-levels/acceleration/noBrakes"
 
@@ -693,7 +693,7 @@ object Page {
   }
 
   object Cruise extends Page {
-    override val name: String = "Cruise"
+    override val name: String = "cruise"
     override val subPages: Seq[Page] = Seq()
     override val url: String = "#configuring-levels/acceleration/cruise"
 
