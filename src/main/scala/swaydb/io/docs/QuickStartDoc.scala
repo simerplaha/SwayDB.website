@@ -65,7 +65,7 @@ object QuickStartDoc {
             |  import swaydb.serializers.Default._ //import default serializers
             |
             |  //Create a persistent database. If the directories do not exist, they will be created.
-            |  val db = SwayDB.persistent[Int, String](dir = "/Disk1/myDB", otherDirs = Seq("/Disk2/myDB"))
+            |  val db = SwayDB.persistent[Int, String](dir = "/Disk1/myDB", otherDirs = Seq("/Disk2/myDB")).get
             |
             |  db.put(1, "one")
             |  db.get(1) //returns "one"
