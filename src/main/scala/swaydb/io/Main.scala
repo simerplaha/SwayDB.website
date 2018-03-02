@@ -79,7 +79,7 @@ object Main {
   }
 
   def main(args: Array[String]): Unit = {
-    val router = Router(BaseUrl.until_#, routerConfig)
+    val router = Router(BaseUrl.fromWindowOrigin_/, routerConfig)
     router().renderIntoDOM(dom.document.body)
   }
 }
