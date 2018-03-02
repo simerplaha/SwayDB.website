@@ -77,7 +77,11 @@ Add `~` to start auto build on code changes.
 sbt ~fastOptJS
 ```
 
-All output JS files and other static files are added to the `docs` folder. To run the website
-open `index.html` in your browser.
+All output JS files and other static files (html, css, img etc) are added to the `docs` folder. 
+Run the following in the `docs` folder to start serving `index.html` on python server.
+
+```bash
+python -m SimpleHTTPServer
+```
 
 Read more on [Scala.js documentation on building](https://www.scala-js.org/doc/project/building.html).
