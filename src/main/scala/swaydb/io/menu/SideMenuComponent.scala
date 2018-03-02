@@ -30,9 +30,6 @@ import org.scalajs.dom.html.LI
 import swaydb.io.Page.Intro
 import swaydb.io.{Page, RootPages, RouterController}
 
-import scala.annotation.tailrec
-import scala.scalajs.js
-
 object SideMenuComponent {
 
   def initHighlightJs =
@@ -81,7 +78,7 @@ object SideMenuComponent {
         <.div(^.id := "sidenav", ^.className := "col-sm-3 col-md-2 sidebar collapse",
           renderPages(RootPages.pages, page),
           RouterController.router.link(Intro)(
-            <.img(^.src := "img/text-logo.png", ^.marginLeft := "-10px", ^.paddingTop := "10px", ^.paddingBottom := "100px")
+            <.img(^.src := "/img/text-logo.png", ^.marginLeft := "-10px", ^.paddingTop := "10px", ^.paddingBottom := "100px")
           )
 
         ),

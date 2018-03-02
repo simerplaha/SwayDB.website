@@ -36,7 +36,7 @@ object IntroDoc {
         <.h2(^.id := "introduction", "Introduction")
       ),
       <.p(^.className := "heading")(
-        <.img(^.className := "dark-logo", ^.src := "img/logo-dark.png"),
+        <.img(^.className := "dark-logo", ^.src := "/img/logo-dark.png"),
         "SwayDB is an embeddable, non-blocking, type-safe key-value store for ",
         <.strong("single or multiple disks"),
         <.span(" and "),

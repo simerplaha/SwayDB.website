@@ -54,7 +54,7 @@ object TopMenuComponent {
                 ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - facebook@SwayDB")),
                 <.span(
                   <.img(
-                    ^.src := "img/icon-fb.png"
+                    ^.src := "/img/icon-fb.png"
                   )
                 )
               )
@@ -69,7 +69,7 @@ object TopMenuComponent {
                 ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - twitter@SwayDB")),
                 <.span(
                   <.img(
-                    ^.src := "img/icon-twitter.png"
+                    ^.src := "/img/icon-twitter.png"
                   )
                 )
               )
@@ -84,15 +84,15 @@ object TopMenuComponent {
                 ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - github@SwayDB")),
                 <.span(
                   <.img(
-                    ^.src := "img/icon-github.ico"
+                    ^.src := "/img/icon-github.ico"
                   )
                 )
               )
             ),
             <.a(^.className := "navbar-brand logo", ^.href := "#",
-              <.span(<.img(^.src := "img/logo.png")),
+              <.span(<.img(^.src := "/img/logo.png")),
               //              <.span(^.className := "logo", "SwayDB"),
-              <.span(RouterController.router.link(Intro)(<.img(^.src := "img/text-logo.png", ^.height := "25px"))),
+              <.span(RouterController.router.link(Intro)(<.img(^.src := "/img/text-logo.png", ^.height := "25px"))),
             )
           )
         )
