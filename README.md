@@ -21,7 +21,7 @@ object MyPage extends Page {
 
     override val name: String = "My page"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "#mypage" //unique URL
+    override val url: String = "mypage/" //unique URL
     override def render(): VdomElement =
       <.div("My page") //implement the HTML for the page here or preferably in another object type.
   }

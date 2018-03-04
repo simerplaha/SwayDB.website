@@ -39,12 +39,12 @@ import java.nio.file.{Files, Paths, StandardCopyOption}
   * might not work for other search engines.
   *
   * Solution 4:
-  * The goal with the URLs is to keep the clean and descriptive without any hacks for specific search engines and to still
+  * The goal with the URLs is to keep them clean and descriptive without any hacks for specific search engines and still
   * use GithubPages to host the website.
-  * This class implements a hack solution for the URLs to work on Github Pages. It creates directories for all Page URLs
-  * and copies the root index.html into each of these directories for all valid URLs. This way the URLs are maintain and
+  * This class implements a hack solution for the original URLs to work on Github Pages. It creates directories for all Page URLs
+  * and copies the root index.html into each of these directories for all valid URLs. This way the URLs are maintained and
   * are displayed correctly in search engines and hacks are only implemented in the code which can be changes if this
-  * website ever moves to another hosting provider without modifying the existing URLs.
+  * website ever moves to another hosting provider without effecting existing URLs indexed by search engines.
   */
 object PageFolderGenerator extends App {
 
@@ -65,7 +65,7 @@ object PageFolderGenerator extends App {
     if (Files.exists(pageDir)) Files.delete(pageDir)
   }
 
-//    RootPages.pages.filter(_.url.nonEmpty).foreach(genFolder)
+  //    RootPages.pages.filter(_.url.nonEmpty).foreach(genFolder)
   RootPages.pages.filter(_.url.nonEmpty).foreach(deleteFolder)
 
 }
