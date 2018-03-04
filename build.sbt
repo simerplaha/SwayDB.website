@@ -1,6 +1,8 @@
 import java.nio.file.Paths
+
 import com.typesafe.sbt.web.PathMapping
 import com.typesafe.sbt.web.pipeline.Pipeline
+import swaydb.io.RootPages
 
 enablePlugins(ScalaJSPlugin)
 enablePlugins(JSDependenciesPlugin)
@@ -69,6 +71,8 @@ copyCSSPipeline := { mappings: Seq[PathMapping] =>
   }
   mappings
 }
+
+
 
 pipelineStages in Assets := Seq(copyCSSPipeline)
 
