@@ -73,7 +73,7 @@ object Page {
   object Intro extends Page {
     override val name: String = "Introduction"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "/"
+    override val url: String = ""
 
     override def render(): VdomElement = IntroDoc()
   }

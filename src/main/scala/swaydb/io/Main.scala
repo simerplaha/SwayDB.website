@@ -55,7 +55,7 @@ object Main {
     RootPages.pages
       .drop(1)
       .foldLeft(buildStaticRoute(RootPages.pages.head))(_ | buildRoutes(_))
-      .notFound(redirectToPage(RootPages.pages.last)(Redirect.Replace))
+      .notFound(redirectToPage(RootPages.pages.head)(Redirect.Replace))
       .renderWith(layout)
       .onPostRender {
         case (_, currentPage) =>
