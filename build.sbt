@@ -2,7 +2,6 @@ import java.nio.file.Paths
 
 import com.typesafe.sbt.web.PathMapping
 import com.typesafe.sbt.web.pipeline.Pipeline
-import swaydb.io.RootPages
 
 enablePlugins(ScalaJSPlugin)
 enablePlugins(JSDependenciesPlugin)
@@ -14,6 +13,7 @@ version := "0.1.0"
 scalaVersion := "2.12.3"
 
 scalaJSUseMainModuleInitializer := true
+mainClass in Compile := Some("swaydb.io.Main")
 
 libraryDependencies ++= Seq(
   "org.scala-js" %%% "scalajs-dom" % "0.9.3",
@@ -25,8 +25,6 @@ libraryDependencies ++=
     "com.github.japgolly.scalajs-react" %%% "core" % "1.1.1",
     "com.github.japgolly.scalajs-react" %%% "extra" % "1.1.1",
     "com.github.karasiq" %%% "scalajs-marked" % "1.0.2",
-    //include highlight.js from webjar for sbt-less to fetch the css files
-    //jar cf highlightjs-scala.jar highlight.scala.pack.js,
     "org.webjars.bower" % "highlightjs" % "9.12.0"
   )
 
@@ -71,8 +69,6 @@ copyCSSPipeline := { mappings: Seq[PathMapping] =>
   }
   mappings
 }
-
-
 
 pipelineStages in Assets := Seq(copyCSSPipeline)
 

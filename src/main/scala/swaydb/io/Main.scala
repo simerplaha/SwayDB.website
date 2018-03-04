@@ -38,7 +38,7 @@ object Main {
     * On a small screen this will close the side menu if open on click.
     */
   def hideSideBarIfOpen() =
-    dom.document.getElementsByClassName("sidebar-show").foreach {
+    dom.document.getElementsByClassName("sidebar-show") foreach {
       node =>
         node.asInstanceOf[Element].classList.remove("sidebar-show")
     }
@@ -55,7 +55,7 @@ object Main {
     RootPages.pages
       .drop(1)
       .foldLeft(buildStaticRoute(RootPages.pages.head))(_ | buildRoutes(_))
-      .notFound(redirectToPage(RootPages.pages.head)(Redirect.Replace))
+      .notFound(redirectToPage(RootPages.pages.last)(Redirect.Replace))
       .renderWith(layout)
       .onPostRender {
         case (_, currentPage) =>
