@@ -30,16 +30,18 @@ object PageFolderGenerator extends App {
     val pageDir = docs.resolve(page.url)
     if (Files.notExists(pageDir)) Files.createDirectory(pageDir)
     Files.copy(docs.resolve("index.html"), pageDir.resolve("index.html"), StandardCopyOption.REPLACE_EXISTING)
+    page.subPages.foreach(genFolder)
   }
 
   def deleteFolder(page: Page): Unit = {
     val pageDir = docs.resolve(page.url)
     val pageIndexHTML = pageDir.resolve("index.html")
-    if (Files.exists(pageIndexHTML)) Files.delete(pageDir.resolve("index.html"))
+    page.subPages.foreach(deleteFolder)
+    if (Files.exists(pageIndexHTML)) Files.delete(pageIndexHTML)
     if (Files.exists(pageDir)) Files.delete(pageDir)
   }
 
-  RootPages.pages.filter(_.url.nonEmpty).foreach(genFolder)
-//    RootPages.pages.filter(_.url.nonEmpty).foreach(deleteFolder)
+    RootPages.pages.filter(_.url.nonEmpty).foreach(genFolder)
+//  RootPages.pages.filter(_.url.nonEmpty).foreach(deleteFolder)
 
 }
