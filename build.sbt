@@ -15,9 +15,11 @@ scalaVersion := "2.12.3"
 scalaJSUseMainModuleInitializer := true
 mainClass in Compile := Some("swaydb.io.Main")
 
+
 libraryDependencies ++= Seq(
   "org.scala-js" %%% "scalajs-dom" % "0.9.3",
-  "com.lihaoyi" %%% "scalatags" % "0.6.7"
+  "com.lihaoyi" %%% "scalatags" % "0.6.7",
+  "org.scala-lang.modules" %% "scala-xml" % "1.1.0"
 )
 
 libraryDependencies ++=

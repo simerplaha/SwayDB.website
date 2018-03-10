@@ -18,9 +18,11 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io
+package swaydb.io.generator
 
 import java.nio.file.{Files, Paths, StandardCopyOption}
+
+import swaydb.io.{Page, RootPages}
 
 /**
   * A hack solution for SEO. GitHub pages doesn't allow multiple URLS for the same directory.
@@ -46,7 +48,7 @@ import java.nio.file.{Files, Paths, StandardCopyOption}
   * are displayed correctly in search engines and hacks are only implemented in the code which can be changes if this
   * website ever moves to another hosting provider without effecting existing URLs indexed by search engines.
   */
-object PageFolderGenerator extends App {
+object PageIndexFolderGenerator extends App {
 
   val docs = Paths.get(new java.io.File(".").getCanonicalPath).resolve("docs")
 
