@@ -45,7 +45,7 @@ import swaydb.io.{Page, RootPages}
   * use GithubPages to host the website.
   * This class implements a hack solution for the original URLs to work on Github Pages. It creates directories for all Page URLs
   * and copies the root index.html into each of these directories for all valid URLs. This way the URLs are maintained and
-  * are displayed correctly in search engines and hacks are only implemented in the code which can be changes if this
+  * are displayed correctly in search engines and hacks are only implemented in the code which can be changed if this
   * website ever moves to another hosting provider without effecting existing URLs indexed by search engines.
   */
 object PageIndexFolderGenerator extends App {

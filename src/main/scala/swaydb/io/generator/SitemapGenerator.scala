@@ -26,34 +26,34 @@ import swaydb.io.{Page, RootPages}
 
 import scala.xml.Elem
 
-object SiteMapGenerator extends App {
+/**
+  * Generates sitemap.xml file mentioned following the format mentioned https://support.google.com/webmasters/answer/183668?hl=en.
+  */
+object SitemapGenerator extends App {
 
-  val docs = Paths.get(new java.io.File(".").getCanonicalPath).resolve("docs")
+  val sitemap = Paths.get(new java.io.File(".").getCanonicalPath).resolve("docs").resolve("sitemap.xml")
 
-  def genXML(page: Page): Seq[Elem] = {
-    def xml(page: Page): Elem =
-      <url>
-        {if (page == Page.Intro)
-        <image:image>
-          <image:loc>https://github.com/simerplaha/SwayDB.io/blob/master/docs/img/logo-dark.png</image:loc>
-          <image:caption>SwayDB logo</image:caption>
-        </image:image>}<loc>
-        http://www.swaydb.io/{page.url}
-      </loc>
-      </url>
+  def genXMLForPage(page: Page): Elem =
+    <url>
+      {if (page == Page.Intro)
+      <image:image>
+        <image:loc>https://github.com/simerplaha/SwayDB.io/blob/master/docs/img/logo-dark.png</image:loc>
+        <image:caption>SwayDB logo</image:caption>
+      </image:image>}<loc>
+      http://www.swaydb.io/{page.url}
+    </loc>
+    </url>
 
-    xml(page) :: (page.subPages.flatMap(genXML)(collection.breakOut): List[Elem])
-  }
+  def genXMLForPages(page: Page): List[Elem] =
+    genXMLForPage(page) :: (page.subPages.flatMap(genXMLForPages)(collection.breakOut): List[Elem])
 
-  def siteMap = {
+  def start =
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
             xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-      {RootPages.pages.flatMap(genXML)}
+      {RootPages.pages.flatMap(genXMLForPages)}
     </urlset>
-  }
 
-  println(siteMap)
+  println(start)
 
-  scala.xml.XML.save(filename = docs.resolve("sitemap.xml").toString, xmlDecl = true, node = siteMap, enc = "UTF-8")
-
+  scala.xml.XML.save(filename = sitemap.toString, xmlDecl = true, node = start, enc = "UTF-8")
 }
