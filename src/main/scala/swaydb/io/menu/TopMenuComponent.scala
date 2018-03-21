@@ -49,7 +49,7 @@ object TopMenuComponent {
                 ^.className := "logo pull-right",
                 ^.padding := "9px 10px",
                 ^.height := "50px",
-                ^.href := "https://www.facebook.com/Swaydb01",
+                ^.href := "https://www.facebook.com/SwayDB.io",
                 ^.target := "blank",
                 ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - facebook@SwayDB")),
                 <.span(
