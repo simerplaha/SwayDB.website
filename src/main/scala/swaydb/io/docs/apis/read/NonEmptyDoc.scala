@@ -28,7 +28,7 @@ object NonEmptyDoc {
   def apply(): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("isEmpty & nonEmpty")
+        <.h2("nonEmpty")
       ),
       <.p("Returns true if at-least one key-value exists in the database else false."),
       <.pre(
