@@ -35,7 +35,7 @@ object ContainsDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.contains(1)
+            |db.contains(key = 1)
             |
             |""".stripMargin
         )

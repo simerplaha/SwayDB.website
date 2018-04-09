@@ -40,9 +40,9 @@ object BatchRemoveDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.batchRemove(1, 2)
+            |db.batchRemove(keys = 1, 2)
             |//or
-            |db.batchRemove(Seq(1, 2))
+            |db.batchRemove(keys = Seq(1, 2))
           """.stripMargin
         )
       ),

@@ -36,7 +36,7 @@ object RemoveDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.remove(1)
+            |db.remove(key = 1)
             |
             |""".stripMargin
         )

@@ -38,7 +38,7 @@ object GetKeyValueDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.getKeyValue(UserRow(id = 1, otherData = None))
+            |db.getKeyValue(key = UserRow(id = 1, otherData = None))
             |
             |""".stripMargin
         )

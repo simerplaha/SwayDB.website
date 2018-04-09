@@ -34,7 +34,7 @@ object GetDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.get(1)
+            |db.get(key = 1)
             |
             |""".stripMargin
         )

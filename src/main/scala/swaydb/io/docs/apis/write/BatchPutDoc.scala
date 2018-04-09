@@ -39,9 +39,9 @@ object BatchPutDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.batchPut((1, "one"), (2, "two"))
+            |db.batchPut(keyValues = (1, "one"), (2, "two"))
             |//or
-            |db.batchPut(Seq((1, "one"), (2, "two")))
+            |db.batchPut(keyValues = Seq((1, "one"), (2, "two")))
           """.stripMargin
         )
       ),
@@ -51,9 +51,9 @@ object BatchPutDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |setDB.batchAdd("data1", "data2")
+            |setDB.batchAdd(elems = "data1", "data2")
             |//or
-            |setDB.batchAdd(Seq("data1", "data2"))
+            |setDB.batchAdd(elems = Seq("data1", "data2"))
             |
             |""".stripMargin
         )

@@ -47,7 +47,7 @@ object PutDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.put(1, "one")
+            |db.put(key = 1, value = "one")
             |
             |""".stripMargin
         )
@@ -58,7 +58,7 @@ object PutDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |setDB.put("some data")
+            |setDB.put(elem = "some data")
             |
             |""".stripMargin
         )

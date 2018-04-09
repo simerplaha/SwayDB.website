@@ -64,7 +64,7 @@ object MightContainDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.mightContain(1)
+            |db.mightContain(key = 1)
             |
             |""".stripMargin
         )
