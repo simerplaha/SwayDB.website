@@ -42,7 +42,7 @@ object IterationAPIDoc {
       ),
       FromDoc(showInfo = false),
       BeforeAndAfterDoc(showInfo = false),
-      UntilDoc(showInfo = false),
+      TillDoc(showInfo = false),
       AndThenDoc(showInfo = false)
     )
   }

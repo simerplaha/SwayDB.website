@@ -40,9 +40,9 @@ object RecoveryModeDoc {
         "On JVM shutdown all files are properly closed and all memory-mapped files are forced written disk to ensure that all entries ",
         "are written to disk. In case of unclean shutdown the following recovery modes can be used to recover entries if there was a data corruption.",
       ),
-      <.h3("Report"),
+      <.h3("ReportFailure"),
       <.p(
-        "Reports any corruption of ",
+        "Reports any failure or corruption of ",
         RouterController.router.link(Page.Map)("Map"),
         " files in ",
         RouterController.router.link(Page.Level0)("Level0"),

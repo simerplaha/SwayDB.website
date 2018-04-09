@@ -37,10 +37,8 @@ object ConfigurationPropertiesDoc {
       AccelerationDoc.apply(),
       SegmentSizeDoc.apply(),
       PushForwardDoc.apply(),
-      CacheKeysOnCreateDoc.apply(),
       ThrottleDoc.apply(),
       MMAPSegmentDoc.apply(),
       AppendixFlushCheckpointSizeDoc.apply()
-
     )
 }

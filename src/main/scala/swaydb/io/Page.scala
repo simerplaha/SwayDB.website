@@ -249,6 +249,8 @@ object Page {
       Seq(
         Put,
         Remove,
+        RemoveRange,
+        UpdateRange,
         BatchPut,
         BatchRemove,
         Batch
@@ -272,6 +274,22 @@ object Page {
     override val url: String = "api/write-api/remove/"
 
     override def render(): VdomElement = RemoveDoc()
+  }
+
+  object RemoveRange extends Page {
+    override val name: String = "remove (range)"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/write-api/remove-range/"
+
+    override def render(): VdomElement = RemoveRangeDoc()
+  }
+
+  object UpdateRange extends Page {
+    override val name: String = "update (range)"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/write-api/update-range/"
+
+    override def render(): VdomElement = UpdateDoc()
   }
 
   object BatchPut extends Page {
@@ -307,9 +325,12 @@ object Page {
         GetKeyValue,
         Contains,
         MightContain,
-        IsEmptyNonEmpty,
+        Head,
+        Last,
+        IsEmpty,
+        NonEmpty,
+        ValueSize,
         Size,
-        HeadAndLast,
         SizeOfSegments,
         Level0MeterReadAPI,
         Level1MeterReadAPI,
@@ -352,20 +373,44 @@ object Page {
     override def render(): VdomElement = read.ContainsDoc()
   }
 
-  object HeadAndLast extends Page {
-    override val name: String = "head & last"
+  object Head extends Page {
+    override val name: String = "head"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/read-api/head-last/"
+    override val url: String = "api/read-api/head/"
 
-    override def render(): VdomElement = HeadAndLastDoc()
+    override def render(): VdomElement = HeadDoc()
   }
 
-  object IsEmptyNonEmpty extends Page {
-    override val name: String = "isEmpty & nonEmpty"
+  object Last extends Page {
+    override val name: String = "last"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/read-api/isEmpty-nonEmpty/"
+    override val url: String = "api/read-api/last/"
 
-    override def render(): VdomElement = IsEmptyNonEmptyDoc()
+    override def render(): VdomElement = LastDoc()
+  }
+
+  object ValueSize extends Page {
+    override val name: String = "valueSize"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/read-api/valueSize/"
+
+    override def render(): VdomElement = ValueSizeDoc()
+  }
+
+  object IsEmpty extends Page {
+    override val name: String = "isEmpty"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/read-api/isEmpty/"
+
+    override def render(): VdomElement = IsEmptyDoc()
+  }
+
+  object NonEmpty extends Page {
+    override val name: String = "nonEmpty"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/read-api/nonEmpty/"
+
+    override def render(): VdomElement = NonEmptyDoc()
   }
 
   object Level0MeterReadAPI extends Page {
@@ -418,7 +463,7 @@ object Page {
 
   object IterationAPI extends Page {
     override val name: String = "Iteration API"
-    override val subPages: Seq[Page] = Seq(From, BeforeAndAfter, Until, AndThen)
+    override val subPages: Seq[Page] = Seq(From, BeforeAndAfter, Till, AndThen)
     override val url: String = "api/iteration-api/"
 
     override def render(): VdomElement = IterationAPIDoc()
@@ -440,12 +485,12 @@ object Page {
     override def render(): VdomElement = BeforeAndAfterDoc()
   }
 
-  object Until extends Page {
-    override val name: String = "until"
+  object Till extends Page {
+    override val name: String = "till"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/iteration-api/until/"
+    override val url: String = "api/iteration-api/till/"
 
-    override def render(): VdomElement = UntilDoc()
+    override def render(): VdomElement = TillDoc()
   }
 
   object AndThen extends Page {
@@ -477,7 +522,6 @@ object Page {
 
     override def render(): VdomElement = ExamplesDoc()
   }
-
 
   object CreatingTables extends Page {
     override val name: String = "Creating tables"
@@ -613,7 +657,6 @@ object Page {
         Acceleration,
         SegmentSize,
         PushForward,
-        CacheKeysOnCreate,
         BloomFilterFalsePositiveRate,
         Throttle,
         MMAPSegment,
@@ -722,14 +765,6 @@ object Page {
     override val url: String = "configuring-levels/bloomFilterFalsePositiveRate/"
 
     override def render(): VdomElement = BloomFilterFalsePositiveRateDoc()
-  }
-
-  object CacheKeysOnCreate extends Page {
-    override val name: String = "cacheKeysOnCreate"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "configuring-levels/cacheKeysOnCreate/"
-
-    override def render(): VdomElement = CacheKeysOnCreateDoc()
   }
 
   object Throttle extends Page {

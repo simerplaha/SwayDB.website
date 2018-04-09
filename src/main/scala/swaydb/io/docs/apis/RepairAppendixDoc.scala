@@ -50,7 +50,7 @@ object RepairAppendixDoc {
             |val repairResult: Try[RepairResult[Int]] =
             |  SwayDB.repairAppendix[Int](
             |    levelPath = "/Disk1/myDB/1", //root path of the level 1 folder.
-            |    repairStrategy = AppendixRepairStrategy.Report
+            |    repairStrategy = AppendixRepairStrategy.ReportFailure
             |  )
             |""".stripMargin
         )
@@ -98,7 +98,7 @@ object RepairAppendixDoc {
       <.h4("Success(OverlappingSegments)"),
       <.p(
         "Returned when the Level contains conflicting Segments with overlapping keys and ",
-        <.span(^.className := "snippet", "AppendixRepairStrategy.Report"),
+        <.span(^.className := "snippet", "AppendixRepairStrategy.ReportFailure"),
         " repair strategy is selected. ",
         "This result contains the following information about the overlapping Segments that can be used for manual inspection ",
         "before selecting one of the other repair strategies to automatically pick one of the overlapping Segments and discarding the other.",
@@ -123,20 +123,20 @@ object RepairAppendixDoc {
 
       <.h3("AppendixRepairStrategy"),
       <.p("One of the following repair strategies can be used to re-create the appendix file."),
-      <.h4("Report"),
+      <.h4("ReportFailure"),
       <.p(
-        "Successfully re-creates the appendix file if the Level contains no conflicting Segments with overlapping key ranges."
+        "Successfully re-creates the appendix file if the Level contains no conflicting Segments (Segments with overlapping keys)."
       ),
 
       <.h4("KeepOld (recommended default)"),
       <.p(
-        "If the Level contains Segments with overlapping key ranges, this strategy keeps the older Segment and deletes the newer Segment."
+        "If the Level contains Segments with overlapping keys, this strategy keeps the older Segment and deletes the newer Segment."
       ),
       <.p(
         <.i(
           <.strong("Note: "),
           "This setting should always be preferred if the ",
-          <.span(^.className := "snippet", "Report"),
+          <.span(^.className := "snippet", "ReportFailure"),
           " setting results in ",
           <.span(^.className := "snippet", "RepairResult.OverlappingSegments"),
           ". It fixes the Level's Appendix file to create a stable Level state without any duplicate Segments with overlapping keys. ",
@@ -146,7 +146,7 @@ object RepairAppendixDoc {
 
       <.h4("KeepNew"),
       <.p(
-        "If the Level contains Segments with overlapping key ranges, this strategy keeps the newer Segment & deletes the older Segment."
+        "If the Level contains Segments with overlapping keys, this strategy keeps the newer Segment & deletes the older Segment."
       )
 
     )

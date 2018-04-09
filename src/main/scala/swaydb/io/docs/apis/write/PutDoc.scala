@@ -20,17 +20,29 @@
 
 package swaydb.io.docs.apis.write
 
-import japgolly.scalajs.react.vdom.VdomElement
+import japgolly.scalajs.react.vdom.{TagOf, VdomElement}
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import org.scalajs.dom.html
+import swaydb.io.{Page, RouterController}
 
 object PutDoc {
+
+  def atomicWrite(api: VdomElement) =
+    <.p(
+      <.i(
+        api,
+        " can also be combined with other write operations and written atomically using ",
+        RouterController.router.link(Page.Batch)(<.span(^.className := "snippet", "batch")),
+        "."
+      )
+    )
 
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
         <.h2("put")
       ),
-      WriteAPIDoc.note(showNote),
+      //      WriteAPIDoc.note(showNote),
       <.p("Insert a single key-value."),
       <.pre(
         <.code(^.className := "scala")(
@@ -41,7 +53,7 @@ object PutDoc {
         )
       ),
       <.p(
-        "Insert for Set databases."
+        "Insert a single item to Set database."
       ),
       <.pre(
         <.code(^.className := "scala")(
@@ -50,6 +62,11 @@ object PutDoc {
             |
             |""".stripMargin
         )
+      ),
+
+      <.p(
+        RouterController.router.link(Page.BatchPut)(<.span(^.className := "snippet", "batchPut")),
+        " can be used to write multiple key-values atomically."
       )
     )
   }

@@ -28,9 +28,6 @@ object ThrottleDoc {
 
   def name = "throttle: LevelMeter => Throttle"
 
-  def link =
-    RouterController.router.link(Page.CacheKeysOnCreate)(name)
-
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",

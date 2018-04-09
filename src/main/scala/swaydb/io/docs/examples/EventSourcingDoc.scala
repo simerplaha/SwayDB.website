@@ -45,10 +45,14 @@ object EventSourcingDoc {
       <.i(
         <.p(
           <.strong("Note: "),
-          "SwayDB does not force immutable data. Events can still be deleted with the ",
+          "SwayDB does not force immutable data. Events can still be deleted using ",
           <.span(^.className := "snippet", RouterController.router.link(Page.Remove)("remove")),
-          " or ",
+          ", ",
+          <.span(^.className := "snippet", RouterController.router.link(Page.RemoveRange)("remove (range)")),
+          ", ",
           <.span(^.className := "snippet", RouterController.router.link(Page.BatchRemove)("batchRemove")),
+          " or ",
+          <.span(^.className := "snippet", RouterController.router.link(Page.Batch)("batch")),
           "."
         )
       ),

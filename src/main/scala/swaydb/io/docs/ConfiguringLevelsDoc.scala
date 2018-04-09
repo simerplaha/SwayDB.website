@@ -22,10 +22,6 @@ package swaydb.io.docs
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.{Page, RouterController}
-import swaydb.io.docs.configurationproperties.MMAPSegmentDoc.name
-import swaydb.io.docs.configurationproperties._
-import swaydb.io.docs.configurationproperties.acceleration.AccelerationDoc
 
 object ConfiguringLevelsDoc {
 
@@ -67,7 +63,7 @@ object ConfiguringLevelsDoc {
             |      dir = "/Disk1/myDB",
             |      mapSize = 4.mb,
             |      mmap = true,
-            |      recoveryMode = RecoveryMode.Report,
+            |      recoveryMode = RecoveryMode.ReportFailure,
             |      acceleration =
             |        (level0Meter: Level0Meter) =>
             |          Accelerator.cruise(level0Meter)
@@ -91,7 +87,6 @@ object ConfiguringLevelsDoc {
             |      mmapAppendix = true,
             |      appendixFlushCheckpointSize = 4.mb,
             |      pushForward = false,
-            |      cacheKeysOnCreate = false,
             |      bloomFilterFalsePositiveRate = 0.1,
             |      throttle =
             |        (levelMeter: LevelMeter) =>

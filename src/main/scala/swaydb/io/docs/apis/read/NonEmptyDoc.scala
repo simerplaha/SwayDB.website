@@ -18,29 +18,29 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.configurationproperties
+package swaydb.io.docs.apis.read
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.{Page, RouterController}
 
-object CacheKeysOnCreateDoc {
+object NonEmptyDoc {
 
-  def name = "cacheKeysOnCreate: Boolean"
-
-  def link =
-    RouterController.router.link(Page.CacheKeysOnCreate)(name)
-
-  def apply(): VdomElement =
+  def apply(): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2(name)
+        <.h2("isEmpty & nonEmpty")
       ),
-      <.p(
-        """
-          |If true, when a Segment is created in the Level, all the keys in the Segments are added to the cache. Values
-          |are lazily fetched on request.
-        """.stripMargin),
-      <.p("This property is not used for memory Levels as key-values are already in-memory.")
+      <.p("Returns true if at-least one key-value exists in the database else false."),
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |db.nonEmpty
+            |
+            |""".stripMargin
+        )
+      )
+
     )
+  }
+
 }

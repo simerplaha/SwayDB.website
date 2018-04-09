@@ -38,16 +38,25 @@ object MightContainDoc {
         "Returns false if the key definitely does not exist. "
       ),
       <.p(
-        "Returns true if the key might exist. "
+        "Returns true if the key ",
+        <.u("might"),
+        " exist."
       ),
       <.p(
         <.strong("Note: "),
-        "True is always returned for deleted keys that are not physically deleted from the database ",
-        "i.e. delete keys in the upper Levels. ",
-        "Deleted keys are physically deleted only in the last Level."
+        "True is always returned for removed keys that are not physically removed from the database ",
+        "i.e. removed keys in the upper Levels. ",
+        <.u("Removed keys are only physically deleted in last Level. "),
+        "True is also always returned for ",
+        RouterController.router.link(Page.Segment)(Page.Segment.name + "s"),
+        " that contain ",
+        RouterController.router.link(Page.RemoveRange)(Page.RemoveRange.name),
+        " key-values, as BloomFilters are not created for Segments that contain ",
+        RouterController.router.link(Page.RemoveRange)(Page.RemoveRange.name),
+        " key-values."
       ),
       <.p(
-        "The accuracy of this function depends on the ",
+        "The accuracy of this function also depends on the ",
         RouterController.router.link(Page.BloomFilterFalsePositiveRate)("'bloomFilterFalsePositiveRate: Double'"),
         " configuration setting."
       ),
@@ -59,8 +68,31 @@ object MightContainDoc {
             |
             |""".stripMargin
         )
+      ),
+
+      <.p(
+        "Use ",
+        RouterController.router.link(Page.Contains)(Page.Contains.name),
+        " if 100% accuracy is required. "
+      ),
+      <.h3(
+        <.span(^.className := "snippet", Page.MightContain.name),
+        " VS ",
+        <.span(^.className := "snippet", Page.Contains.name)
+      ),
+
+      <.p(
+        <.span(^.className := "snippet", Page.MightContain.name),
+        " requires a maximum of one disk seek to fetch the bloomFilter from disk for persistent ",
+        RouterController.router.link(Page.Segment)(Page.Segment.name + "s"),
+        " (if it's not already in-memory). ",
+        "For memory Segments BloomFilters are always kept in-memory."
+      ),
+      <.p(
+        <.span(^.className := "snippet", Page.Contains.name),
+        " might require multiple-disk seeks depending on the position of the key in the persistent Segment's index. ",
+        "For memory Segments contains is executed on the Segment's in-memory Map."
       )
     )
   }
-
 }

@@ -30,7 +30,7 @@ object BatchRemoveDoc {
       <.div(^.className := "page-header",
         <.h2("batchRemove")
       ),
-      WriteAPIDoc.note(showNote),
+//      WriteAPIDoc.note(showNote),
       BatchDoc.guarantee,
 
       <.p(
@@ -45,7 +45,8 @@ object BatchRemoveDoc {
             |db.batchRemove(Seq(1, 2))
           """.stripMargin
         )
-      )
+      ),
+      PutDoc.atomicWrite(<.span(^.className := "snippet", "batchRemove"))
     )
   }
 

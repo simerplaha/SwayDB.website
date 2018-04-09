@@ -18,57 +18,27 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.apis.iteration
+package swaydb.io.docs.apis.read
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 
-object UntilDoc {
+object ValueSizeDoc {
 
-  def apply(showInfo: Boolean = true): VdomElement = {
+  def apply(): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("untilKey, untilValue & until")
+        <.h2("valueSize")
       ),
-      <.div(
-        <.div(
-          ^.className := "alert alert-info",
-          <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
-          <.i(" All APIs expected from a Scala collection (foreach, map, fold etc) are supported. The following documents SwayDB specific APIs only."),
-        ),
-        <.p(
-          <.i("APIs ending with "),
-          <.span(^.className := "snippet", "*Right"),
-          <.i(" perform reverse iteration (Note: Reverse iterations are much slower then forward iterations for persistent databases)."),
-        )
-      ).when(showInfo),
-
-      <.p("Continues iteration until the input condition returns false."),
+      <.p("Fetches size of value in bytes stored on disk for persistent databases and in-memory for Memory databases."),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db
-            |  .from(10)
-            |  .untilKey(_ < 20)
-            |  .foreach(println)
-            |
-            |db
-            |  .from(10)
-            |  .untilValue(_.contains("20"))
-            |  .scanLeft(???)(???)
-            |
-            |db
-            |  .from(10)
-            |  .until {
-            |    case (key, value) =>
-            |      ??? //some condition
-            |  }
-            |  .mapRight(???)
+            |db.valueSize(key = 1)
             |
             |""".stripMargin
         )
-      ),
-
+      )
     )
   }
 

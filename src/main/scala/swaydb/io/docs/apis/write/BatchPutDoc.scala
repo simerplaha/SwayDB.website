@@ -22,6 +22,7 @@ package swaydb.io.docs.apis.write
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.{Page, RouterController}
 
 object BatchPutDoc {
 
@@ -30,11 +31,10 @@ object BatchPutDoc {
       <.div(^.className := "page-header",
         <.h2("batchPut")
       ),
-      WriteAPIDoc.note(showNote),
+      //      WriteAPIDoc.note(showNote),
       BatchDoc.guarantee,
       <.p(
-        <.span(^.className := "snippet", "batchPut"),
-        " - inserts multiple key-values pairs."
+        "Insert multiple key-values pairs atomically."
       ),
       <.pre(
         <.code(^.className := "scala")(
@@ -42,12 +42,23 @@ object BatchPutDoc {
             |db.batchPut((1, "one"), (2, "two"))
             |//or
             |db.batchPut(Seq((1, "one"), (2, "two")))
-            |
-            |//or for Set databases
-            |setDB.batchPut(Seq("data1", "data2"))
           """.stripMargin
         )
-      )
+      ),
+      <.p(
+        "Insert multiple items to a Set database atomically."
+      ),
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |setDB.batchAdd("data1", "data2")
+            |//or
+            |setDB.batchAdd(Seq("data1", "data2"))
+            |
+            |""".stripMargin
+        )
+      ),
+      PutDoc.atomicWrite(<.span(^.className := "snippet", "batchPut"))
     )
   }
 

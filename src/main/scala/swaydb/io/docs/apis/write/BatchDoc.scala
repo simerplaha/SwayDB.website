@@ -22,6 +22,7 @@ package swaydb.io.docs.apis.write
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.{Page, RouterController}
 
 object BatchDoc {
 
@@ -35,22 +36,31 @@ object BatchDoc {
       <.div(^.className := "page-header",
         <.h2("batch")
       ),
-      WriteAPIDoc.note(showNote),
+      //      WriteAPIDoc.note(showNote),
       guarantee,
 
       <.p(
-        <.span(^.className := "snippet", "batch"),
-        " - insert & delete multiple key-values as one atomic operation."
+        "The following code snippet shows how ",
+        RouterController.router.link(Page.Put)(<.span(^.className := "snippet", Page.Put.name)),
+        ", ",
+        RouterController.router.link(Page.Remove)(<.span(^.className := "snippet", Page.Remove.name)),
+        ", ",
+        RouterController.router.link(Page.RemoveRange)(<.span(^.className := "snippet", Page.RemoveRange.name)),
+        " & ",
+        RouterController.router.link(Page.UpdateRange)(<.span(^.className := "snippet", Page.UpdateRange.name)),
+        " can be combined to perform CRUD on multiple key-values and write them as a single atomic operation using ",
+        <.span(^.className := "snippet", Page.Batch.name),
+        "."
       ),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.batch(Batch.Put(1, "one"), Batch.Remove(2))
-            |//or
-            |db.batch(Seq(Batch.Put(1, "one"), Batch.Remove(2)))
-            |
-            |//or for Set databases
-            |setDB.batch(Seq(Batch.Put("data"), Batch.Remove("data")))
+            |db.batch(
+            |      Batch.Put(key = 1, value = "one value"),
+            |      Batch.Update(from = 1, until = 100, value = "range update"),
+            |      Batch.Remove(key = 1),
+            |      Batch.Remove(from = 1, until = 100)
+            |)
           """.stripMargin
         )
       )

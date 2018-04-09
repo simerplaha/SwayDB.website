@@ -97,6 +97,16 @@
     </url>
     <url>
         <loc>
+            http://www.swaydb.io/api/write-api/remove-range/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/write-api/update-range/
+        </loc>
+    </url>
+    <url>
+        <loc>
             http://www.swaydb.io/api/write-api/batchPut/
         </loc>
     </url>
@@ -142,17 +152,32 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/isEmpty-nonEmpty/
+            http://www.swaydb.io/api/read-api/head/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/read-api/last/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/read-api/isEmpty/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/read-api/nonEmpty/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/read-api/valueSize/
         </loc>
     </url>
     <url>
         <loc>
             http://www.swaydb.io/api/read-api/size/
-        </loc>
-    </url>
-    <url>
-        <loc>
-            http://www.swaydb.io/api/read-api/head-last/
         </loc>
     </url>
     <url>
@@ -192,7 +217,7 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/iteration-api/until/
+            http://www.swaydb.io/api/iteration-api/till/
         </loc>
     </url>
     <url>
@@ -283,11 +308,6 @@
     <url>
         <loc>
             http://www.swaydb.io/configuring-levels/pushForward/
-        </loc>
-    </url>
-    <url>
-        <loc>
-            http://www.swaydb.io/configuring-levels/cacheKeysOnCreate/
         </loc>
     </url>
     <url>

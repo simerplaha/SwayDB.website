@@ -24,14 +24,14 @@ import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.{Page, RouterController}
 
-object HeadAndLastDoc {
+object LastDoc {
 
   def apply(): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("head & last")
+        <.h2("last")
       ),
-      <.p("Returns the first and last key-value in the database."),
+      <.p("Returns the last key-value in the database."),
       <.p(
         <.span(^.className := "snippet", "last"),
         " - uses ",
@@ -43,9 +43,9 @@ object HeadAndLastDoc {
         ". If there are fewer deleted key-values then the performance of ",
         <.span(^.className := "snippet", "last"),
         " is comparable to ",
-        <.span(^.className := "snippet", "head"),
+        RouterController.router.link(Page.Head)(<.span(^.className := "snippet", Page.Head.name)),
         ". For memory databases ",
-        <.span(^.className := "snippet", "head"),
+        RouterController.router.link(Page.Head)(<.span(^.className := "snippet", Page.Head.name)),
         " and ",
         <.span(^.className := "snippet", "last"),
         " have similar performance."
@@ -53,16 +53,10 @@ object HeadAndLastDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.head
-            |db.headOption
-            |
             |db.last
             |db.lastOption
             |
-            |//or to fetch first and last key only
-            |db.keys.head
-            |db.keys.headOption
-            |
+            |//or to fetch last key only
             |db.keys.last
             |db.keys.lastOption
             |

@@ -67,7 +67,7 @@ object PageIndexFolderGenerator extends App {
     if (Files.exists(pageDir)) Files.delete(pageDir)
   }
 
-  //    RootPages.pages.filter(_.url.nonEmpty).foreach(genFolder)
   RootPages.pages.filter(_.url.nonEmpty).foreach(deleteFolder)
+  RootPages.pages.filter(_.url.nonEmpty).foreach(genFolder)
 
 }

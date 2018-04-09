@@ -18,30 +18,56 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.apis.read
+package swaydb.io.docs.apis.iteration
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 
-object IsEmptyNonEmptyDoc {
+object TillDoc {
 
-  def apply(): VdomElement = {
+  def apply(showInfo: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("isEmpty & nonEmpty")
+        <.h2("tillKey, tillValue & till")
       ),
-      <.p("Returns true if all the key-values in the databases are deleted else returns false."),
+      <.div(
+        <.div(
+          ^.className := "alert alert-info",
+          <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
+          <.i(" All APIs expected from a Scala collection (foreach, map, fold etc) are supported. The following documents SwayDB specific APIs only."),
+        ),
+        <.p(
+          <.i("APIs ending with "),
+          <.span(^.className := "snippet", "*Right"),
+          <.i(" perform reverse iteration (Note: Reverse iterations are much slower then forward iterations for persistent databases)."),
+        )
+      ).when(showInfo),
+
+      <.p("Continues iteration till the input condition returns false."),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.isEmpty
-            |//or
-            |db.nonEmpty
+            |db
+            |  .from(10)
+            |  .tillKey(_ < 20)
+            |  .foreach(println)
+            |
+            |db
+            |  .from(10)
+            |  .tillValue(_.contains("20"))
+            |  .scanLeft(???)(???)
+            |
+            |db
+            |  .from(10)
+            |  .till {
+            |    case (key, value) =>
+            |      ??? //some condition
+            |  }
+            |  .mapRight(???)
             |
             |""".stripMargin
         )
       )
-
     )
   }
 

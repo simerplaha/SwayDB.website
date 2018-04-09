@@ -96,6 +96,13 @@ object IntroDoc {
         "Reads and writes occur independent to each other."
       ),
 
+      <.h3("Atomic writes"),
+      <.p(
+        "ACID like transactions can be implements using ",
+        RouterController.router.link(Page.Batch)("batch"),
+        " API."
+      ),
+
       <.h3(^.id := "back-pressure", "Back-pressure"),
       <.p(
         "Back-pressure is required when writes occur faster than the compaction process. ",

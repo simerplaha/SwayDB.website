@@ -32,18 +32,6 @@ object QuickStartDoc {
       <.div(^.className := "page-header",
         <.h2(^.id := "quick-start", "Quick start")
       ),
-      <.div(
-        ^.className := "alert alert-info",
-        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
-        " Clone ",
-        <.a(
-          ^.href := "https://github.com/simerplaha/SwayDB.examples",
-          ^.target := "blank",
-          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - SwayDB.examples")),
-          "SwayDB.examples"
-        ),
-        " to view all examples."
-      ),
       SetupDoc.body,
       <.p("Quick start demo app.",
         <.a(
@@ -70,7 +58,6 @@ object QuickStartDoc {
             |  db.put(1, "one")
             |  db.get(1) //returns "one"
             |  db.remove(1)
-            |  db.batch(Batch.Put(1, "one again"), Batch.Remove(1))
             |
             |  //write 100 key-values
             |  (1 to 100) foreach { i => db.put(key = i, value = i.toString) }
@@ -88,6 +75,19 @@ object QuickStartDoc {
             |}
           """.stripMargin
         )
+      ),
+
+      <.div(
+        ^.className := "alert alert-info",
+        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
+        " Clone ",
+        <.a(
+          ^.href := "https://github.com/simerplaha/SwayDB.examples",
+          ^.target := "blank",
+          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - SwayDB.examples")),
+          "SwayDB.examples"
+        ),
+        " to view all examples."
       )
     )
   }

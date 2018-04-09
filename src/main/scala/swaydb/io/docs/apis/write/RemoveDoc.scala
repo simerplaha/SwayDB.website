@@ -22,6 +22,7 @@ package swaydb.io.docs.apis.write
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.{Page, RouterController}
 
 object RemoveDoc {
 
@@ -30,7 +31,7 @@ object RemoveDoc {
       <.div(^.className := "page-header",
         <.h2("remove")
       ),
-      WriteAPIDoc.note(showNote),
+      //      WriteAPIDoc.note(showNote),
       <.p("Remove a single key-value."),
       <.pre(
         <.code(^.className := "scala")(
@@ -39,8 +40,12 @@ object RemoveDoc {
             |
             |""".stripMargin
         )
+      ),
+
+      <.p(
+        RouterController.router.link(Page.BatchRemove)(<.span(^.className := "snippet", "batchRemove")),
+        " can be used to remove multiple key-values atomically."
       )
     )
   }
-
 }
