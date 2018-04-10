@@ -48,7 +48,7 @@ object QuickStartDoc {
           """import java.nio.file.Paths
             |
             |object QuickStart extends App {
-            |  //fetch the target directory folder to create the root database in.
+            |  //initialise a root database directory in the target folder
             |  val rootDBDir = Paths.get(getClass.getResource("").getPath).getParent.getParent.resolve("quickStartDB")
             |
             |  import swaydb._ //import database API
