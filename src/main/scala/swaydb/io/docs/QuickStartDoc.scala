@@ -45,32 +45,35 @@ object QuickStartDoc {
       ),
       <.pre(
         <.code(^.className := "scala")(
-          """import swaydb.api.Batch
+          """import java.nio.file.Paths
             |
             |object QuickStart extends App {
+            |  //fetch the target directory folder to create the root database in.
+            |  val rootDBDir = Paths.get(getClass.getResource("").getPath).getParent.getParent.resolve("quickStartDB")
             |
             |  import swaydb._ //import database API
             |  import swaydb.serializers.Default._ //import default serializers
             |
             |  //Create a persistent database. If the directories do not exist, they will be created.
-            |  val db = SwayDB.persistent[Int, String](dir = "/Disk1/myDB", otherDirs = Seq("/Disk2/myDB")).get
+            |  val db = SwayDB.persistent[Int, String](dir = rootDBDir.resolve("dir1"), otherDirs = Seq(rootDBDir.resolve("dir2"))).get
             |
             |  db.put(1, "one")
             |  db.get(1) //returns "one"
             |  db.remove(1)
             |
-            |  //write 100 key-values
-            |  (1 to 100) foreach { i => db.put(key = i, value = i.toString) }
+            |  (1 to 100) foreach { i => db.put(key = i, value = i.toString) } //write 100 key-values
+            |
             |  //Iteration: fetch all key-values withing range 10 to 90, update values and batch write updated key-values
             |  db
             |    .from(10)
-            |    .untilKey(_ <= 90)
+            |    .tillKey(_ <= 90)
             |    .map {
             |      case (key, value) =>
+            |        println(key, value)
             |        (key, value + "_updated")
             |    } andThen {
-            |       updatedKeyValues =>
-            |         db.batchPut(updatedKeyValues)
+            |    updatedKeyValues =>
+            |      db.batchPut(updatedKeyValues)
             |  }
             |}
           """.stripMargin
