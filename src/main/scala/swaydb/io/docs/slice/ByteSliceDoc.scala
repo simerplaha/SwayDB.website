@@ -75,6 +75,8 @@ object ByteSliceDoc {
         ", ",
         <.span(^.className := "snippet", "addString"),
         ", ",
+        <.span(^.className := "snippet", "readRemainingAsString"),
+        ", ",
         <.span(^.className := "snippet", "readString"),
         ", ",
         <.span(^.className := "snippet", "toByteBuffer"),
@@ -132,7 +134,7 @@ object ByteSliceDoc {
             |ProgramPerformance(
             |  speedScore = reader.readInt(),
             |  linesOfCode = reader.readLong(),
-            |  language = reader.readString()
+            |  language = reader.readRemainingAsString()
             |)
           """.stripMargin
         )
