@@ -69,7 +69,6 @@ object QuickStartDoc {
             |    .tillKey(_ <= 90)
             |    .map {
             |      case (key, value) =>
-            |        println(key, value)
             |        (key, value + "_updated")
             |    } andThen {
             |    updatedKeyValues =>
