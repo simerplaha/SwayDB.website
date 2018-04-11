@@ -53,7 +53,5 @@ object SitemapGenerator extends App {
       {RootPages.pages.flatMap(genXMLForPages)}
     </urlset>
 
-  println(start)
-
   scala.xml.XML.save(filename = sitemap.toString, xmlDecl = true, node = start, enc = "UTF-8")
 }

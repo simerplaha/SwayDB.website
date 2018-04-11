@@ -55,7 +55,7 @@ object QuickStartDoc {
             |  import swaydb.serializers.Default._ //import default serializers
             |
             |  //Create a persistent database. If the directories do not exist, they will be created.
-            |  val db = SwayDB.persistent[Int, String](dir = rootDBDir.resolve("dir1"), otherDirs = Seq(rootDBDir.resolve("dir2"))).get
+            |  val db = SwayDB.persistent[Int, String](dir = rootDBDir.resolve("disk1"), otherDirs = Seq(rootDBDir.resolve("disk2"))).get
             |
             |  db.put(1, "one")
             |  db.get(1) //returns "one"
@@ -71,8 +71,8 @@ object QuickStartDoc {
             |      case (key, value) =>
             |        (key, value + "_updated")
             |    } andThen {
-            |    updatedKeyValues =>
-            |      db.batchPut(updatedKeyValues)
+            |       updatedKeyValues =>
+            |         db.batchPut(updatedKeyValues)
             |  }
             |}
           """.stripMargin
