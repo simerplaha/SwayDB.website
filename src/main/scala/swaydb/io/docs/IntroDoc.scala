@@ -98,7 +98,7 @@ object IntroDoc {
 
       <.h3("Atomic writes"),
       <.p(
-        "ACID like transactions can be implements using ",
+        "ACID like transactions can be implemented using ",
         RouterController.router.link(Page.Batch)("batch"),
         " API."
       ),
