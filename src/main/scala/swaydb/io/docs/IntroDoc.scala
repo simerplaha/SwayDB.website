@@ -37,8 +37,8 @@ object IntroDoc {
       ),
       <.p(^.className := "heading")(
         <.img(^.className := "dark-logo", ^.src := "/img/logo-dark.png"),
-        "SwayDB is an embeddable, non-blocking, type-safe key-value store for ",
-        <.strong("single or multiple disks"),
+        "SwayDB is a type-safe & non-blocking key-value storage library for ",
+        <.strong("single/multiple disks"),
         <.span(" and "),
         <.strong("in-memory "),
         <.span("storage.")
