@@ -33,7 +33,7 @@ object IncreasingExpirationTimeDoc {
       ),
       <.h4(
         <.u("Increasing"),
-        " the expiration time for a key is not guaranteed to be applied. Decreasing expiration times are applied instantly."
+        " the expiration time requires special consideration of IO latency and compaction speed. Decreasing expiration times are applied instantly."
       ),
 
       <.h3("Why ?"),
