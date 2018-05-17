@@ -22,6 +22,8 @@ package swaydb.io.docs.terminology
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.Page.WriteAPI
+import swaydb.io.{Page, RouterController}
 
 object TerminologyDoc {
 
@@ -30,6 +32,12 @@ object TerminologyDoc {
       <.div(^.className := "page-header",
         <.h2(^.id := "terminology", "Terminology")
       ),
-      <.p("Navigate through sub pages.")
+      Page.Terminology.subPages.zipWithIndex map {
+        case (page, index) =>
+          <.h4(
+            (index + 1) + ". ",
+            RouterController.router.link(page)(<.span(^.className := "snippet", page.name))
+          )
+      } toTagMod
     )
 }
