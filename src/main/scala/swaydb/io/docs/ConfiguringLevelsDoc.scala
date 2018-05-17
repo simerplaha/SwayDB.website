@@ -22,6 +22,7 @@ package swaydb.io.docs
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.{Page, RouterController}
 
 object ConfiguringLevelsDoc {
 
@@ -112,7 +113,15 @@ object ConfiguringLevelsDoc {
         )
       ),
       <.p(
-        "Read about the role of each configuration property by browsing the navigation menu on the left."
+        <.h4("Select a configuration property to read more."),
+        Page.ConfiguringLevels.subPages.zipWithIndex map {
+          case (page, index) =>
+            <.h4(
+              (index + 1) + ". ",
+              RouterController.router.link(page)(<.span(^.className := "snippet", page.name))
+            )
+        } toTagMod
+
       )
     )
 }

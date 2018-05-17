@@ -168,7 +168,7 @@ ul.nav a:hover {
 @media (min-width: 768px) {
     .main {
         padding-right: 40px;
-        margin-left: 240px;
+        margin-left: 250px;
     }
 
     .lead {
@@ -220,7 +220,7 @@ ul.nav a:hover {
 .sidebar {
     background-color: #282828;
     top: 45px;
-    max-width: 235px;
+    max-width: 245px;
     box-shadow: 1px 0 5px #151515;
 }
 

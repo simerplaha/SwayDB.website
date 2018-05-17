@@ -22,33 +22,47 @@ package swaydb.io.docs.apis.write
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.{Page, RouterController}
+import swaydb.io.Page
+import swaydb.io.docs.apis.read.ExpirationDoc
 
-object UpdateDoc {
+object BatchExpireDoc {
 
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.Update.name)
+        <.h2(Page.BatchExpire.name)
       ),
+      BatchDoc.guarantee,
 
+      <.h3("Key-value"),
       <.p(
-        "Update a key's value without updating the expiration (",
-        RouterController.router.link(Page.Expire)(<.span(^.className := "snippet", Page.Expire.name)),
-        ")."
+        "Expire multiple key-values atomically."
       ),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.update(key = 1, value = "updated")
-            |
-            |""".stripMargin
+            |db.batchExpire(keys = (1, 1.second.fromNow), (2, 2.second.fromNow))
+            |//or
+            |db.batchExpire(keys = Seq((1, 1.second.fromNow), (2, 2.second.fromNow)))
+          """.stripMargin
         )
       ),
 
+      <.h3("Set"),
       <.p(
-        PutDoc.atomicWrite(<.span(^.className := "snippet", Page.Update.name))
-      )
+        "Expire multiple items atomically."
+      ),
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |setDB.batchExpire(elems = ("data one", 1.second.fromNow), ("data 2", 2.seconds.fromNow))
+            |//or
+            |setDB.batchExpire(elems = Seq(("data one", 1.second.fromNow), ("data 2", 2.seconds.fromNow)))
+          """.stripMargin
+        )
+      ),
+      PutDoc.atomicWrite(<.span(^.className := "snippet", Page.BatchExpire.name)),
+      ExpirationDoc.alert
     )
   }
 

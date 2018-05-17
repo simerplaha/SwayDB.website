@@ -22,6 +22,7 @@ package swaydb.io.docs.apis.iteration
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.{Page, RouterController}
 
 object IterationAPIDoc {
 
@@ -33,17 +34,20 @@ object IterationAPIDoc {
       <.div(
         ^.className := "alert alert-info",
         <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
-        <.i(" All APIs expected from a Scala collection (foreach, map, fold etc) are supported. The following documents SwayDB specific APIs only."),
+        <.i(" All APIs expected from a Scala collection (foreach, map, fold etc) are supported. The following documents SwayDB specific APIs only.")
       ),
       <.p(
         <.i("APIs ending with "),
         <.span(^.className := "snippet", "*Right"),
-        <.i(" perform reverse iteration (Note: Reverse iterations are much slower then forward iterations for persistent databases)."),
+        <.i(" perform reverse iteration (Note: For persistent databases, reverse iterations are much slower than forward iterations).")
       ),
-      FromDoc(showInfo = false),
-      BeforeAndAfterDoc(showInfo = false),
-      TillDoc(showInfo = false),
-      AndThenDoc(showInfo = false)
+      Page.IterationAPI.subPages.zipWithIndex map {
+        case (page, index) =>
+          <.h4(
+            (index + 1) + ". ",
+            RouterController.router.link(page)(<.span(^.className := "snippet", page.name))
+          )
+      } toTagMod
     )
   }
 

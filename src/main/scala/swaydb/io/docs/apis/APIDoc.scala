@@ -22,6 +22,7 @@ package swaydb.io.docs.apis
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.Page.WriteAPI
 import swaydb.io.{Page, RouterController}
 
 object APIDoc {
@@ -46,21 +47,14 @@ object APIDoc {
         <.h2("APIs")
       ),
       initialiseDB,
-      <.h4(
-        <.u(
-          RouterController.router.link(Page.WriteAPI)("Write API")
-        )
-      ),
-      <.h4(
-        <.u(
-          RouterController.router.link(Page.ReadAPI)("Read API")
-        )
-      ),
-      <.h4(
-        <.u(
-          RouterController.router.link(Page.IterationAPI)("Iteration API")
-        )
-      )
+
+      Page.API.subPages.zipWithIndex map {
+        case (page, index) =>
+          <.h4(
+            (index + 1) + ". ",
+            <.u(RouterController.router.link(page)(page.name))
+          )
+      } toTagMod
     )
   }
 

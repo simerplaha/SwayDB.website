@@ -22,20 +22,20 @@ package swaydb.io.docs.apis.write
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.Page
 
 object BatchRemoveDoc {
 
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("batchRemove")
+        <.h2(Page.BatchRemove.name)
       ),
 //      WriteAPIDoc.note(showNote),
       BatchDoc.guarantee,
 
       <.p(
-        <.span(^.className := "snippet", "batchRemove"),
-        " - deletes multiple key-values."
+        "Remove multiple key-values atomically."
       ),
       <.pre(
         <.code(^.className := "scala")(
@@ -46,7 +46,7 @@ object BatchRemoveDoc {
           """.stripMargin
         )
       ),
-      PutDoc.atomicWrite(<.span(^.className := "snippet", "batchRemove"))
+      PutDoc.atomicWrite(<.span(^.className := "snippet", Page.BatchRemove.name))
     )
   }
 

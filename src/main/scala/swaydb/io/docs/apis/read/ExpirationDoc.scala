@@ -18,38 +18,54 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.apis.write
+package swaydb.io.docs.apis.read
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.{Page, RouterController}
+import swaydb.io.common.Alert
 
-object UpdateDoc {
+object ExpirationDoc {
 
-  def apply(showNote: Boolean = true): VdomElement = {
+  val alert =
+    Alert(
+      <.i(
+        "Read ",
+        RouterController.router.link(Page.IncreasingExpiration)(Page.IncreasingExpiration.name),
+        " documentation to understand the trade-offs made when increasing a key's or keys' expiration."
+      )
+    )
+
+  def apply(): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.Update.name)
+        <.h2(Page.Expiration.name)
       ),
 
-      <.p(
-        "Update a key's value without updating the expiration (",
-        RouterController.router.link(Page.Expire)(<.span(^.className := "snippet", Page.Expire.name)),
-        ")."
-      ),
+      <.h3("Key-value"),
+      <.p("Returns the expiration deadline set for the key. None is returned if no expiration is set."),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.update(key = 1, value = "updated")
+            |db.expiration(key = 1)
             |
             |""".stripMargin
         )
       ),
 
-      <.p(
-        PutDoc.atomicWrite(<.span(^.className := "snippet", Page.Update.name))
-      )
+      <.h3("Set"),
+      <.p("Returns the expiration deadline for the item. None is returned if no expiration is set."),
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |setDB.expiration(elem = 1)
+            |
+            |""".stripMargin
+        )
+      ),
+
+      alert
+
     )
   }
-
 }

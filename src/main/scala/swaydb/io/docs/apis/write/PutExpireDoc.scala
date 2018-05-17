@@ -18,27 +18,56 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.configurationproperties
+package swaydb.io.docs.apis.write
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.docs.configurationproperties.acceleration.AccelerationDoc
+import swaydb.io.Page
+import swaydb.io.docs.apis.read.ExpirationDoc
 
-object ConfigurationPropertiesDoc {
+object PutExpireDoc {
 
-  def apply(): VdomElement =
+  def apply(): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("Configuration properties")
+        <.h2(Page.PutExpire.name)
       ),
-      DirDoc.apply(),
-      OtherDirsDoc.apply(),
-      MapSizeDoc.apply(),
-      AccelerationDoc.apply(),
-      SegmentSizeDoc.apply(),
-      PushForwardDoc.apply(),
-      ThrottleDoc.apply(),
-      MMAPSegmentDoc.apply(),
-      AppendixFlushCheckpointSizeDoc.apply()
+      <.h3("Key-value"),
+
+      <.p("Insert a single key-value with expiration."),
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |db.put(key = 1, value = "one", expireAfter = 10.seconds)
+            |//or
+            |db.put(key = 1, value = "one", expireAt = 1.hour.fromNow)
+            |//or
+            |db.put(key = 1, value = "one", expireAt = Deadline(5.minutes))
+            |
+            |""".stripMargin
+        )
+      ),
+
+      <.h3("Set"),
+      <.p(
+        "Insert a single item with expiration."
+      ),
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |setDB.add(elem = "some data", expireAfter = 10.seconds)
+            |//or
+            |setDB.add(elem = "some data", expireAt = 1.hour.fromNow)
+            |//or
+            |setDB.add(elem = "some data", expireAt = Deadline(5.minutes))
+            |
+            |""".stripMargin
+        )
+      ),
+
+      PutDoc.atomicWrite(<.span(^.className := "snippet", Page.PutExpire.name)),
+      ExpirationDoc.alert
     )
+  }
+
 }

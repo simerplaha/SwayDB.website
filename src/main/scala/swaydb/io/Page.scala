@@ -248,11 +248,17 @@ object Page {
     override val subPages: Seq[Page] =
       Seq(
         Put,
+        PutExpire,
+        BatchPut,
         Remove,
         RemoveRange,
-        UpdateRange,
-        BatchPut,
         BatchRemove,
+        Expire,
+        ExpireRange,
+        BatchExpire,
+        Update,
+        UpdateRange,
+        BatchUpdate,
         Batch
       )
     override val url: String = "api/write-api/"
@@ -266,6 +272,22 @@ object Page {
     override val url: String = "api/write-api/put/"
 
     override def render(): VdomElement = PutDoc()
+  }
+
+  object PutExpire extends Page {
+    override val name: String = "put & expire"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/write-api/put-expire/"
+
+    override def render(): VdomElement = PutExpireDoc()
+  }
+
+  object BatchPut extends Page {
+    override val name: String = "batchPut"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/write-api/batchPut/"
+
+    override def render(): VdomElement = BatchPutDoc()
   }
 
   object Remove extends Page {
@@ -284,28 +306,60 @@ object Page {
     override def render(): VdomElement = RemoveRangeDoc()
   }
 
-  object UpdateRange extends Page {
-    override val name: String = "update (range)"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write-api/update-range/"
-
-    override def render(): VdomElement = UpdateDoc()
-  }
-
-  object BatchPut extends Page {
-    override val name: String = "batchPut"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write-api/batchPut/"
-
-    override def render(): VdomElement = BatchPutDoc()
-  }
-
   object BatchRemove extends Page {
     override val name: String = "batchRemove"
     override val subPages: Seq[Page] = Seq()
     override val url: String = "api/write-api/batchRemove/"
 
     override def render(): VdomElement = BatchRemoveDoc()
+  }
+
+  object Expire extends Page {
+    override val name: String = "expire"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/write-api/expire/"
+
+    override def render(): VdomElement = ExpireDoc()
+  }
+
+  object ExpireRange extends Page {
+    override val name: String = "expire (range)"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/write-api/expire-range/"
+
+    override def render(): VdomElement = ExpireRangeDoc()
+  }
+
+  object BatchExpire extends Page {
+    override val name: String = "batchExpire"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/write-api/batchExpire/"
+
+    override def render(): VdomElement = BatchExpireDoc()
+  }
+
+  object Update extends Page {
+    override val name: String = "update"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/write-api/update/"
+
+    override def render(): VdomElement = UpdateDoc()
+  }
+
+  object UpdateRange extends Page {
+    override val name: String = "update (range)"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/write-api/update-range/"
+
+    override def render(): VdomElement = UpdateRangeDoc()
+  }
+
+  object BatchUpdate extends Page {
+    override val name: String = "batchUpdate"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/write-api/batchUpdate/"
+
+    override def render(): VdomElement = BatchUpdateDoc()
   }
 
   object Batch extends Page {
@@ -329,6 +383,9 @@ object Page {
         Last,
         IsEmpty,
         NonEmpty,
+        Expiration,
+        TimeLeft,
+        KeySize,
         ValueSize,
         Size,
         SizeOfSegments,
@@ -411,6 +468,30 @@ object Page {
     override val url: String = "api/read-api/nonEmpty/"
 
     override def render(): VdomElement = NonEmptyDoc()
+  }
+
+  object KeySize extends Page {
+    override val name: String = "keySize"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/read-api/keySize/"
+
+    override def render(): VdomElement = KeySizeDoc()
+  }
+
+  object Expiration extends Page {
+    override val name: String = "expiration"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/read-api/expiration/"
+
+    override def render(): VdomElement = ExpirationDoc()
+  }
+
+  object TimeLeft extends Page {
+    override val name: String = "timeLeft"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/read-api/timeLeft/"
+
+    override def render(): VdomElement = TimeLeftDoc()
   }
 
   object Level0MeterReadAPI extends Page {
@@ -615,10 +696,18 @@ object Page {
 
   object Compaction extends Page {
     override val name: String = "Compaction"
-    override val subPages: Seq[Page] = Seq()
+    override val subPages: Seq[Page] = Seq(IncreasingExpiration)
     override val url: String = "terminology/compaction/"
 
     override def render(): VdomElement = CompactionDoc()
+  }
+
+  object IncreasingExpiration extends Page {
+    override val name: String = "Increasing expiration time"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "terminology/compaction/increasing-expiration-time/"
+
+    override def render(): VdomElement = IncreasingExpirationTimeDoc()
   }
 
   object Meters extends Page {
@@ -654,6 +743,7 @@ object Page {
         MapSize,
         MMAP,
         RecoveryMode,
+        MinTimeLeftToIncreaseExpiration,
         Acceleration,
         SegmentSize,
         PushForward,
@@ -709,6 +799,14 @@ object Page {
     override val url: String = "configuring-levels/recoveryMode/"
 
     override def render(): VdomElement = RecoveryModeDoc()
+  }
+
+  object MinTimeLeftToIncreaseExpiration extends Page {
+    override val name: String = "minTimeLeftToIncreaseExpiration"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "configuring-levels/minTimeLeftToIncreaseExpiration/"
+
+    override def render(): VdomElement = MinTimeLeftToIncreaseExpirationDoc()
   }
 
   object Acceleration extends Page {

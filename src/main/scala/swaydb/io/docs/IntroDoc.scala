@@ -116,6 +116,12 @@ object IntroDoc {
         ") is provided to get up and running quickly."
       ),
 
+      <.h3(^.id := "ttl", "Expiring key-values (TTL)"),
+      <.p(
+        "Expiring with nanosecond precision. Key-values are asynchronously deleted from the database on expiration claiming ",
+        "the disk/RAM space instantly."
+      ),
+
       <.h3(^.id := "multi-disks", "Multiple disks"),
       <.p(
         RouterController.router.link(Page.Segment)("Segments"),

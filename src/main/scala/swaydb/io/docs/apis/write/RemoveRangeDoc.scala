@@ -22,33 +22,30 @@ package swaydb.io.docs.apis.write
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.{Page, RouterController}
+import swaydb.io.Page
 
 object RemoveRangeDoc {
 
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("remove (range)")
+        <.h2(Page.RemoveRange.name)
       ),
       <.p(
         "Remove all key-values within a range."
       ),
-      <.p(
-        "Note: ",
-        <.span(^.className := "snippet", "until"),
-        " is exclusive."
-      ),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.remove(from = 1, until = 1000000)
+            |db.remove(from = 1, to = 1000000)
             |
             |""".stripMargin
         )
       ),
 
-      PutDoc.atomicWrite(<.span(^.className := "snippet", "remove (range)"))
+      <.p(
+        PutDoc.atomicWrite(<.span(^.className := "snippet", Page.RemoveRange.name))
+      )
     )
   }
 }

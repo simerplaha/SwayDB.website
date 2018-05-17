@@ -22,6 +22,8 @@ package swaydb.io.docs.apis.read
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.Page.{ReadAPI, WriteAPI}
+import swaydb.io.RouterController
 
 object ReadAPIDoc {
 
@@ -30,18 +32,13 @@ object ReadAPIDoc {
       <.div(^.className := "page-header",
         <.h2("Read API")
       ),
-      GetDoc(),
-      GetKeyDoc(),
-      GetKeyValueDoc(),
-      ContainsDoc(),
-      MightContainDoc(),
-      NonEmptyDoc(),
-      SizeDoc(),
-      LastDoc(),
-      SizeOfSegmentsDoc(),
-      LevelMeterDoc(),
-      Level1MeterDoc(),
-      LevelMeterDoc()
+      ReadAPI.subPages.zipWithIndex map {
+        case (page, index) =>
+          <.h4(
+            (index + 1) + ". ",
+            RouterController.router.link(page)(<.span(^.className := "snippet", page.name))
+          )
+      } toTagMod
     )
   }
 

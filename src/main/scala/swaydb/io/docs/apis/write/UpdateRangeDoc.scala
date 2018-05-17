@@ -24,32 +24,29 @@ import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.{Page, RouterController}
 
-object UpdateDoc {
+object UpdateRangeDoc {
 
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.Update.name)
+        <.h2(Page.UpdateRange.name)
       ),
-
       <.p(
-        "Update a key's value without updating the expiration (",
+        "Update a range of key-values without updating the expiration (",
         RouterController.router.link(Page.Expire)(<.span(^.className := "snippet", Page.Expire.name)),
         ")."
       ),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.update(key = 1, value = "updated")
+            |db.update(from = 1, to = 1000000, value = "updated value")
             |
             |""".stripMargin
         )
       ),
-
       <.p(
-        PutDoc.atomicWrite(<.span(^.className := "snippet", Page.Update.name))
+        PutDoc.atomicWrite(<.span(^.className := "snippet", Page.UpdateRange.name))
       )
     )
   }
-
 }

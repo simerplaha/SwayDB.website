@@ -22,34 +22,52 @@ package swaydb.io.docs.apis.write
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.{Page, RouterController}
+import swaydb.io.Page
+import swaydb.io.docs.apis.read.ExpirationDoc
 
-object UpdateDoc {
+object ExpireRangeDoc {
 
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.Update.name)
+        <.h2(Page.ExpireRange.name)
       ),
-
+      <.h3("Key-value"),
       <.p(
-        "Update a key's value without updating the expiration (",
-        RouterController.router.link(Page.Expire)(<.span(^.className := "snippet", Page.Expire.name)),
-        ")."
+        "Expire all key-values within a range."
       ),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.update(key = 1, value = "updated")
+            |db.expire(from = 1, to = 1000, after = 1.minute)
+            |//or
+            |db.expire(from = 1, to = 1000, at = 1.day.fromNow)
+            |//or
+            |db.expire(from = 1, to = 1000, at = Deadline(1.day))
             |
             |""".stripMargin
         )
       ),
 
+      <.h3("Set"),
       <.p(
-        PutDoc.atomicWrite(<.span(^.className := "snippet", Page.Update.name))
-      )
+        "Expire all items within a range."
+      ),
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |setDB.expire(from = "data 1", to = "data 1000", after = 10.seconds)
+            |//or
+            |setDB.expire(from = "data 1", to = "data 1000", at = 1.day.fromNow)
+            |//or
+            |setDB.expire(from = "data 1", to = "data 1000", at = Deadline(1.day))
+            |
+            |""".stripMargin
+        )
+      ),
+
+      PutDoc.atomicWrite(<.span(^.className := "snippet", Page.ExpireRange.name)),
+      ExpirationDoc.alert
     )
   }
-
 }

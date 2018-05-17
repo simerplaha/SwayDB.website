@@ -36,19 +36,12 @@ object BatchDoc {
       <.div(^.className := "page-header",
         <.h2("batch")
       ),
-      //      WriteAPIDoc.note(showNote),
       guarantee,
 
       <.p(
-        "The following code snippet shows how ",
-        RouterController.router.link(Page.Put)(<.span(^.className := "snippet", Page.Put.name)),
-        ", ",
-        RouterController.router.link(Page.Remove)(<.span(^.className := "snippet", Page.Remove.name)),
-        ", ",
-        RouterController.router.link(Page.RemoveRange)(<.span(^.className := "snippet", Page.RemoveRange.name)),
-        " & ",
-        RouterController.router.link(Page.UpdateRange)(<.span(^.className := "snippet", Page.UpdateRange.name)),
-        " can be combined to perform CRUD on multiple key-values and write them as a single atomic operation using ",
+        "The following code snippet shows how all ",
+        RouterController.router.link(Page.WriteAPI)(<.span(^.className := "snippet", Page.WriteAPI.name)),
+        "s can be combined to perform CRUD on single or multiple key-values and written as a single atomic entry with ",
         <.span(^.className := "snippet", Page.Batch.name),
         "."
       ),
@@ -57,10 +50,14 @@ object BatchDoc {
           """
             |db.batch(
             |      Batch.Put(key = 1, value = "one value"),
-            |      Batch.Update(from = 1, until = 100, value = "range update"),
+            |      Batch.Put(key = 1, value = "one value", expireAfter = 10.seconds),
             |      Batch.Remove(key = 1),
-            |      Batch.Remove(from = 1, until = 100)
-            |)
+            |      Batch.Remove(from = 1, to = 100),
+            |      Batch.Expire(key = 1, after = 10.seconds),
+            |      Batch.Expire(from = 1, to = 100, after = 1.day),
+            |      Batch.Update(key = 1, value = "value updated"),
+            |      Batch.Update(from = 1, to = 100, value = "range update")
+            |    )
           """.stripMargin
         )
       )

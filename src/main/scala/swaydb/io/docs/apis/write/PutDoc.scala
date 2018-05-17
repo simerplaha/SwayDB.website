@@ -40,9 +40,9 @@ object PutDoc {
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("put")
+        <.h2(Page.Put.name)
       ),
-      //      WriteAPIDoc.note(showNote),
+      <.h3("Key-value"),
       <.p("Insert a single key-value."),
       <.pre(
         <.code(^.className := "scala")(
@@ -52,8 +52,10 @@ object PutDoc {
             |""".stripMargin
         )
       ),
+
+      <.h3("Set"),
       <.p(
-        "Insert a single item to Set database."
+        "Insert a single item."
       ),
       <.pre(
         <.code(^.className := "scala")(
@@ -65,8 +67,7 @@ object PutDoc {
       ),
 
       <.p(
-        RouterController.router.link(Page.BatchPut)(<.span(^.className := "snippet", "batchPut")),
-        " can be used to write multiple key-values atomically."
+        PutDoc.atomicWrite(<.span(^.className := "snippet", Page.Put.name))
       )
     )
   }

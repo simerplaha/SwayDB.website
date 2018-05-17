@@ -29,7 +29,7 @@ object RemoveDoc {
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("remove")
+        <.h2(Page.Remove.name)
       ),
       //      WriteAPIDoc.note(showNote),
       <.p("Remove a single key-value."),
@@ -43,8 +43,7 @@ object RemoveDoc {
       ),
 
       <.p(
-        RouterController.router.link(Page.BatchRemove)(<.span(^.className := "snippet", "batchRemove")),
-        " can be used to remove multiple key-values atomically."
+        PutDoc.atomicWrite(<.span(^.className := "snippet", Page.Remove.name))
       )
     )
   }

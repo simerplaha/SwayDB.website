@@ -92,6 +92,16 @@
     </url>
     <url>
         <loc>
+            http://www.swaydb.io/api/write-api/put-expire/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/write-api/batchPut/
+        </loc>
+    </url>
+    <url>
+        <loc>
             http://www.swaydb.io/api/write-api/remove/
         </loc>
     </url>
@@ -102,17 +112,37 @@
     </url>
     <url>
         <loc>
+            http://www.swaydb.io/api/write-api/batchRemove/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/write-api/expire/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/write-api/expire-range/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/write-api/batchExpire/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/write-api/update/
+        </loc>
+    </url>
+    <url>
+        <loc>
             http://www.swaydb.io/api/write-api/update-range/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/batchPut/
-        </loc>
-    </url>
-    <url>
-        <loc>
-            http://www.swaydb.io/api/write-api/batchRemove/
+            http://www.swaydb.io/api/write-api/batchUpdate/
         </loc>
     </url>
     <url>
@@ -168,6 +198,21 @@
     <url>
         <loc>
             http://www.swaydb.io/api/read-api/nonEmpty/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/read-api/expiration/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/read-api/timeLeft/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/read-api/keySize/
         </loc>
     </url>
     <url>
@@ -278,6 +323,11 @@
     <url>
         <loc>
             http://www.swaydb.io/configuring-levels/recoveryMode/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/configuring-levels/minTimeLeftToIncreaseExpiration/
         </loc>
     </url>
     <url>
@@ -403,6 +453,11 @@
     <url>
         <loc>
             http://www.swaydb.io/terminology/compaction/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/terminology/compaction/increasing-expiration-time/
         </loc>
     </url>
     <url>

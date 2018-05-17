@@ -22,15 +22,16 @@ package swaydb.io.docs.apis.read
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.Page
 
 object ValueSizeDoc {
 
   def apply(): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("valueSize")
+        <.h2(Page.ValueSize.name)
       ),
-      <.p("Fetches size of value in bytes stored on disk for persistent databases and in-memory for Memory databases."),
+      <.p("Byte size of the value."),
       <.pre(
         <.code(^.className := "scala")(
           """

@@ -18,38 +18,13 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.apis.write
+package swaydb.io.common
 
-import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.{Page, RouterController}
 
-object UpdateDoc {
+object Snippet {
 
-  def apply(showNote: Boolean = true): VdomElement = {
-    <.div(
-      <.div(^.className := "page-header",
-        <.h2(Page.Update.name)
-      ),
-
-      <.p(
-        "Update a key's value without updating the expiration (",
-        RouterController.router.link(Page.Expire)(<.span(^.className := "snippet", Page.Expire.name)),
-        ")."
-      ),
-      <.pre(
-        <.code(^.className := "scala")(
-          """
-            |db.update(key = 1, value = "updated")
-            |
-            |""".stripMargin
-        )
-      ),
-
-      <.p(
-        PutDoc.atomicWrite(<.span(^.className := "snippet", Page.Update.name))
-      )
-    )
-  }
+  def apply(text: String) =
+    <.span(^.className := "snippet", text)
 
 }

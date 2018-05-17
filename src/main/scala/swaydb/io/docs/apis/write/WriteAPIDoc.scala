@@ -22,6 +22,7 @@ package swaydb.io.docs.apis.write
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.Page.WriteAPI
 import swaydb.io.{Page, RouterController}
 
 object WriteAPIDoc {
@@ -50,10 +51,13 @@ object WriteAPIDoc {
         <.h2(^.id := "download", "Write API")
       ),
       note(),
-      PutDoc(showNote = false),
-      BatchPutDoc(showNote = false),
-      BatchRemoveDoc(showNote = false),
-      BatchDoc(showNote = false)
+      WriteAPI.subPages.zipWithIndex map {
+        case (page, index) =>
+          <.h4(
+            (index + 1) + ". ",
+            RouterController.router.link(page)(<.span(^.className := "snippet", page.name))
+          )
+      } toTagMod
     )
   }
 

@@ -29,10 +29,11 @@ object BatchPutDoc {
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("batchPut")
+        <.h2(Page.BatchPut.name)
       ),
-      //      WriteAPIDoc.note(showNote),
+
       BatchDoc.guarantee,
+      <.h3("Key-value"),
       <.p(
         "Insert multiple key-values pairs atomically."
       ),
@@ -45,6 +46,7 @@ object BatchPutDoc {
           """.stripMargin
         )
       ),
+      <.h3("Set"),
       <.p(
         "Insert multiple items to a Set database atomically."
       ),
@@ -58,7 +60,7 @@ object BatchPutDoc {
             |""".stripMargin
         )
       ),
-      PutDoc.atomicWrite(<.span(^.className := "snippet", "batchPut"))
+      PutDoc.atomicWrite(<.span(^.className := "snippet", Page.BatchPut.name))
     )
   }
 
