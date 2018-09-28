@@ -18,30 +18,23 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.terminology
+package swaydb.io.common
 
-import japgolly.scalajs.react.vdom.VdomElement
-import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.{Page, RouterController}
+import japgolly.scalajs.react.Callback
+import japgolly.scalajs.react.vdom.html_<^._
+import org.scalajs.dom.html.Anchor
+import swaydb.io.Main
 
-object TrashLevelDoc {
+object LinkOut {
 
-  def apply(): VdomElement =
-    <.div(
-      <.div(^.className := "page-header",
-        <.h2("Trash Level")
-      ),
+  def apply(url: String, name: String): VdomTagOf[Anchor] =
+    LinkOut(url, name, None)
 
-      <.p(
-        RouterController.router.link(Page.Segment)("Segments"),
-        " or ",
-        RouterController.router.link(Page.Map)("Maps"),
-        " submitted to the this Level get deleted."
-      ),
-
-      <.p(
-        <.strong("Use-case"),
-        " - periodically deleting older key-values when there is not enough disk or memory space.",
-      ),
+  def apply(url: String, name: String, eventAction: Option[String] = None): VdomTagOf[Anchor] =
+    <.a(
+      ^.href := url,
+      ^.target := "blank",
+      ^.onClick --> Callback(Main.analytics.event("Outbound click", eventAction.getOrElse(name))),
+      name
     )
 }

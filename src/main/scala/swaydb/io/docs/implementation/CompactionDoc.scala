@@ -18,47 +18,35 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.terminology
+package swaydb.io.docs.implementation
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.{Page, RouterController}
+import swaydb.io.Page
+import swaydb.io.common.LinkIn
 
-object Level0Doc {
+object CompactionDoc {
 
-  def apply(): VdomElement =
+  def apply(): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("Level0")
-      ),
-
-      <.p(
-        "Level0 is the root Level in a database's Level hierarchy. Its responsible for serving ",
-        "all incoming write & read requests and forwarding read requests to the next ",
-        RouterController.router.link(Page.Level)("Level"),
-        " if it does not contain the requested key."),
-      <.p(
-        "It also maintains a sequence ",
-        RouterController.router.link(Page.Map)("Maps"),
-        " that store newly written key-values. When a Map",
-        " is full, a new Map is created to store the next batch of write requests."
+        <.h2("Level compaction")
       ),
       <.p(
-        "Maps that are full are read-only that eventually get pushed to the next ",
-        RouterController.router.link(Page.Level)("Level"),
-        " where they get converted into ",
-        RouterController.router.link(Page.Segment)("Segments"),
-        " during the ",
-        RouterController.router.link(Page.Compaction)("Compaction"),
-        " processes.",
+        "Compaction is a processes where a ",
+        LinkIn(Page.Level),
+        " periodically sends it's ",
+        LinkIn(Page.Segment),
+        " to the next Level for merge."
       ),
-
       <.p(
-        RouterController.router.link(Page.Map)("Map"),
-        " files can be memory-mapped by configuring the property ",
-        RouterController.router.link(Page.MMAP)("mmap"),
-        "."
+        LinkIn(Page.Level),
+        "s exchange compaction information with each other using messages with a light-weight Actor implementation."
       ),
-
+      <.p(
+        "Blog - ",
+        LinkIn(Page.WhyConfigurableLevels)
+      )
     )
+  }
 }

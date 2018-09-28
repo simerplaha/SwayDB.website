@@ -24,6 +24,7 @@ import com.karasiq.highlightjs.HighlightJS
 import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.common.{LinkIn, LinkOut, Snippet}
 import swaydb.io.{Main, Page, RouterController}
 
 import scala.scalajs.js
@@ -53,6 +54,17 @@ object IntroDoc {
           ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - Actor model")),
           ^.target := "blank")("Actor model"),
         "."
+      ),
+      <.p(^.className := "heading")(
+        "It supports configurable graph like file format via ",
+        LinkIn(Page.Group, "Grouping"),
+        " for faster reads and has ",
+        <.u("compression support for both"),
+        " ",
+        LinkIn(Page.Memory),
+        " & ",
+        LinkIn(Page.Persistent),
+        " databases."
       ),
 
       <.h3(^.id := "type-safe", "Type-safe"),
@@ -118,8 +130,10 @@ object IntroDoc {
 
       <.h3(^.id := "ttl", "Expiring key-values (TTL)"),
       <.p(
-        "Expiring with nanosecond precision. Key-values are asynchronously deleted from the database on expiration claiming ",
-        "the disk/RAM space instantly."
+        "Expiring key-values is a light weight process with nanosecond precision expiration."
+      ),
+      <.p(
+        "Key-values are asynchronously deleted from the database on expiration claiming the disk/RAM space instantly."
       ),
 
       <.h3(^.id := "multi-disks", "Multiple disks"),
@@ -141,7 +155,7 @@ object IntroDoc {
       <.p(
         "A SwayDB database instance is a hierarchy of persistent and in-memory Levels where each Level can be ",
         RouterController.router.link(Page.ConfiguringLevels)("configured"),
-        " to have different file sizes, directories & compaction speeds (",
+        " to have different file sizes, directories, compression strategies & compaction speeds (",
         RouterController.router.link(Page.Throttle)("Throttle"),
         ")."
       ),
@@ -153,8 +167,66 @@ object IntroDoc {
       <.h3(^.id := "cache-size", "Configurable cache size"),
       <.p(
         "Total size of in-memory key-values can be ",
-        RouterController.router.link(Page.CacheSize)("configured"),
+        LinkIn(Page.CacheSize, "configured"),
         ". On overflow, older key-values get dropped from the cache asynchronously."
+      ),
+      <.p(
+        "For Memory databases that use ",
+        LinkIn(Page.Group),
+        "ing and/or ",
+        LinkIn(Page.GroupingStrategy, "compression"),
+        ", ",
+        LinkIn(Page.CacheSize),
+        " can be configured to asynchronously drop uncompressed/un-grouped in-memory key-values on cache overflow."
+      ),
+
+      <.h3("High compression configuration with LZ4 & Snappy"),
+      <.p(
+        "SwayDB has full support for ",
+        LinkOut("https://github.com/lz4/lz4-java", "LZ4"),
+        " and ",
+        LinkOut("https://github.com/xerial/snappy-java", "Snappy"),
+        " which can be used for both persistent and memory databases."
+      ),
+      <.p(
+        "All LZ4 instances, compressors and decompressors are ",
+        LinkIn(Page.GroupingStrategy, "configurable"),
+        "."
+      ),
+      <.p(
+        <.div(
+          "LZ4 Instances - ",
+          Snippet("FastestInstance"),
+          ", ",
+          Snippet("FastestJavaInstance"),
+          ", ",
+          Snippet("NativeInstance"),
+          ", ",
+          Snippet("SafeInstance"),
+          " & ",
+          Snippet("UnsafeInstance"),
+          "."
+        ),
+        <.div(
+          "LZ4 Compressors - ",
+          Snippet("FastCompressor"),
+          " & ",
+          Snippet("HighCompressor"),
+          "."
+        ),
+        <.div(
+          "LZ4 Decompressors - ",
+          Snippet("FastDecompressor"),
+          " & ",
+          Snippet("SafeDecompressor"),
+          "."
+        ),
+      ),
+
+      <.p(
+        "Duplicate values can also be detected and written ones with the configuration ",
+        LinkIn(Page.CompressDuplicateValues),
+        "."
       ),
 
       <.h3(^.id := "compaction", "Concurrent Leveled Compaction"),
@@ -183,7 +255,7 @@ object IntroDoc {
         "Memory-mapped files can be disabled for both ",
         RouterController.router.link(Page.MMAPSegment)("reads and writes or just for writes"),
         " which falls back to using ",
-        <.span(^.className := "snippet", "java.nio.FileChannel"),
+        <.span(^.className := "snippet", "java.nio.channels.FileChannel"),
         ". ",
         "They can also be ",
         RouterController.router.link(Page.MMAP)("disabled"),

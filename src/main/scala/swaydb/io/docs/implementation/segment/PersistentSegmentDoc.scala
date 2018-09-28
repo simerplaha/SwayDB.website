@@ -18,38 +18,30 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.configurationproperties
+package swaydb.io.docs.implementation.segment
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.common.{LinkIn, Snippet}
-import swaydb.io.{Page, RouterController}
+import swaydb.io.Page
+import swaydb.io.common.{LinkIn, LinkOut}
 
-object CacheSizeDoc {
+object PersistentSegmentDoc {
 
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2("cacheSize: Long")
+        <.h2("Persistent Segment")
       ),
+      <.p("Persistent Segments are immutable files that store a set of key-values in sorted order for efficient searches."),
       <.p(
-        "Specifies the byte size of key-values kept in memory.",
+        LinkIn(Page.SegmentFileFormat),
+        " is used by default."
       ),
+      <.h3("How to enable external compression ?"),
       <.p(
-        "When the limit is reached the oldest key-values are dropped from the cache."
-      ),
-      <.p(
-        "The interval at which the key-values cache overflow checks are performance should be configured via ",
-        RouterController.router.link(Page.CacheCheckDelay)("cacheCheckDelay"),
-        "."
-      ),
-      <.p(
-        LinkIn(Page.MemorySegment),
-        " use the ",
-        Snippet("cacheSize"),
-        " to drop uncompressed key-values when compression is configured (",
-        LinkIn(Page.GroupingStrategy),
-        ")."
+        "Segments files are only compressible via ",
+        LinkIn(Page.Group),
+        "ing."
       )
     )
 }

@@ -18,26 +18,19 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.terminology
+package swaydb.io.common
 
-import japgolly.scalajs.react.vdom.VdomElement
-import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.Page.WriteAPI
+import japgolly.scalajs.react.vdom.html_<^._
 import swaydb.io.{Page, RouterController}
 
-object TerminologyDoc {
+object SubPages {
 
-  def apply(): VdomElement =
-    <.div(
-      <.div(^.className := "page-header",
-        <.h2(^.id := "terminology", "Terminology")
-      ),
-      Page.Terminology.subPages.zipWithIndex map {
-        case (page, index) =>
-          <.h4(
-            (index + 1) + ". ",
-            RouterController.router.link(page)(<.span(^.className := "snippet", page.name))
-          )
-      } toTagMod
-    )
+  def apply(page: Page) =
+    page.subPages.zipWithIndex map {
+      case (page, index) =>
+        <.h4(
+          (index + 1) + ". ",
+          RouterController.router.link(page)(Snippet(page.name))
+        )
+    } toTagMod
 }

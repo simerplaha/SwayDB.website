@@ -18,18 +18,20 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.common
+package swaydb.io.docs.implementation.meters
 
+import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.Page
+import swaydb.io.common.SubPages
 
-object Alert {
+object MetersDoc {
 
-  def apply(alert: TagMod) =
+  def apply(): VdomElement =
     <.div(
-      ^.className := "alert alert-info",
-      <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
-      " ",
-      alert
+      <.div(^.className := "page-header",
+        <.h2("Meters")
+      ),
+      SubPages(Page.Meters)
     )
-
 }

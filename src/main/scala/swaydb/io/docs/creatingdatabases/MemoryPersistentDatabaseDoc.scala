@@ -23,6 +23,7 @@ package swaydb.io.docs.creatingdatabases
 import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.common.{LinkIn, Snippet}
 import swaydb.io.{Main, Page, RouterController}
 
 object MemoryPersistentDatabaseDoc {
@@ -36,14 +37,37 @@ object MemoryPersistentDatabaseDoc {
       <.p(
         "Configuration used: ",
         <.a(
-          ^.href := "https://github.com/simerplaha/SwayDB/blob/master/configs/src/main/scala/swaydb/configs/level/MemoryConfig.scala",
-          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - MemoryConfig.scala")),
+          ^.href := "https://github.com/simerplaha/SwayDB/blob/master/configs/src/main/scala/swaydb/configs/level/DefaultMemoryPersistentConfig.scala",
+          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - DefaultMemoryPersistentConfig.scala")),
           ^.target := "blank",
           "Memory-persistent"
         )
       ),
 
       <.p("A 3 leveled database that writes 10 Segments to disk when memory level size is 1.gb."),
+
+      <.p(
+        "In this default configuration ",
+        LinkIn(Page.GroupingStrategy),
+        "/compression is disabled for ",
+        LinkIn(Page.Level0),
+        " and ",
+        LinkIn(Page.Level),
+        "1 for ",
+        <.u("faster compaction speed"),
+        ". Key-values only get compressed in last Level in groups of 1.mb each with LZ4 compression (",
+        Snippet("FastestJavaInstance"),
+        "), see ",
+        <.a(
+          ^.href := "https://github.com/simerplaha/SwayDB/blob/master/configs/src/main/scala/swaydb/configs/level/DefaultPersistentConfig.scala",
+          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - DefaultPersistentConfig.scala")),
+          ^.target := "blank",
+          "DefaultPersistentConfig"
+        ),
+        " to view the ",
+        LinkIn(Page.GroupingStrategy),
+        " configured."
+      ),
 
       <.h3("Key-value database"),
       <.pre(

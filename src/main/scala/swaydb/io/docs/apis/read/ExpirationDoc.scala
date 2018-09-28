@@ -23,12 +23,12 @@ package swaydb.io.docs.apis.read
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.{Page, RouterController}
-import swaydb.io.common.Alert
+import swaydb.io.common.Info
 
 object ExpirationDoc {
 
   val alert =
-    Alert(
+    Info(
       <.i(
         "Read ",
         RouterController.router.link(Page.IncreasingExpiration)(Page.IncreasingExpiration.name),

@@ -18,38 +18,16 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.configurationproperties
+package swaydb.io.common
 
-import japgolly.scalajs.react.vdom.VdomElement
-import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.common.{LinkIn, Snippet}
 import swaydb.io.{Page, RouterController}
+import japgolly.scalajs.react.vdom.html_<^.{<, _}
 
-object CacheSizeDoc {
+object LinkIn {
 
-  def apply(): VdomElement =
-    <.div(
-      <.div(^.className := "page-header",
-        <.h2("cacheSize: Long")
-      ),
-      <.p(
-        "Specifies the byte size of key-values kept in memory.",
-      ),
-      <.p(
-        "When the limit is reached the oldest key-values are dropped from the cache."
-      ),
-      <.p(
-        "The interval at which the key-values cache overflow checks are performance should be configured via ",
-        RouterController.router.link(Page.CacheCheckDelay)("cacheCheckDelay"),
-        "."
-      ),
-      <.p(
-        LinkIn(Page.MemorySegment),
-        " use the ",
-        Snippet("cacheSize"),
-        " to drop uncompressed key-values when compression is configured (",
-        LinkIn(Page.GroupingStrategy),
-        ")."
-      )
-    )
+  def apply(page: Page) =
+    RouterController.router.link(page)(page.name)
+
+  def apply(page: Page, name: String) =
+    RouterController.router.link(page)(name)
 }

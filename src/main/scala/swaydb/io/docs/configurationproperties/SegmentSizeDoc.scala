@@ -22,6 +22,7 @@ package swaydb.io.docs.configurationproperties
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.common.{LinkIn, Snippet}
 import swaydb.io.{Page, RouterController}
 
 object SegmentSizeDoc {
@@ -43,7 +44,12 @@ object SegmentSizeDoc {
         RouterController.router.link(Page.Level)("Level"),
         "."
       ),
-
+      <.p(
+        "This configuration can be updated at any time. ",
+        Snippet("segmentSize"),
+        " can be increased or decreased in the future for changing database requirements."
+      ),
+      <.h3("Increasing"),
       <.p(
         <.strong("Increasing"),
         " the ",
@@ -55,14 +61,18 @@ object SegmentSizeDoc {
         " into one or multiple larger Segments. ",
       ),
       <.p(
-        "On database reboot small Segments are ",
-        <.strong("eagerly"),
-        " merged into larger Segments before the Level's Compaction process is started."
+        "On database reboot small Segments are checked and are merged into larger Segments.",
       ),
 
       <.p(
         "Deleting majority of the key-values from a Level can also create smaller Segments that will eventually get merged into larger ",
         "Segments during the Compaction process."
+      ),
+
+      <.p(
+        "Compressing Segments could also result in smaller Segments during the merge process depending the configured ",
+        LinkIn(Page.GroupingStrategy),
+        ". These Segments are also eventually merged into larger Segments."
       ),
 
       <.p(
@@ -72,6 +82,7 @@ object SegmentSizeDoc {
         " existing smaller Segment in the Level to create a larger Segment or Segments."
       ),
 
+      <.h3("Decreasing"),
       <.p(
         <.strong("Decreasing"),
         " the ",

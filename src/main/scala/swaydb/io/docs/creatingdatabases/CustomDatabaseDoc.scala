@@ -22,6 +22,7 @@ package swaydb.io.docs.creatingdatabases
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^._
+import swaydb.io.common.LinkIn
 import swaydb.io.{Page, RouterController}
 
 object CustomDatabaseDoc {
@@ -34,10 +35,12 @@ object CustomDatabaseDoc {
       ),
 
       <.p("Databases can also be initialised on custom configurations. Refer to ",
-        RouterController.router.link(Page.ConfiguringLevels)("Configuring Levels"),
-        " documentation on how ",
+        LinkIn(Page.ConfiguringLevels),
+        " documentation to see how to use ",
         <.span(^.className := "snippet", "ConfigWizard"),
-        " can be used to build custom Level hierarchies."
+        " to build custom ",
+        LinkIn(Page.Level),
+        " hierarchies."
       ),
       <.pre(
         <.code(^.className := "scala")(

@@ -23,18 +23,20 @@ package swaydb.io
 import japgolly.scalajs.react.vdom.VdomElement
 import swaydb.io.Page._
 import swaydb.io.docs._
+import swaydb.io.docs.apis._
 import swaydb.io.docs.apis.iteration._
 import swaydb.io.docs.apis.read._
 import swaydb.io.docs.apis.write._
-import swaydb.io.docs.apis.{read, _}
+import swaydb.io.docs.posts.{WhyConfigurableLevelsDoc, BlogDoc}
 import swaydb.io.docs.configurationproperties._
 import swaydb.io.docs.configurationproperties.acceleration._
 import swaydb.io.docs.creatingdatabases._
 import swaydb.io.docs.examples._
+import swaydb.io.docs.implementation._
+import swaydb.io.docs.implementation.meters.{Level0MeterDoc, LevelMeterDoc, MetersDoc}
+import swaydb.io.docs.implementation.segment._
 import swaydb.io.docs.performance._
 import swaydb.io.docs.slice.{ByteSliceDoc, SliceDoc}
-import swaydb.io.docs.terminology._
-import swaydb.io.docs.terminology.meters.{Level0MeterDoc, LevelMeterDoc, MetersDoc}
 
 object RootPages {
   val pages: Seq[Page] =
@@ -49,12 +51,13 @@ object RootPages {
       CustomKeyOrdering,
       Slice,
       ConfiguringLevels,
-      Terminology,
+      Implementation,
       Examples,
       ScalaJSNative,
       TestStatus,
       FaultTolerant,
       GitHubProjects,
+      Blog,
       Goals
     )
 }
@@ -427,7 +430,7 @@ object Page {
     override val subPages: Seq[Page] = Seq()
     override val url: String = "api/read-api/contains/"
 
-    override def render(): VdomElement = read.ContainsDoc()
+    override def render(): VdomElement = ContainsDoc()
   }
 
   object Head extends Page {
@@ -499,7 +502,7 @@ object Page {
     override val subPages: Seq[Page] = Seq()
     override val url: String = "api/read-api/level0Meter/"
 
-    override def render(): VdomElement = read.Level0MeterDoc()
+    override def render(): VdomElement = Level0MeterDoc()
   }
 
   object Level1MeterReadAPI extends Page {
@@ -507,7 +510,7 @@ object Page {
     override val subPages: Seq[Page] = Seq()
     override val url: String = "api/read-api/level1Meter/"
 
-    override def render(): VdomElement = read.Level1MeterDoc()
+    override def render(): VdomElement = Level1MeterDoc()
   }
 
   object LevelMeterReadAPI extends Page {
@@ -515,7 +518,7 @@ object Page {
     override val subPages: Seq[Page] = Seq()
     override val url: String = "api/read-api/levelMeter/"
 
-    override def render(): VdomElement = read.LevelMeterDoc()
+    override def render(): VdomElement = LevelMeterDoc()
   }
 
   object MightContain extends Page {
@@ -523,7 +526,7 @@ object Page {
     override val subPages: Seq[Page] = Seq()
     override val url: String = "api/read-api/mightContain/"
 
-    override def render(): VdomElement = read.MightContainDoc()
+    override def render(): VdomElement = MightContainDoc()
   }
 
   object Size extends Page {
@@ -531,7 +534,7 @@ object Page {
     override val subPages: Seq[Page] = Seq()
     override val url: String = "api/read-api/size/"
 
-    override def render(): VdomElement = read.SizeDoc()
+    override def render(): VdomElement = SizeDoc()
   }
 
   object SizeOfSegments extends Page {
@@ -539,7 +542,7 @@ object Page {
     override val subPages: Seq[Page] = Seq()
     override val url: String = "api/read-api/sizeOfSegments/"
 
-    override def render(): VdomElement = read.SizeOfSegmentsDoc()
+    override def render(): VdomElement = SizeOfSegmentsDoc()
   }
 
   object IterationAPI extends Page {
@@ -628,8 +631,8 @@ object Page {
     override def render(): VdomElement = EventSourcingDoc()
   }
 
-  object Terminology extends Page {
-    override val name: String = "Terminology"
+  object Implementation extends Page {
+    override val name: String = "Implementation"
     override val subPages: Seq[Page] =
       Seq(
         Level0,
@@ -641,15 +644,15 @@ object Page {
         Meters,
         Compaction
       )
-    override val url: String = "terminology/"
+    override val url: String = "implementation/"
 
-    override def render(): VdomElement = TerminologyDoc()
+    override def render(): VdomElement = ImplementationDoc()
   }
 
   object Level0 extends Page {
     override val name: String = "Level0"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "terminology/level0/"
+    override val url: String = "implementation/level0/"
 
     override def render(): VdomElement = Level0Doc()
   }
@@ -657,7 +660,7 @@ object Page {
   object Level extends Page {
     override val name: String = "Level"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "terminology/level/"
+    override val url: String = "implementation/level/"
 
     override def render(): VdomElement = LevelDoc()
   }
@@ -665,7 +668,7 @@ object Page {
   object TrashLevel extends Page {
     override val name: String = "Trash Level"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "terminology/trash-level/"
+    override val url: String = "implementation/trash-level/"
 
     override def render(): VdomElement = TrashLevelDoc()
   }
@@ -673,23 +676,62 @@ object Page {
   object Appendix extends Page {
     override val name: String = "Appendix"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "terminology/appendix/"
+    override val url: String = "implementation/appendix/"
 
     override def render(): VdomElement = AppendixDoc()
   }
 
   object Segment extends Page {
     override val name: String = "Segment"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "terminology/segment/"
+    override val subPages: Seq[Page] =
+      Seq(
+        PersistentSegment,
+        MemorySegment,
+        SegmentFileFormat,
+        Group
+      )
+
+    override val url: String = "implementation/segment/"
 
     override def render(): VdomElement = SegmentDoc()
+  }
+
+  object PersistentSegment extends Page {
+    override val name: String = "Persistent Segment"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "implementation/segment/persistent/"
+
+    override def render(): VdomElement = PersistentSegmentDoc()
+  }
+
+  object MemorySegment extends Page {
+    override val name: String = "Memory Segment"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "implementation/segment/memory/"
+
+    override def render(): VdomElement = MemorySegmentDoc()
+  }
+
+  object SegmentFileFormat extends Page {
+    override val name: String = "Segment file format"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "implementation/segment/file-format/"
+
+    override def render(): VdomElement = SegmentFileFormatDoc()
+  }
+
+  object Group extends Page {
+    override val name: String = "Group"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "implementation/segment/group/"
+
+    override def render(): VdomElement = GroupDoc()
   }
 
   object Map extends Page {
     override val name: String = "Map"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "terminology/map/"
+    override val url: String = "implementation/map/"
 
     override def render(): VdomElement = MapDoc()
   }
@@ -697,7 +739,7 @@ object Page {
   object Compaction extends Page {
     override val name: String = "Compaction"
     override val subPages: Seq[Page] = Seq(IncreasingExpiration)
-    override val url: String = "terminology/compaction/"
+    override val url: String = "implementation/compaction/"
 
     override def render(): VdomElement = CompactionDoc()
   }
@@ -705,7 +747,7 @@ object Page {
   object IncreasingExpiration extends Page {
     override val name: String = "Increasing expiration time"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "terminology/compaction/increasing-expiration-time/"
+    override val url: String = "implementation/compaction/increasing-expiration-time/"
 
     override def render(): VdomElement = IncreasingExpirationTimeDoc()
   }
@@ -713,7 +755,7 @@ object Page {
   object Meters extends Page {
     override val name: String = "Meters"
     override val subPages: Seq[Page] = Seq(Level0Meter, LevelMeter)
-    override val url: String = "terminology/meters/"
+    override val url: String = "implementation/meters/"
 
     override def render(): VdomElement = MetersDoc()
   }
@@ -721,7 +763,7 @@ object Page {
   object Level0Meter extends Page {
     override val name: String = "Level0Meter"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "terminology/meters/level0Meter/"
+    override val url: String = "implementation/meters/level0Meter/"
 
     override def render(): VdomElement = Level0MeterDoc()
   }
@@ -729,7 +771,7 @@ object Page {
   object LevelMeter extends Page {
     override val name: String = "LevelMeter"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "terminology/meters/levelMeter/"
+    override val url: String = "implementation/meters/levelMeter/"
 
     override def render(): VdomElement = LevelMeterDoc()
   }
@@ -744,6 +786,8 @@ object Page {
         MMAP,
         RecoveryMode,
         MinTimeLeftToIncreaseExpiration,
+        CompressDuplicateValues,
+        GroupingStrategy,
         Acceleration,
         SegmentSize,
         PushForward,
@@ -865,6 +909,22 @@ object Page {
     override def render(): VdomElement = BloomFilterFalsePositiveRateDoc()
   }
 
+  object CompressDuplicateValues extends Page {
+    override val name: String = "compressDuplicateValues"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "configuring-levels/compressDuplicateValues/"
+
+    override def render(): VdomElement = CompressDuplicateValuesDoc()
+  }
+
+  object GroupingStrategy extends Page {
+    override val name: String = "groupingStrategy"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "configuring-levels/groupingStrategy/"
+
+    override def render(): VdomElement = GroupingStrategyDoc()
+  }
+
   object Throttle extends Page {
     override val name: String = "throttle"
     override val subPages: Seq[Page] = Seq()
@@ -951,6 +1011,25 @@ object Page {
     override val url: String = "github-projects/"
 
     override def render(): VdomElement = GitHubProjectsDoc()
+  }
+
+  object Blog extends Page {
+    override val name: String = "Blog"
+    override val subPages: Seq[Page] =
+      Seq(
+        WhyConfigurableLevels
+      )
+    override val url: String = "blog/"
+
+    override def render(): VdomElement = BlogDoc()
+  }
+
+  object WhyConfigurableLevels extends Page {
+    override val name: String = "Why configurable Levels ?"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "why-configurable-levels/"
+
+    override def render(): VdomElement = WhyConfigurableLevelsDoc()
   }
 
   object Goals extends Page {

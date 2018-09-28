@@ -18,62 +18,71 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.terminology.meters
+package swaydb.io.docs.implementation.meters
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.{Page, RouterController}
-import swaydb.io.docs.terminology.Level0Doc
 
-object LevelMeterDoc {
+object Level0MeterDoc {
 
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2("LevelMeter")
+        <.h2("Level0Meter")
       ),
 
       <.p(
-        "Contains information about the current state of a ",
-        RouterController.router.link(Page.Level)("Level"),
+        "Contains information about the current state of ",
+        RouterController.router.link(Page.Level0)("Level0"),
         "."
       ),
 
+      <.div(
+        ^.className := "alert alert-info",
+        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
+        <.i(" All write requests also return Level0Meter which can be used to apply asynchronous back-pressure.")
+      ),
+
       <.p(
-        "LevelMeter can be fetched from a database instance by invoking ",
-        <.span(^.className := "snippet", "db.level1Meter"),
-        " for the state of Level1 or ",
-        <.span(^.className := "snippet", "db.levelMeter(levelNumber: Int)"),
-        " for the state of any ",
-        RouterController.router.link(Page.Level)("Level"),
+        "Level0Meter can also be fetched from a database instance by invoking ",
+        <.span(^.className := "snippet", "db.level0Meter"),
         "."
       ),
 
       <.pre(
         <.code(^.className := "scala")(
           """
-            |case class LevelMeter(segmentsCount: Int,
-            |                      levelSize: Long)
+            |class Level0Meter(val defaultMapSize: Long = 4.mb,
+            |                  val currentMapSize: Long = 8.mb,
+            |                  val mapsCount: Long = 4)
           """.stripMargin
-        )
+        ),
       ),
-      <.h4("segmentsCount: Int"),
+      <.p(""),
+      <.h4("defaultMapSize: Long"),
       <.p(
-        "The current total number of ",
-        RouterController.router.link(Page.Segment)("Segments"),
-        " in the ",
-        RouterController.router.link(Page.Level)("Level"),
+        "The original ",
+        RouterController.router.link(Page.MapSize)("mapSize"),
+        " specified during the database configuration.",
+      ),
+
+      <.h4("currentMapSize: Long"),
+      <.p(
+        "Size of current ",
+        RouterController.router.link(Page.Map)("Map"),
+        " which was set from the previous ",
+        RouterController.router.link(Page.Acceleration)("Acceleration"),
         "."
       ),
 
-      <.h4("levelSize: Long"),
+      <.h4("mapsCount: Long"),
       <.p(
-        "Total size (in bytes) of all the ",
-        RouterController.router.link(Page.Segment)("Segments"),
-        " in the ",
-        RouterController.router.link(Page.Level)("Level"),
+        "Current total number of ",
+        RouterController.router.link(Page.Map)("Maps"),
+        " in ",
+        RouterController.router.link(Page.Level0)("Level0"),
         "."
       )
-
     )
 }

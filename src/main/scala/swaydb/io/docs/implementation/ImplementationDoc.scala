@@ -18,38 +18,25 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.terminology
+package swaydb.io.docs.implementation
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.{Page, RouterController}
 
-object AppendixDoc {
+object ImplementationDoc {
 
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2("Appendix")
+        <.h2(^.id := "implementation", "Implementation")
       ),
-
-      <.p(
-        "Each ",
-        RouterController.router.link(Page.Level)("Level"),
-        " other then ",
-        RouterController.router.link(Page.Level0)("Level0"),
-        " has an Appendix file which stores information about all the ",
-        RouterController.router.link(Page.Segment)("Segments"),
-        " in the Level.",
-      ),
-
-      <.p(
-        "Appendix files are flushed when they reach the configured ",
-        RouterController.router.link(Page.AppendixFlushCheckpointSize)("appendixFlushCheckpointSize"),
-        " limit. ",
-      ),
-      <.p(
-        "Flushes remove redundant entries (deleted Segments) from the Appendix's WAL file ",
-        "therefore, reducing the size of the file on disk."
-      )
+      Page.Implementation.subPages.zipWithIndex map {
+        case (page, index) =>
+          <.h4(
+            (index + 1) + ". ",
+            RouterController.router.link(page)(<.span(^.className := "snippet", page.name))
+          )
+      } toTagMod
     )
 }

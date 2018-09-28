@@ -23,7 +23,8 @@ package swaydb.io.docs.creatingdatabases
 import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^._
-import swaydb.io.Main
+import swaydb.io.common.{Info, LinkIn}
+import swaydb.io.{Main, Page}
 
 object MemoryDatabaseDoc {
 
@@ -36,14 +37,22 @@ object MemoryDatabaseDoc {
       <.p(
         "Configuration used: ",
         <.a(
-          ^.href := "https://github.com/simerplaha/SwayDB/blob/master/configs/src/main/scala/swaydb/configs/level/MemoryConfig.scala",
-          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - MemoryConfig.scala")),
+          ^.href := "https://github.com/simerplaha/SwayDB/blob/master/configs/src/main/scala/swaydb/configs/level/DefaultMemoryConfig.scala",
+          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - DefaultMemoryConfig.scala")),
           ^.target := "blank",
-          "MemoryConfig"
+          "DefaultMemoryConfig"
         )
       ),
 
       <.p("A 2 leveled in-memory database where each Segment is of size 8.mb."),
+
+      Info(
+        <.span(
+          "This default configuration does perform compression. See ",
+          LinkIn(Page.GroupingStrategy),
+          " to enable compression for Memory databases.",
+        )
+      ),
 
       <.h3("Key-value database"),
       <.pre(

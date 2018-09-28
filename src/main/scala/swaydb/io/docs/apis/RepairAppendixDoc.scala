@@ -22,6 +22,7 @@ package swaydb.io.docs.apis
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.common.LinkIn
 import swaydb.io.{Page, RouterController}
 
 object RepairAppendixDoc {
@@ -39,9 +40,9 @@ object RepairAppendixDoc {
       <.p(
         <.span(^.className := "snippet", "repairAppendix"),
         " can be used to create a new ",
-        RouterController.router.link(Page.Appendix)("Appendix"),
+        LinkIn(Page.Appendix),
         " file for a ",
-        RouterController.router.link(Page.Level)("Level"),
+        LinkIn(Page.Level),
         " if the current Appendix file is unreadable."
       ),
       <.pre(
@@ -57,15 +58,17 @@ object RepairAppendixDoc {
       ),
       <.h3("When can Appendix file become unreadable ?"),
       <.p(
-        "This can occur due to bad sectors on disk or server crashes."
+        "This can occur due hardware failure (bad sectors on disk)."
       ),
       <.p(
         "As mentioned in the ",
-        RouterController.router.link(Page.Level)("Level"),
+        LinkIn(Page.Level),
         " documentation - ",
-        RouterController.router.link(Page.Segment)("Segments"),
-        " that are not in the Level's Appendix file (orphan Segments) get deleted on database reboot.",
-        " But when Appendix file becomes unreadable it becomes hard to distinguish between active and orphan Segments. ",
+        LinkIn(Page.Segment),
+        " that are not in the Level's ",
+        LinkIn(Page.Appendix),
+        " file (uncommitted Segments) get deleted on database reboot.",
+        " But when Appendix file becomes unreadable it becomes hard to distinguish between committed and uncommitted Segments. ",
         "In this case ",
         <.span(^.className := "snippet", "repairAppendix"),
         " can be used to re-create the Appendix file."

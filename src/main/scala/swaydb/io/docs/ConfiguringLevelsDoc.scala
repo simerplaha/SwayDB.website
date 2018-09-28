@@ -65,6 +65,7 @@ object ConfiguringLevelsDoc {
             |      mapSize = 4.mb,
             |      mmap = true,
             |      recoveryMode = RecoveryMode.ReportFailure,
+            |      minTimeLeftToUpdateExpiration = 10.seconds,
             |      acceleration =
             |        (level0Meter: Level0Meter) =>
             |          Accelerator.cruise(level0Meter)
@@ -73,6 +74,9 @@ object ConfiguringLevelsDoc {
             |      segmentSize = 4.mb,
             |      pushForward = false,
             |      bloomFilterFalsePositiveRate = 0.1,
+            |      minTimeLeftToUpdateExpiration = 10.seconds,
+            |      compressDuplicateValues = true,
+            |      groupingStrategy = None, //read more about this in the groupingStrategy doc
             |      throttle =
             |        (levelMeter: LevelMeter) =>
             |          if (levelMeter.levelSize > 1.gb)
@@ -89,6 +93,9 @@ object ConfiguringLevelsDoc {
             |      appendixFlushCheckpointSize = 4.mb,
             |      pushForward = false,
             |      bloomFilterFalsePositiveRate = 0.1,
+            |      minTimeLeftToUpdateExpiration = 10.seconds,
+            |      compressDuplicateValues = true,
+            |      groupingStrategy = None, //read more about this in the groupingStrategy doc
             |      throttle =
             |        (levelMeter: LevelMeter) =>
             |          if (levelMeter.segmentsCount > 100)

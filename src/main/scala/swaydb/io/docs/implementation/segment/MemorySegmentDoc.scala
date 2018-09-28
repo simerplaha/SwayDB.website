@@ -18,19 +18,38 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.terminology
+package swaydb.io.docs.implementation.segment
 
 import japgolly.scalajs.react.vdom.VdomElement
-import japgolly.scalajs.react.vdom.html_<^._
+import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.Page
+import swaydb.io.common.{LinkIn, LinkOut}
 
-object CompactionDoc {
+object MemorySegmentDoc {
 
-  def apply(): VdomElement = {
+  def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2("Level compaction")
+        <.h2("Memory Segment")
       ),
-      <.p("TODO")
+      <.p(
+        "Memory Segments by default store key-values in an in-memory skip-list and do not perform any compression."
+      ),
+
+      <.h3("How to enable compression for Memory Segments ?"),
+      <.p(
+        "Compression can be enabled by specifying ",
+        LinkIn(Page.GroupingStrategy),
+        " for Memory Levels which will enable ",
+        LinkIn(Page.SegmentFileFormat),
+        "'s for all it's in-memory Segments and provide same compression as ",
+        LinkIn(Page.PersistentSegment),
+        "."
+      ),
+      <.h3("Limiting the number of uncompressed data in-memory"),
+      <.p(
+        LinkIn(Page.CacheSize),
+        " can be specified to limit the number of uncompressed key-values in-memory.",
+      ),
     )
-  }
 }

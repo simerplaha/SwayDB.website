@@ -18,38 +18,38 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.configurationproperties
+package swaydb.io.docs.implementation
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.common.{LinkIn, Snippet}
 import swaydb.io.{Page, RouterController}
 
-object CacheSizeDoc {
+object AppendixDoc {
 
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2("cacheSize: Long")
+        <.h2("Appendix")
+      ),
+
+      <.p(
+        "Each ",
+        RouterController.router.link(Page.Level)("Level"),
+        " other then ",
+        RouterController.router.link(Page.Level0)("Level0"),
+        " has an Appendix file which stores information about all the ",
+        RouterController.router.link(Page.Segment)("Segments"),
+        " in the Level.",
+      ),
+
+      <.p(
+        "Appendix files are flushed when they reach the configured ",
+        RouterController.router.link(Page.AppendixFlushCheckpointSize)("appendixFlushCheckpointSize"),
+        " limit. ",
       ),
       <.p(
-        "Specifies the byte size of key-values kept in memory.",
-      ),
-      <.p(
-        "When the limit is reached the oldest key-values are dropped from the cache."
-      ),
-      <.p(
-        "The interval at which the key-values cache overflow checks are performance should be configured via ",
-        RouterController.router.link(Page.CacheCheckDelay)("cacheCheckDelay"),
-        "."
-      ),
-      <.p(
-        LinkIn(Page.MemorySegment),
-        " use the ",
-        Snippet("cacheSize"),
-        " to drop uncompressed key-values when compression is configured (",
-        LinkIn(Page.GroupingStrategy),
-        ")."
+        "Flushes remove redundant entries (deleted Segments) from the Appendix's WAL file ",
+        "therefore, reducing the size of the file on disk."
       )
     )
 }

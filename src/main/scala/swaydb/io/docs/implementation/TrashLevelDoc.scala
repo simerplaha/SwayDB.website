@@ -18,21 +18,30 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.terminology
+package swaydb.io.docs.implementation
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.{Page, RouterController}
 
-object MapDoc {
+object TrashLevelDoc {
 
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2("Map")
+        <.h2("Trash Level")
       ),
+
       <.p(
-        """A Map stores all key-values in-memory after successfully writing them to an append only write-ahead log file (WAL).
-          |WAL files are created for persistent databases only and are not required for in-memory databases.""".stripMargin),
-      <.p("""On database reboot the write-ahead log files are re-read to re-populate the in-memory Maps with the key-values."""),
+        RouterController.router.link(Page.Segment)("Segments"),
+        " or ",
+        RouterController.router.link(Page.Map)("Maps"),
+        " submitted to the this Level get deleted."
+      ),
+
+      <.p(
+        <.strong("Use-case"),
+        " - periodically deleting older key-values when there is not enough disk or memory space.",
+      ),
     )
 }

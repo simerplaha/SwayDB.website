@@ -332,6 +332,16 @@
     </url>
     <url>
         <loc>
+            http://www.swaydb.io/configuring-levels/compressDuplicateValues/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/configuring-levels/groupingStrategy/
+        </loc>
+    </url>
+    <url>
+        <loc>
             http://www.swaydb.io/configuring-levels/acceleration/
         </loc>
     </url>
@@ -402,62 +412,82 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/terminology/
+            http://www.swaydb.io/implementation/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/terminology/level0/
+            http://www.swaydb.io/implementation/level0/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/terminology/level/
+            http://www.swaydb.io/implementation/level/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/terminology/trash-level/
+            http://www.swaydb.io/implementation/trash-level/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/terminology/segment/
+            http://www.swaydb.io/implementation/segment/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/terminology/appendix/
+            http://www.swaydb.io/implementation/segment/persistent/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/terminology/map/
+            http://www.swaydb.io/implementation/segment/memory/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/terminology/meters/
+            http://www.swaydb.io/implementation/segment/file-format/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/terminology/meters/level0Meter/
+            http://www.swaydb.io/implementation/segment/group/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/terminology/meters/levelMeter/
+            http://www.swaydb.io/implementation/appendix/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/terminology/compaction/
+            http://www.swaydb.io/implementation/map/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/terminology/compaction/increasing-expiration-time/
+            http://www.swaydb.io/implementation/meters/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/implementation/meters/level0Meter/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/implementation/meters/levelMeter/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/implementation/compaction/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/implementation/compaction/increasing-expiration-time/
         </loc>
     </url>
     <url>
@@ -498,6 +528,16 @@
     <url>
         <loc>
             http://www.swaydb.io/github-projects/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/blog/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/why-configurable-levels/
         </loc>
     </url>
     <url>

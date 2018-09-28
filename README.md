@@ -41,23 +41,27 @@ the Pages require updating the HTML of the `render` functions.
 
 ## Creating Links 
 
+#### Internal link
 ```scala
-RouterController.router.link(Page.MyPage)("My Page")
+LinkIn(Page.MyPage)
+```
+
+#### External link
+```scala
+LinkOut("http://swaydb.io/", "SwayDB docs")
 ```
 
 ## Adding code snippets
 
 ```scala
-<.pre(
-    <.code(^.className := "scala")(
-      """
-        |object MyCodeSnippet {
-        |
-        |   println("My code snippet")
-        |
-        |}
-      """.stripMargin
-    )
+ScalaCode(
+  """
+    |object MyCodeSnippet {
+    |
+    |   println("My code snippet")
+    |
+    |}
+  """.stripMargin
 )
 ```
 
