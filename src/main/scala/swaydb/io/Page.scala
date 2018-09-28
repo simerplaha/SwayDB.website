@@ -1025,9 +1025,9 @@ object Page {
   }
 
   object WhyConfigurableLevels extends Page {
-    override val name: String = "Why configurable Levels ?"
+    override val name: String = "Why configurable Levels?"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "why-configurable-levels/"
+    override val url: String = "blog/why-configurable-levels/"
 
     override def render(): VdomElement = WhyConfigurableLevelsDoc()
   }
