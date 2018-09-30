@@ -32,6 +32,7 @@ object UpdateRangeFunctionDoc {
       <.div(^.className := "page-header",
         <.h2(Page.UpdateRangeFunction.name)
       ),
+      CacheFunctionDoc.experimentalInfo,
       <.p(
         "Updates all the values within the key range by applying the ",
         LinkIn(Page.CacheFunction),
@@ -44,7 +45,8 @@ object UpdateRangeFunctionDoc {
             |
             |""".stripMargin
         )
-      )
+      ),
+      CacheFunctionDoc.whenToUse
     )
   }
 }

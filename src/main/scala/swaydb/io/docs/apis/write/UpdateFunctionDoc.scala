@@ -32,7 +32,7 @@ object UpdateFunctionDoc {
       <.div(^.className := "page-header",
         <.h2(Page.UpdateFunction.name)
       ),
-
+      CacheFunctionDoc.experimentalInfo,
       <.p(
         "Updates the key's value by applying the ",
         LinkIn(Page.CacheFunction),
@@ -45,7 +45,8 @@ object UpdateFunctionDoc {
             |
             |""".stripMargin
         )
-      )
+      ),
+      CacheFunctionDoc.whenToUse
     )
   }
 }

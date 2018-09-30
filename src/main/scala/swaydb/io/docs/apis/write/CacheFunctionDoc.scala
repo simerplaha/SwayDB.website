@@ -23,15 +23,25 @@ package swaydb.io.docs.apis.write
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
-import swaydb.io.common.{Info, LinkIn, Snippet}
+import swaydb.io.common.{Info, LinkIn, LinkOut, Snippet}
 
 object CacheFunctionDoc {
+
+  val experimentalInfo =
+    Info(
+      <.strong(
+        "This feature is experimental and will be usable after ",
+        LinkOut("https://github.com/simerplaha/SwayDB/issues/16", """"Issue #16""""),
+        " is fixed."
+      )
+    )
 
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
         <.h2(Page.CacheFunction.name)
       ),
+      experimentalInfo,
       <.p(
         "Stores input function in-memory which can then be used to apply updates using ",
         LinkIn(Page.UpdateFunction),
@@ -40,12 +50,16 @@ object CacheFunctionDoc {
         "."
       ),
       <.p(
-        "Note: ",
+        <.strong("Note: "),
         Snippet("functionId"),
         " cannot contain the character '|'."
       ),
-      Info(
-        "Cache functions are immutable and should always be present in-memory even on database restart.",
+      <.p(
+        <.i(
+          <.strong(
+            "Cache functions are immutable and should always be present in-memory even on database restart."
+          )
+        )
       ),
       <.pre(
         <.code(^.className := "scala")(
@@ -54,8 +68,36 @@ object CacheFunctionDoc {
             |
             |""".stripMargin
         )
-      )
+      ),
+      whenToUse
     )
   }
 
+  val whenToUse: VdomElement =
+    <.div(
+      <.h3("When to use ", Snippet("cacheFunction"), "?"),
+      <.p(
+        "In comparision to basic get & update (",
+        LinkIn(Page.Get),
+        ", ",
+        LinkIn(Page.Update),
+        "/",
+        LinkIn(Page.UpdateRange),
+        ") ",
+        Snippet("cacheFunctions"),
+        " have a very low read, write & space requirement.",
+      ),
+      <.h4("Writing"),
+      "When applied ",
+      Snippet("cacheFunction"),
+      " store the only ",
+      Snippet("functionId"),
+      " in the database keeping all the function in-memory. The physical values are updated during the ",
+      LinkIn(Page.Compaction),
+      " process.",
+      <.h4("Reading"),
+      <.p(
+        "On read if the compaction is not complete, the values are re-constructed by applying the function to old values in real-time."
+      )
+    )
 }
