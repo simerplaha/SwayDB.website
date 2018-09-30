@@ -253,7 +253,6 @@ object Page {
         Put,
         PutExpire,
         BatchPut,
-        CacheFunction,
         Remove,
         RemoveRange,
         BatchRemove,
@@ -263,6 +262,7 @@ object Page {
         Update,
         UpdateRange,
         BatchUpdate,
+        CacheFunction,
         UpdateFunction,
         UpdateRangeFunction,
         Batch
