@@ -18,6 +18,33 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-@import (less) "lib/bootstrap/css/bootstrap.css";
-@import (less) "lib/highlightjs/styles/androidstudio.css";
-@import (less) "../assets/stylesheets/swaydb.css";
+package swaydb.io.docs.apis.write
+
+import japgolly.scalajs.react.vdom.VdomElement
+import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.Page
+import swaydb.io.common.LinkIn
+
+object UpdateRangeFunctionDoc {
+
+  def apply(showNote: Boolean = true): VdomElement = {
+    <.div(
+      <.div(^.className := "page-header",
+        <.h2(Page.UpdateRangeFunction.name)
+      ),
+      <.p(
+        "Updates all the values within the key range by applying the ",
+        LinkIn(Page.CacheFunction),
+        " for the input functionId.",
+      ),
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |db.update(from = 1, to = 1000000, functionId = "myFunctionId")
+            |
+            |""".stripMargin
+        )
+      )
+    )
+  }
+}

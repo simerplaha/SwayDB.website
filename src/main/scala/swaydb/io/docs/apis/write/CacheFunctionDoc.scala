@@ -18,6 +18,39 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-@import (less) "lib/bootstrap/css/bootstrap.css";
-@import (less) "lib/highlightjs/styles/androidstudio.css";
-@import (less) "../assets/stylesheets/swaydb.css";
+package swaydb.io.docs.apis.write
+
+import japgolly.scalajs.react.vdom.VdomElement
+import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.Page
+import swaydb.io.common.{Info, LinkIn}
+
+object CacheFunctionDoc {
+
+  def apply(showNote: Boolean = true): VdomElement = {
+    <.div(
+      <.div(^.className := "page-header",
+        <.h2(Page.CacheFunction.name)
+      ),
+      <.p(
+        "Stores input function in-memory which can then be used to apply updates using ",
+        LinkIn(Page.UpdateFunction),
+        " & ",
+        LinkIn(Page.UpdateRangeFunction),
+        "."
+      ),
+      Info(
+        "Cache functions are immutable and should always be present in-memory even on database restart.",
+      ),
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |db.cacheFunction(functionId = "myFunctionId", function = oldValue => newValue)
+            |
+            |""".stripMargin
+        )
+      )
+    )
+  }
+
+}
