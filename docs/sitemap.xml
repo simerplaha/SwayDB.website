@@ -87,11 +87,6 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/cacheFunction/
-        </loc>
-    </url>
-    <url>
-        <loc>
             http://www.swaydb.io/api/write-api/put/
         </loc>
     </url>
@@ -103,6 +98,11 @@
     <url>
         <loc>
             http://www.swaydb.io/api/write-api/batchPut/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/write-api/cacheFunction/
         </loc>
     </url>
     <url>
@@ -142,22 +142,22 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/update-function/
-        </loc>
-    </url>
-    <url>
-        <loc>
             http://www.swaydb.io/api/write-api/update-range/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/update-range-function/
+            http://www.swaydb.io/api/write-api/batchUpdate/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/batchUpdate/
+            http://www.swaydb.io/api/write-api/update-function/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/write-api/update-range-function/
         </loc>
     </url>
     <url>

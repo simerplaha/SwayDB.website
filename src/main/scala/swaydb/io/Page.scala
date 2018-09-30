@@ -261,10 +261,10 @@ object Page {
         ExpireRange,
         BatchExpire,
         Update,
-        UpdateFunction,
         UpdateRange,
-        UpdateRangeFunction,
         BatchUpdate,
+        UpdateFunction,
+        UpdateRangeFunction,
         Batch
       )
     override val url: String = "api/write-api/"

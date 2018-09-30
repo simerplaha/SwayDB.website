@@ -23,7 +23,7 @@ package swaydb.io.docs.apis.write
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
-import swaydb.io.common.{Info, LinkIn}
+import swaydb.io.common.{Info, LinkIn, Snippet}
 
 object CacheFunctionDoc {
 
@@ -38,6 +38,11 @@ object CacheFunctionDoc {
         " & ",
         LinkIn(Page.UpdateRangeFunction),
         "."
+      ),
+      <.p(
+        "Note: ",
+        Snippet("functionId"),
+        " cannot contain the character '|'."
       ),
       Info(
         "Cache functions are immutable and should always be present in-memory even on database restart.",
