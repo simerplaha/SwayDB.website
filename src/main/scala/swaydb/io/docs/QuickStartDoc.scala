@@ -35,7 +35,7 @@ object QuickStartDoc {
       SetupDoc.body,
       <.p("Quick start demo app.",
         <.a(
-          ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/quickstart/QuickStartSpec.scala",
+          ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/quickstart/QuickStartPersistentSpec.scala",
           ^.role := "button",
           ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - QuickStartSpec")),
           ^.className := "btn btn-xs btn-info pull-right",

@@ -22,6 +22,8 @@ package swaydb.io.docs
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.Page
+import swaydb.io.common.LinkIn
 
 object GoalsDoc {
 
@@ -42,6 +44,14 @@ object GoalsDoc {
 
       <.h3("Types, Types, Types!"),
       <.p("Type safe APIs to catch potential errors during compile time."),
+
+      <.h3("No query language"),
+      <.p(
+        "Query languages add a big learning curve for us. SwayDB aims at ",
+        " providing type-safe API mimicking Scala's collection library and ability run Scala code directly (",
+        LinkIn(Page.CacheFunction),
+        ") on the database - no query language to learn."
+      ),
 
       <.h3("Support for other data structures"),
       <.p(

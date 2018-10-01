@@ -101,6 +101,13 @@ object IntroDoc {
         <.span(^.className := "snippet", "*Right"),
         " perform reverse iterations."
       ),
+      <.p(
+        "Type-safe Scala functions can be submitted to update key-values (no query language) ",
+        " providing the ability to run Scala code directly ",
+        " on the database via ",
+        LinkIn(Page.CacheFunction),
+        "."
+      ),
 
       <.h3(^.id := "non-blocking", "Non-blocking"),
       <.p(
