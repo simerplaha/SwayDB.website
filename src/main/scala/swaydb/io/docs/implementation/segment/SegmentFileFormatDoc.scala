@@ -77,8 +77,8 @@ object SegmentFileFormatDoc {
             " expiration during runtime. The same compression strategy is applied for all information stored in the index entry."
           ),
           <.p(
-            "Currently there are 2650 storage IDs, which means an index entry can be stored in 2650 possible formats, which ",
-            "means there are 2650 possible ways an index entry can be compressed with it's previous index entry."
+            "Currently there are 3345 storage IDs, which means an index entry can be compressed & stored in 3345 possible ways ",
+            " with it's previous index entry."
           ),
 
           <.h4(<.u("Footer")),
