@@ -40,7 +40,7 @@ object SetupDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |libraryDependencies += "io.swaydb" %% "swaydb" % "0.4"
+            |libraryDependencies += "io.swaydb" %% "swaydb" % "0.5"
             |
             |""".stripMargin
         )

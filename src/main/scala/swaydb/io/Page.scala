@@ -262,9 +262,6 @@ object Page {
         Update,
         UpdateRange,
         BatchUpdate,
-        CacheFunction,
-        UpdateFunction,
-        UpdateRangeFunction,
         Batch
       )
     override val url: String = "api/write-api/"
@@ -272,13 +269,6 @@ object Page {
     override def render(): VdomElement = WriteAPIDoc()
   }
 
-  object CacheFunction extends Page {
-    override val name: String = "cacheFunction"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write-api/cacheFunction/"
-
-    override def render(): VdomElement = CacheFunctionDoc()
-  }
 
   object Put extends Page {
     override val name: String = "put"
@@ -360,28 +350,12 @@ object Page {
     override def render(): VdomElement = UpdateDoc()
   }
 
-  object UpdateFunction extends Page {
-    override val name: String = "update (function)"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write-api/update-function/"
-
-    override def render(): VdomElement = UpdateFunctionDoc()
-  }
-
   object UpdateRange extends Page {
     override val name: String = "update (range)"
     override val subPages: Seq[Page] = Seq()
     override val url: String = "api/write-api/update-range/"
 
     override def render(): VdomElement = UpdateRangeDoc()
-  }
-
-  object UpdateRangeFunction extends Page {
-    override val name: String = "update (range function)"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write-api/update-range-function/"
-
-    override def render(): VdomElement = UpdateRangeFunctionDoc()
   }
 
   object BatchUpdate extends Page {

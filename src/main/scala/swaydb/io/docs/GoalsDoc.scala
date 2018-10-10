@@ -47,10 +47,8 @@ object GoalsDoc {
 
       <.h3("No query language"),
       <.p(
-        "Query languages add a big learning curve for us. SwayDB aims at ",
-        " providing type-safe API mimicking Scala's collection library and ability run Scala code directly (",
-        LinkIn(Page.CacheFunction),
-        ") on the database - no query language to learn."
+        "Query languages add a learning curve for us. SwayDB aims at ",
+        " providing type-safe API mimicking Scala's collection library.",
       ),
 
       <.h3("Support for other data structures"),
