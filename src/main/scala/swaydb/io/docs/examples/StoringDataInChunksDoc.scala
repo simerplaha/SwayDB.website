@@ -24,6 +24,7 @@ import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^._
 import swaydb.io.Main
+import swaydb.io.common.ScalaCode
 
 object StoringDataInChunksDoc {
 
@@ -50,22 +51,20 @@ object StoringDataInChunksDoc {
         )
       ),
 
-      <.pre(
-        <.code(^.className := "scala")(
-          """
-            |import swaydb._
-            |import swaydb.serializers.Default._
-            |
-            |val db = SwayDB.persistent[Int, Slice[Byte]](dir = dir).get
-            |
-            |val file: Array[Byte] = randomBytes(3.mb) //a 3.mb byte array
-            |
-            |val slices = Slice(file).groupedSlice(3) //splits of 3 slices of 1.mb each without creating copies of original array
-            |
-            |//batch write the file slices.
-            |db.batchPut((1, slices(0)), (2, slices(1)), (3, slices(2)))
-          """.stripMargin
-        )
+      ScalaCode(
+        """
+          |import swaydb._
+          |import swaydb.serializers.Default._
+          |
+          |val db = SwayDB.persistent[Int, Slice[Byte]](dir = dir).get
+          |
+          |val file: Array[Byte] = randomBytes(3.mb) //a 3.mb byte array
+          |
+          |val slices = Slice(file).groupedSlice(3) //splits of 3 slices of 1.mb each without creating copies of original array
+          |
+          |//batch write the file slices.
+          |db.batchPut((1, slices(0)), (2, slices(1)), (3, slices(2)))
+        """.stripMargin
       )
     )
 }

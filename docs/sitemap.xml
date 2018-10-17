@@ -77,197 +77,297 @@
     </url>
     <url>
         <loc>
+            http://www.swaydb.io/create-databases/extension/
+        </loc>
+    </url>
+    <url>
+        <loc>
             http://www.swaydb.io/api/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/
+            http://www.swaydb.io/api/write/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/put/
+            http://www.swaydb.io/api/write/put/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/put-expire/
+            http://www.swaydb.io/api/write/put-expire/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/batchPut/
+            http://www.swaydb.io/api/write/batchPut/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/remove/
+            http://www.swaydb.io/api/write/remove/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/remove-range/
+            http://www.swaydb.io/api/write/remove-range/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/batchRemove/
+            http://www.swaydb.io/api/write/batchRemove/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/expire/
+            http://www.swaydb.io/api/write/expire/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/expire-range/
+            http://www.swaydb.io/api/write/expire-range/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/batchExpire/
+            http://www.swaydb.io/api/write/batchExpire/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/update/
+            http://www.swaydb.io/api/write/update/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/update-range/
+            http://www.swaydb.io/api/write/update-range/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/batchUpdate/
+            http://www.swaydb.io/api/write/batchUpdate/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write-api/batch/
+            http://www.swaydb.io/api/write/batch/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/
+            http://www.swaydb.io/api/read/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/get/
+            http://www.swaydb.io/api/read/get/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/getKey/
+            http://www.swaydb.io/api/read/getKey/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/getKeyValue/
+            http://www.swaydb.io/api/read/getKeyValue/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/contains/
+            http://www.swaydb.io/api/read/contains/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/mightContain/
+            http://www.swaydb.io/api/read/mightContain/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/head/
+            http://www.swaydb.io/api/read/head/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/last/
+            http://www.swaydb.io/api/read/last/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/isEmpty/
+            http://www.swaydb.io/api/read/isEmpty/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/nonEmpty/
+            http://www.swaydb.io/api/read/nonEmpty/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/expiration/
+            http://www.swaydb.io/api/read/expiration/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/timeLeft/
+            http://www.swaydb.io/api/read/timeLeft/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/keySize/
+            http://www.swaydb.io/api/read/keySize/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/valueSize/
+            http://www.swaydb.io/api/read/valueSize/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/size/
+            http://www.swaydb.io/api/read/size/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/sizeOfSegments/
+            http://www.swaydb.io/api/read/sizeOfSegments/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/level0Meter/
+            http://www.swaydb.io/api/read/level0Meter/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/level1Meter/
+            http://www.swaydb.io/api/read/level1Meter/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read-api/levelMeter/
+            http://www.swaydb.io/api/read/levelMeter/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/iteration-api/
+            http://www.swaydb.io/api/iteration/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/iteration-api/from/
+            http://www.swaydb.io/api/iteration/from/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/iteration-api/beforeAfter/
+            http://www.swaydb.io/api/iteration/beforeAfter/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/iteration-api/till/
+            http://www.swaydb.io/api/iteration/till/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/iteration-api/andThen/
+            http://www.swaydb.io/api/iteration/andThen/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/write/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/write/putMap/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/write/removeMap/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/write/updateMapValue/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/write/updateValue/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/write/removeAllKeyValues/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/read/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/read/getMap/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/read/containsMap/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/read/exists/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/read/getValue/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/read/getMapValue/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/iteration/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/iteration/fromMap/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/iteration/beforeMap/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/iteration/fromOrBeforeMap/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/iteration/afterMap/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/iteration/fromOrAfterMap/
         </loc>
     </url>
     <url>

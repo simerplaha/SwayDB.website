@@ -54,7 +54,7 @@ object CreatingDatabaseDoc {
       <.p("Custom configurations."),
 
       <.h3("Data structures"),
-      <.h4("SwayDBMap[K, V]"),
+      <.h4("swaydb.Map[K, V]"),
       <.p(
         "APIs are similar to ",
         <.span(^.className := "snippet", "mutable.SortedMap[K, V]"),
@@ -62,7 +62,7 @@ object CreatingDatabaseDoc {
       ),
       <.p("Values are fetched lazily. Keys and Values are stored independently to each other."),
 
-      <.h4("SwayDBSet[T]"),
+      <.h4("swaydb.Set[T]"),
       <.p(
         "APIs are similar to ",
         <.span(^.className := "snippet", "mutable.SortedSet[T]"),
