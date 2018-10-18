@@ -22,8 +22,6 @@ package swaydb.io.docs
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.Page
-import swaydb.io.common.LinkIn
 
 object GoalsDoc {
 

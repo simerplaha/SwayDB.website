@@ -24,12 +24,12 @@ import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
 
-object FromMapDoc {
+object ExtensionReadAPIDoc {
 
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.FromMap.name)
+        <.h2(Page.ExtensionReadAPI.name)
       ),
       <.p("TODO")
     )

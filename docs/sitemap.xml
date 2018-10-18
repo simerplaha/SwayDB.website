@@ -77,7 +77,7 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/create-databases/extension/
+            http://www.swaydb.io/extending-databases/
         </loc>
     </url>
     <url>
@@ -287,17 +287,12 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/extension/write/putMap/
+            http://www.swaydb.io/api/extension/write/put/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/extension/write/removeMap/
-        </loc>
-    </url>
-    <url>
-        <loc>
-            http://www.swaydb.io/api/extension/write/updateMapValue/
+            http://www.swaydb.io/api/extension/write/remove/
         </loc>
     </url>
     <url>
@@ -307,7 +302,7 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/extension/write/removeAllKeyValues/
+            http://www.swaydb.io/api/extension/write/clear/
         </loc>
     </url>
     <url>
@@ -317,12 +312,12 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/extension/read/getMap/
+            http://www.swaydb.io/api/extension/read/get/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/extension/read/containsMap/
+            http://www.swaydb.io/api/extension/read/contains/
         </loc>
     </url>
     <url>
@@ -337,37 +332,7 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/extension/read/getMapValue/
-        </loc>
-    </url>
-    <url>
-        <loc>
             http://www.swaydb.io/api/extension/iteration/
-        </loc>
-    </url>
-    <url>
-        <loc>
-            http://www.swaydb.io/api/extension/iteration/fromMap/
-        </loc>
-    </url>
-    <url>
-        <loc>
-            http://www.swaydb.io/api/extension/iteration/beforeMap/
-        </loc>
-    </url>
-    <url>
-        <loc>
-            http://www.swaydb.io/api/extension/iteration/fromOrBeforeMap/
-        </loc>
-    </url>
-    <url>
-        <loc>
-            http://www.swaydb.io/api/extension/iteration/afterMap/
-        </loc>
-    </url>
-    <url>
-        <loc>
-            http://www.swaydb.io/api/extension/iteration/fromOrAfterMap/
         </loc>
     </url>
     <url>

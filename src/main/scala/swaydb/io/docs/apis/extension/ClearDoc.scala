@@ -24,12 +24,12 @@ import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
 
-object UpdateMapValueDoc {
+object ClearDoc {
 
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.UpdateMapValue.name)
+        <.h2(Page.Clear.name)
       ),
       <.p("TODO")
     )

@@ -26,38 +26,22 @@ import japgolly.scalajs.react.vdom.html_<^._
 import swaydb.io.{Main, Page}
 import swaydb.io.common._
 
-object ExtensionDoc {
+object ExtendingDatabasesDoc {
 
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.Extension.name)
-      ),
-
-      <.p(^.className := "heading")(
-        "Databases can be extended to create custom APIs with ",
-        //        LinkOut("https://github.com/simerplaha/SwayDB/tree/master/embedded/src/main/scala/swaydb/extension", "in-built"),
-        "in-built",
-        " or custom ",
-        <.u(<.strong("extension")),
-        " implementations."
+        <.h2(Page.ExtendingDatabases.name)
       ),
 
       <.p(
-        <.strong("Example use-case: "),
-        "Extending a database to support multiple data structures such as ",
-        Snippet("Map[K, V]"),
-        ", ",
-        Snippet("Set[T]"),
-        ", ",
-        Snippet("Queue[T]"),
-        ", ",
-        Snippet("List[T]"),
-        " & ",
-        Snippet("Stack[T]"),
+        "Database instances can be extended to enable advanced APIs ",
+        " using ",
+        <.u(<.strong("extensions")),
         "."
       ),
 
+      <.h3("Why use extensions?"),
       <.p(
         "A default SwayDB instance allows creation of only a single ",
         Snippet("Map[K, V]"),
@@ -74,21 +58,7 @@ object ExtensionDoc {
         " operations."
       ),
 
-      <.p(
-        "This extension requires the key to be of type ",
-        Snippet("swaydb.extension.Key[T]"),
-        " and value should be of type ",
-        Snippet("Option[V]")
-      ),
-
-      <.p(
-        <.b(
-          "See ",
-          LinkIn(Page.ExtensionAPI, "Extension API"),
-          " to see the full list of APIs available from this extension."
-        )
-      ),
-
+      <.h3("Example"),
       <.div(
         <.p(
           "In the following example an extended memory database is created and two nested sub maps are added to the rootMap.",
@@ -107,7 +77,6 @@ object ExtensionDoc {
             |
             |  import swaydb._
             |  import swaydb.serializers.Default._
-            |
             |  //including the above import all include the extension api.
             |  import swaydb.extension._
             |
@@ -120,18 +89,56 @@ object ExtensionDoc {
             |  //            |____ subMap2
             |  //
             |  //now we can create nested maps.
-            |  val subMap1 = rootMap.putMap(key = "sub map 1", value = "another map").get
-            |  val subMap2 = subMap1.putMap(key = "sub map 2", value = "another nested map").get
-            |}
-          """.stripMargin
+            |  val subMap1 =
+            |    rootMap
+            |      .maps
+            |      .put(key = "sub map 1", value = "another map").get
+            |
+            |  val subMap2 =
+            |    subMap1
+            |      .maps
+            |      .put(key = "sub map 2", value = "another nested map").get
+            |}""".stripMargin
         )
       ),
-      Info(
-        <.span(
-          "To see how to build custom extensions see the ",
-          LinkOut("https://github.com/simerplaha/SwayDB/tree/master/embedded/src/main/scala/swaydb/extension", "default implementation"),
-          " for reference.",
-        )
+
+      <.h3("Required type"),
+      <.p(
+        "Key should be of type ",
+        Snippet("swaydb.extension.Key[K]"),
+        " and value should be of type ",
+        Snippet("Option[V]"),
+        " where ",
+        Snippet("K"),
+        " & ",
+        Snippet("V"),
+        " can be of any type."
+      ),
+
+      <.h3("APIs"),
+      <.p(
+        "See ",
+        LinkIn(Page.ExtensionAPI, "Extension API"),
+        " to see the full list of APIs available from this extension."
+      ),
+
+      <.p(
+        "This implementation can also be replicated to support other data structures such as ",
+        Snippet("Queue[T]"),
+        ", ",
+        Snippet("List[T]"),
+        ", ",
+        Snippet("Stack[T]"),
+        ", ",
+        "inverted indexes",
+        " etc."
+      ),
+
+      <.h3("Building custom extensions"),
+      <.p(
+        "To see how to build custom extensions see the module ",
+        LinkOut("https://github.com/simerplaha/SwayDB/tree/master/extension/src/main/scala/swaydb/extension", "extension"),
+        " for reference.",
       )
     )
 }

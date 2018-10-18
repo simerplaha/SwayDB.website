@@ -30,7 +30,7 @@ object ExtensionAPIDoc {
   def apply(showInitialiseDB: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.Extension.name)
+        <.h2(Page.ExtendingDatabases.name)
       ),
       <.div(
         ^.className := "alert alert-info",
@@ -43,12 +43,12 @@ object ExtensionAPIDoc {
           " & ",
           LinkIn(Page.IterationAPI, Page.IterationAPI.name.toLowerCase),
           " APIs are support for each nested Map.",
-          " This documentation extension specific APIs only."
+          " This documentation is for extension specific APIs only."
         )
       ),
       <.p(
-        "Click ",
-        LinkIn(Page.Extension),
+        "See ",
+        LinkIn(Page.ExtendingDatabases),
         " to read on how to enable extensions on a database."
       ),
       SubPages(Page.ExtensionAPI)

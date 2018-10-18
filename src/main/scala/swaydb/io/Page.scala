@@ -47,6 +47,7 @@ object RootPages {
       Setup,
       QuickStart,
       CreateDatabases,
+      ExtendingDatabases,
       API,
       CustomSerializers,
       CustomKeyOrdering,
@@ -192,8 +193,7 @@ object Page {
         Persistent,
         Memory,
         MemoryPersistent,
-        Custom,
-        Extension
+        Custom
       )
     override val url: String = "create-databases/"
 
@@ -232,12 +232,12 @@ object Page {
     override def render(): VdomElement = CustomDatabaseDoc()
   }
 
-  object Extension extends Page {
-    override val name: String = "Extension"
+  object ExtendingDatabases extends Page {
+    override val name: String = "Extending databases"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "create-databases/extension/"
+    override val url: String = "extending-databases/"
 
-    override def render(): VdomElement = ExtensionDoc()
+    override def render(): VdomElement = ExtendingDatabasesDoc()
   }
 
   object API extends Page {
@@ -621,13 +621,12 @@ object Page {
       Seq(
         PutMap,
         RemoveMap,
-        UpdateMapValue,
         UpdateValue,
-        RemoveAllKeyValues
+        Clear
       )
     override val url: String = "api/extension/write/"
 
-    override def render(): VdomElement = ExtensionAPIDoc()
+    override def render(): VdomElement = ExtensionWriteAPIDoc()
   }
 
   object ExtensionReadAPI extends Page {
@@ -637,91 +636,36 @@ object Page {
         GetMap,
         ContainsMap,
         Exists,
-        GetValue,
-        GetMapValue
+        GetValue
       )
     override val url: String = "api/extension/read/"
 
-    override def render(): VdomElement = ExtensionAPIDoc()
+    override def render(): VdomElement = ExtensionReadAPIDoc()
   }
 
   object ExtensionIterationAPI extends Page {
     override val name: String = "Iteration"
     override val subPages: Seq[Page] =
-      Seq(
-        FromMap,
-        BeforeMap,
-        FromOrBeforeMap,
-        AfterMap,
-        FromOrAfterMap
-      )
+      Seq()
     override val url: String = "api/extension/iteration/"
 
-    override def render(): VdomElement = ExtensionAPIDoc()
-  }
-
-  object FromMap extends Page {
-    override val name: String = "fromMap"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/extension/iteration/fromMap/"
-
-    override def render(): VdomElement = FromMapDoc()
-  }
-
-  object BeforeMap extends Page {
-    override val name: String = "beforeMap"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/extension/iteration/beforeMap/"
-
-    override def render(): VdomElement = FromMapDoc()
-  }
-
-  object FromOrBeforeMap extends Page {
-    override val name: String = "fromOrBeforeMap"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/extension/iteration/fromOrBeforeMap/"
-
-    override def render(): VdomElement = FromOrBeforeMapDoc()
-  }
-
-  object AfterMap extends Page {
-    override val name: String = "afterMap"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/extension/iteration/afterMap/"
-
-    override def render(): VdomElement = AfterMapDoc()
-  }
-
-  object FromOrAfterMap extends Page {
-    override val name: String = "fromOrAfterMap"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/extension/iteration/fromOrAfterMap/"
-
-    override def render(): VdomElement = FromOrAfterMapDoc()
+    override def render(): VdomElement = ExtensionIterationAPIDoc()
   }
 
   object PutMap extends Page {
-    override val name: String = "putMap"
+    override val name: String = "put"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/extension/write/putMap/"
+    override val url: String = "api/extension/write/put/"
 
     override def render(): VdomElement = PutMapDoc()
   }
 
   object RemoveMap extends Page {
-    override val name: String = "removeMap"
+    override val name: String = "remove"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/extension/write/removeMap/"
+    override val url: String = "api/extension/write/remove/"
 
     override def render(): VdomElement = RemoveMapDoc()
-  }
-
-  object UpdateMapValue extends Page {
-    override val name: String = "updateMapValue"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/extension/write/updateMapValue/"
-
-    override def render(): VdomElement = UpdateMapValueDoc()
   }
 
   object UpdateValue extends Page {
@@ -732,26 +676,26 @@ object Page {
     override def render(): VdomElement = UpdateValueDoc()
   }
 
-  object RemoveAllKeyValues extends Page {
-    override val name: String = "removeAllKeyValues"
+  object Clear extends Page {
+    override val name: String = "clear"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/extension/write/removeAllKeyValues/"
+    override val url: String = "api/extension/write/clear/"
 
-    override def render(): VdomElement = RemoveAllKeyValuesDoc()
+    override def render(): VdomElement = ClearDoc()
   }
 
   object GetMap extends Page {
-    override val name: String = "getMap"
+    override val name: String = "get"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/extension/read/getMap/"
+    override val url: String = "api/extension/read/get/"
 
     override def render(): VdomElement = GetMapDoc()
   }
 
   object ContainsMap extends Page {
-    override val name: String = "containsMap"
+    override val name: String = "contains"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/extension/read/containsMap/"
+    override val url: String = "api/extension/read/contains/"
 
     override def render(): VdomElement = ContainsMapDoc()
   }
@@ -770,14 +714,6 @@ object Page {
     override val url: String = "api/extension/read/getValue/"
 
     override def render(): VdomElement = GetValueDoc()
-  }
-
-  object GetMapValue extends Page {
-    override val name: String = "getMapValue"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/extension/read/getMapValue/"
-
-    override def render(): VdomElement = GetMapValueDoc()
   }
 
   object CustomKeyOrdering extends Page {
