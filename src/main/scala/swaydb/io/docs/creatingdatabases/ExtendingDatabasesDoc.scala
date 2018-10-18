@@ -43,11 +43,10 @@ object ExtendingDatabasesDoc {
 
       <.h3("Why use extensions?"),
       <.p(
-        "A default SwayDB instance allows creation of only a single ",
-        Snippet("Map[K, V]"),
-        " or a ",
-        Snippet("Set[T]"),
-        ". This extension enables creation of multiple Maps & nested Maps and each Map can have it's own ",
+        "This extension enables creation of multiple Maps & nested Maps similar to ",
+        Snippet("Tables"),
+        " in SQL databases.",
+        " Each Map can have it's own ",
         LinkIn(Page.CustomKeyOrdering, Page.CustomKeyOrdering.name.toLowerCase),
         " and also it's own ",
         LinkIn(Page.ReadAPI, Page.ReadAPI.name.toLowerCase),

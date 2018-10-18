@@ -56,6 +56,38 @@ object PutMapDoc {
           |  .put(key = "sub map key", value = "sub map value")
         """.stripMargin
       ),
+      <.h3("Create 3 nested maps using for comprehension"),
+      ScalaCode(
+        """for {
+          |  map1 <- rootMap.maps.put(key = 1, value = "map 1") //add a child map1 to rootMap
+          |  map2 <- map1.maps.put(key = 2, value = "map 2") //add a child map2 to map1
+          |  map3 <- map2.maps.put(key = 3, value = "map 3") //add a child map3 to map2
+          |} yield {
+          |  (map1.maps ++ map2.maps ++ map3.maps) foreach println //combine all maps and print
+          |  (map1, map2, map3)
+          |}
+        """.stripMargin,
+      ),
+      <.h3("Create 3 nested maps using flatMap"),
+      ScalaCode(
+        """//root map
+          |rootMap
+          |  .maps //access the maps API
+          |  .put(key = 1, value = "map 1") //add a child map1 to rootMap
+          |  .flatMap {
+          |    map1 =>
+          |      map1
+          |        .maps
+          |        .put(key = 2, value = "map 2") //add a child map2 to map1
+          |        .flatMap {
+          |          map2 =>
+          |            map2
+          |              .maps
+          |              .put(key = 3, value = "map 3") //add a child map3 to map2
+          |      }
+          |
+        """.stripMargin,
+      ),
       note
     )
 
