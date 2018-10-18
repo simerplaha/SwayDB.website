@@ -23,16 +23,24 @@ package swaydb.io.docs.apis.extension
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
-import swaydb.io.common.SubPages
+import swaydb.io.common.ScalaCode
 
-object ExtensionReadAPIDoc {
+object GetOrPutDoc {
 
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.ExtensionReadAPI.name)
+        <.h2(Page.GetOrPut.name)
       ),
-      SubPages(Page.ExtensionReadAPI)
+      <.h3("Creating a sub-map if it's does not exists"),
+      ScalaCode(
+        """
+          |parentMap
+          |  .maps
+          |  .getOrPut("key 1", "value 1")
+        """.stripMargin
+      ),
+      PutMapDoc.note
     )
 
 }

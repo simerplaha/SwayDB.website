@@ -23,6 +23,7 @@ package swaydb.io.docs.apis.extension
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
+import swaydb.io.common.ScalaCode
 
 object ContainsMapDoc {
 
@@ -31,6 +32,13 @@ object ContainsMapDoc {
       <.div(^.className := "page-header",
         <.h2(Page.ContainsMap.name)
       ),
-      <.p("TODO")
+      <.h3("Check if a parent map contains a child map"),
+      ScalaCode(
+        """
+          |parentMap
+          |  .maps
+          |  .contains(key = "some child map")
+        """.stripMargin
+      )
     )
 }

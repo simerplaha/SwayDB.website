@@ -23,6 +23,7 @@ package swaydb.io.docs.apis.extension
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
+import swaydb.io.common.{LinkIn, ScalaCode}
 
 object UpdateValueDoc {
 
@@ -31,7 +32,21 @@ object UpdateValueDoc {
       <.div(^.className := "page-header",
         <.h2(Page.UpdateValue.name)
       ),
-      <.p("TODO")
+      <.h3("Updating a key-value's value"),
+      <.p(
+        "See ",
+        LinkIn(Page.Update),
+        ", ",
+        LinkIn(Page.UpdateRange),
+        " & ",
+        LinkIn(Page.BatchUpdate)
+      ),
+      <.h3("Updating a sub-map's value"),
+      ScalaCode(
+        """
+          |map.updateValue(value = "new map value")
+        """.stripMargin
+      )
     )
 
 }

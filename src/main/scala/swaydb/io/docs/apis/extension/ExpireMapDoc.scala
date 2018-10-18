@@ -23,16 +23,31 @@ package swaydb.io.docs.apis.extension
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
-import swaydb.io.common.SubPages
+import swaydb.io.common.LinkIn
 
-object ExtensionReadAPIDoc {
+object ExpireMapDoc {
 
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.ExtensionReadAPI.name)
+        <.h2(Page.ExpireMap.name)
       ),
-      SubPages(Page.ExtensionReadAPI)
+      <.h3("Expiring key-values"),
+      <.p(
+        "See ",
+        LinkIn(Page.Expire),
+        ", ",
+        LinkIn(Page.ExpireRange),
+        " & ",
+        LinkIn(Page.BatchExpire),
+        "."
+      ),
+      <.h3("Expiring a sub-map"),
+      <.p(
+        "To expire all key-values within a Map use ",
+        LinkIn(Page.ExpireRange),
+        "."
+      )
     )
 
 }

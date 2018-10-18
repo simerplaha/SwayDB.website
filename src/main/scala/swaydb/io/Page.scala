@@ -620,8 +620,10 @@ object Page {
     override val subPages: Seq[Page] =
       Seq(
         PutMap,
+        GetOrPut,
         RemoveMap,
         UpdateValue,
+        ExpireMap,
         Clear
       )
     override val url: String = "api/extension/write/"
@@ -660,12 +662,28 @@ object Page {
     override def render(): VdomElement = PutMapDoc()
   }
 
+  object GetOrPut extends Page {
+    override val name: String = "getOrPut"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/extension/write/getOrPut/"
+
+    override def render(): VdomElement = GetOrPutDoc()
+  }
+
   object RemoveMap extends Page {
     override val name: String = "remove"
     override val subPages: Seq[Page] = Seq()
     override val url: String = "api/extension/write/remove/"
 
     override def render(): VdomElement = RemoveMapDoc()
+  }
+
+  object ExpireMap extends Page {
+    override val name: String = "expire"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/extension/write/expire/"
+
+    override def render(): VdomElement = ExpireMapDoc()
   }
 
   object UpdateValue extends Page {

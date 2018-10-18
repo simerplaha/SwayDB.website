@@ -23,6 +23,7 @@ package swaydb.io.docs.apis.extension
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
+import swaydb.io.common.{LinkIn, ScalaCode}
 
 object RemoveMapDoc {
 
@@ -31,7 +32,25 @@ object RemoveMapDoc {
       <.div(^.className := "page-header",
         <.h2(Page.RemoveMap.name)
       ),
-      <.p("TODO")
+      <.h3("Removing key-values"),
+      <.p(
+        "See ",
+        LinkIn(Page.Remove),
+        ", ",
+        LinkIn(Page.RemoveRange),
+        " & ",
+        LinkIn(Page.BatchRemove),
+        "."
+      ),
+      <.h3("Removing a sub-map"),
+      <.p("Similar to a scala collection - removing a Map will also remove all sub-maps and their key-values."),
+      ScalaCode(
+        """
+          |map
+          |  .maps
+          |  .remove("sub map key")
+        """.stripMargin
+      )
     )
 
 }

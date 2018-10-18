@@ -23,6 +23,7 @@ package swaydb.io.docs.apis.extension
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
+import swaydb.io.common.ScalaCode
 
 object GetMapDoc {
 
@@ -31,7 +32,14 @@ object GetMapDoc {
       <.div(^.className := "page-header",
         <.h2(Page.GetMap.name)
       ),
-      <.p("TODO")
+      <.h3("Get a child Map"),
+      ScalaCode(
+        """
+          |parentMap
+          |  .maps
+          |  .get(key = "some child map")
+        """.stripMargin
+      )
     )
 
 }

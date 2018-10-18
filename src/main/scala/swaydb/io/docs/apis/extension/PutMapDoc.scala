@@ -23,6 +23,7 @@ package swaydb.io.docs.apis.extension
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
+import swaydb.io.common.{LinkIn, ScalaCode, Snippet}
 
 object PutMapDoc {
 
@@ -31,7 +32,38 @@ object PutMapDoc {
       <.div(^.className := "page-header",
         <.h2(Page.PutMap.name)
       ),
-      <.p("TODO")
+      <.h3("Creating key-values"),
+      ScalaCode(
+        """
+          |map.put(key = "key 1", value = "value 1")
+          |map.put(key = "key 2", value = "value 2", expireAfter = 10.seconds)
+        """.stripMargin
+      ),
+      <.p(
+        "See ",
+        LinkIn(Page.Put),
+        ", ",
+        LinkIn(Page.PutExpire),
+        " & ",
+        LinkIn(Page.BatchPut),
+        "."
+      ),
+      <.h3("Creating a sub-map"),
+      ScalaCode(
+        """
+          |map
+          |  .maps
+          |  .put(key = "sub map key", value = "sub map value")
+        """.stripMargin
+      ),
+      note
+    )
+
+  val note: VdomElement =
+    <.p(
+      <.strong("Note: "),
+      Snippet("put"),
+      " on an existing map will replace all it's key-values and child maps."
     )
 
 }

@@ -23,6 +23,7 @@ package swaydb.io.docs.apis.extension
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
+import swaydb.io.common.ScalaCode
 
 object ExistsDoc {
 
@@ -31,7 +32,12 @@ object ExistsDoc {
       <.div(^.className := "page-header",
         <.h2(Page.Exists.name)
       ),
-      <.p("TODO")
+      <.h3("Check if a map is not deleted."),
+      ScalaCode(
+        """
+          |map.exists()
+        """.stripMargin
+      ),
     )
 
 }

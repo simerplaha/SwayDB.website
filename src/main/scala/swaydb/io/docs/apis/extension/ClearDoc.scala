@@ -23,6 +23,7 @@ package swaydb.io.docs.apis.extension
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
+import swaydb.io.common.{LinkIn, ScalaCode, Snippet}
 
 object ClearDoc {
 
@@ -31,7 +32,32 @@ object ClearDoc {
       <.div(^.className := "page-header",
         <.h2(Page.Clear.name)
       ),
-      <.p("TODO")
+      <.h3("Clearing a Map's key-value"),
+      <.p(
+        "If the instance of a Map is known ",
+        Snippet(".clear"),
+        " can invoked on a Map to remove all key-values."
+      ),
+      ScalaCode(
+        """
+          |map.clear()
+        """.stripMargin
+      ),
+      <.p(
+        "If the instance of a Map is not known.",
+      ),
+      ScalaCode(
+        """
+          |parentMap
+          |  .maps
+          |  .clear(key = "some child map")
+        """.stripMargin
+      ),
+      <.p(
+        <.strong("Note: "),
+        Snippet(".clear"),
+        " does not affect any child maps of the Map. It only clears it's key-values."
+      )
     )
 
 }

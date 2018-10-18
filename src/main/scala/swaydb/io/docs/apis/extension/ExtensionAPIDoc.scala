@@ -22,15 +22,15 @@ package swaydb.io.docs.apis.extension
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.common.{LinkIn, SubPages}
-import swaydb.io.{Page, RouterController}
+import swaydb.io.Page
+import swaydb.io.common.{LinkIn, ScalaCode, Snippet, SubPages}
 
 object ExtensionAPIDoc {
 
   def apply(showInitialiseDB: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.ExtendingDatabases.name)
+        <.h2(Page.ExtensionAPI.name)
       ),
       <.div(
         ^.className := "alert alert-info",
@@ -51,6 +51,22 @@ object ExtensionAPIDoc {
         LinkIn(Page.ExtendingDatabases),
         " to read on how to enable extensions on a database."
       ),
+      <.h3("Map structure"),
+      <.p(
+        "Each Map is divided into two parts.",
+      ),
+      <.h4("1. ", <.u("Key-values")),
+      <.p(
+        "Key-values accessed directly from a Map's instance."
+      ),
+      <.h4("2. ", <.u("Maps/sub-maps")),
+      <.p(
+        "Sub maps for a Map can be accessed by invoking ",
+        Snippet(".maps"),
+        " on a Map."
+      ),
+
+      <.h3("API"),
       SubPages(Page.ExtensionAPI)
     )
   }

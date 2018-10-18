@@ -35,8 +35,8 @@ object ExtendingDatabasesDoc {
       ),
 
       <.p(
-        "Database instances can be extended to enable advanced APIs ",
-        " using ",
+        "Databases can be extended to enable advanced APIs ",
+        " with ",
         <.u(<.strong("extensions")),
         "."
       ),
@@ -58,10 +58,12 @@ object ExtendingDatabasesDoc {
         " operations."
       ),
 
-      <.h3("Example"),
+      <.h3("Extending a database"),
       <.div(
         <.p(
-          "In the following example an extended memory database is created and two nested sub maps are added to the rootMap.",
+          "In the following example a memory database is extended by invoking ",
+          Snippet(".extend"),
+          ". This returns a rootMap from where all the nested sub maps can be created.",
           <.a(
             ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/extended/ExtendedDBSpec.scala",
             ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - ExtendedDBSpec")),
@@ -102,6 +104,13 @@ object ExtendingDatabasesDoc {
         )
       ),
 
+      <.h3("APIs"),
+      <.p(
+        "See ",
+        LinkIn(Page.ExtensionAPI, "Extension API"),
+        " to see the full list of APIs available from this extension."
+      ),
+
       <.h3("Required type"),
       <.p(
         "Key should be of type ",
@@ -115,13 +124,12 @@ object ExtendingDatabasesDoc {
         " can be of any type."
       ),
 
-      <.h3("APIs"),
+      <.h3("Building custom extensions"),
       <.p(
-        "See ",
-        LinkIn(Page.ExtensionAPI, "Extension API"),
-        " to see the full list of APIs available from this extension."
+        "To see how to build custom extensions see the module ",
+        LinkOut("https://github.com/simerplaha/SwayDB/tree/master/extension/src/main/scala/swaydb/extension", "extension"),
+        " for reference.",
       ),
-
       <.p(
         "This implementation can also be replicated to support other data structures such as ",
         Snippet("Queue[T]"),
@@ -133,12 +141,5 @@ object ExtendingDatabasesDoc {
         "inverted indexes",
         " etc."
       ),
-
-      <.h3("Building custom extensions"),
-      <.p(
-        "To see how to build custom extensions see the module ",
-        LinkOut("https://github.com/simerplaha/SwayDB/tree/master/extension/src/main/scala/swaydb/extension", "extension"),
-        " for reference.",
-      )
     )
 }

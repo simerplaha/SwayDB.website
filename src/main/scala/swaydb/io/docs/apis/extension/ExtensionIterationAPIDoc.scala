@@ -23,6 +23,7 @@ package swaydb.io.docs.apis.extension
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
+import swaydb.io.common.{LinkIn, ScalaCode, SubPages}
 
 object ExtensionIterationAPIDoc {
 
@@ -31,7 +32,25 @@ object ExtensionIterationAPIDoc {
       <.div(^.className := "page-header",
         <.h2(Page.ExtensionIterationAPI.name)
       ),
-      <.p("TODO")
+      <.p(
+        "All default ",
+        LinkIn(Page.IterationAPI, "iteration APIs"),
+        " are supported.",
+      ),
+      <.h3("Example"),
+      <.p(
+        "To following example fetches all child map instances from a parent map.",
+        ScalaCode(
+          """
+            |parentMap
+            |  .maps //iterate maps
+            |  .keys //fetch keys only
+            |  .map {
+            |    mapKey =>
+            |      map.maps.get(mapKey) //get the instance of the Map.
+            |  }
+          """.stripMargin
+        )
+      )
     )
-
 }

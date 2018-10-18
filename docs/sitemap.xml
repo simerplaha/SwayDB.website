@@ -292,12 +292,22 @@
     </url>
     <url>
         <loc>
+            http://www.swaydb.io/api/extension/write/getOrPut/
+        </loc>
+    </url>
+    <url>
+        <loc>
             http://www.swaydb.io/api/extension/write/remove/
         </loc>
     </url>
     <url>
         <loc>
             http://www.swaydb.io/api/extension/write/updateValue/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/extension/write/expire/
         </loc>
     </url>
     <url>

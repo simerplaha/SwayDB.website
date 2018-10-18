@@ -23,6 +23,7 @@ package swaydb.io.docs.apis.extension
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.Page
+import swaydb.io.common.SubPages
 
 object ExtensionWriteAPIDoc {
 
@@ -31,7 +32,7 @@ object ExtensionWriteAPIDoc {
       <.div(^.className := "page-header",
         <.h2(Page.ExtensionWriteAPI.name)
       ),
-      <.p("TODO")
+      SubPages(Page.ExtensionWriteAPI)
     )
 
 }
