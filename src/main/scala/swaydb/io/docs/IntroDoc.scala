@@ -136,6 +136,14 @@ object IntroDoc {
         "Key-values are asynchronously deleted from the database on expiration claiming the disk/RAM space instantly."
       ),
 
+      <.h3(^.id := "extendable", "Extendable"),
+      <.p(
+        "Databases can be extended to build custom data structures. ",
+        "See ",
+        LinkIn(Page.ExtensionAPI, "extension's API"),
+        " that provides extended APIs on a database instance to create nested maps."
+      ),
+
       <.h3(^.id := "multi-disks", "Multiple disks"),
       <.p(
         RouterController.router.link(Page.Segment)("Segments"),
