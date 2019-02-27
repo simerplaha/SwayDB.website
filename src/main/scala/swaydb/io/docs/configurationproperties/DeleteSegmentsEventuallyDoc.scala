@@ -18,52 +18,44 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.apis.write
+package swaydb.io.docs.configurationproperties
 
-import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.{Main, Page}
-import swaydb.io.common.{Info, LinkIn, ScalaCode, Snippet}
+import swaydb.io.common.{LinkIn, Snippet}
+import swaydb.io.{Page, RouterController}
 
-object ApplyFunctionDoc {
+object DeleteSegmentsEventuallyDoc {
 
-  def apply(showNote: Boolean = true): VdomElement = {
+  def name = "deleteSegmentsEventually: Boolean"
+
+  def link =
+    RouterController.router.link(Page.DeleteSegmentsEventually)(name)
+
+  def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.ApplyFunction.name)
+        <.h2(name)
       ),
       <.p(
-        LinkIn(Page.RegisterFunction, "Registered functions"),
-        " can be applied to keys or range of keys. "
-      ),
-      <.p(
-        <.strong("Note:"),
-        " Functions are applied atomically.",
-        <.a(
-          ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/function/LikesSpec.scala",
-          ^.role := "button",
-          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - LikesSpec")),
-          ^.className := "btn btn-xs btn-info pull-right",
-          ^.target := "blank",
-          "View example test"
-        ),
+        "If true and after successful compaction ",
+        LinkIn(Page.Segment, Page.Segment.name + "s"),
+        " are deleted eventually when the ",
+        LinkIn(Page.MaxSegmentsOpen),
+        " limit is reached. If false, Segments are deleted immediately."
       ),
 
-      ScalaCode(
-        """
-          |//apply function to a key
-          |likesMap.applyFunction(key = "user1", functionID = "increment likes count")
-          |
-          |//apply function to a range of users
-          |likesMap.applyFunction(from = "user1", to = "user100", functionID = "increment likes count")
-          |
-          |""".stripMargin
-      ),
-
+      <.h3("Why?"),
       <.p(
-        PutDoc.atomicWrite(Snippet(Page.ApplyFunction.name))
+        "Immediately deleting a ",
+        LinkIn(Page.Segment, Page.Segment.name),
+        " while a read is in progress ",
+        " can cause reads to fail and which would result in the read being retried. "
+      ),
+      <.p(
+        "Setting this config to ",
+        Snippet("true"),
+        " reduces the number of read retires since the Segments are not immediately deleted."
       )
     )
-  }
 }

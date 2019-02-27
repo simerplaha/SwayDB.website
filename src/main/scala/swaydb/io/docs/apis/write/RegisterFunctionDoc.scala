@@ -20,9 +20,10 @@
 
 package swaydb.io.docs.apis.write
 
+import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.Page
+import swaydb.io.{Main, Page}
 import swaydb.io.common.{LinkIn, LinkOut, ScalaCode, Snippet}
 
 object RegisterFunctionDoc {
@@ -58,6 +59,14 @@ object RegisterFunctionDoc {
       ),
 
       <.h3("Example functions"),
+      <.a(
+        ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/function/LikesSpec.scala",
+        ^.role := "button",
+        ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - LikesSpec")),
+        ^.className := "btn btn-xs btn-info pull-right",
+        ^.target := "blank",
+        "View example test"
+      ),
       <.p(
         "Increment the key's total likes count by 1."
       ),

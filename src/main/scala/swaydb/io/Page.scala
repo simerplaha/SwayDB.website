@@ -917,6 +917,7 @@ object Page {
         MMAP,
         RecoveryMode,
         CompressDuplicateValues,
+        DeleteSegmentsEventually,
         GroupingStrategy,
         Acceleration,
         SegmentSize,
@@ -1037,6 +1038,14 @@ object Page {
     override val url: String = "configuring-levels/compressDuplicateValues/"
 
     override def render(): VdomElement = CompressDuplicateValuesDoc()
+  }
+
+  object DeleteSegmentsEventually extends Page {
+    override val name: String = "deleteSegmentsEventually"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "configuring-levels/deleteSegmentsEventually/"
+
+    override def render(): VdomElement = DeleteSegmentsEventuallyDoc()
   }
 
   object GroupingStrategy extends Page {

@@ -75,8 +75,8 @@ object ConfiguringLevelsDoc {
             |      segmentSize = 4.mb,
             |      pushForward = false,
             |      bloomFilterFalsePositiveRate = 0.1,
-            |      minTimeLeftToUpdateExpiration = 10.seconds,
             |      compressDuplicateValues = true,
+            |      deleteSegmentsEventually = true,
             |      groupingStrategy = None, //read more about this in the groupingStrategy doc
             |      throttle =
             |        (levelMeter: LevelMeter) =>
@@ -94,8 +94,8 @@ object ConfiguringLevelsDoc {
             |      appendixFlushCheckpointSize = 4.mb,
             |      pushForward = false,
             |      bloomFilterFalsePositiveRate = 0.1,
-            |      minTimeLeftToUpdateExpiration = 10.seconds,
             |      compressDuplicateValues = true,
+            |      deleteSegmentsEventually = true,
             |      groupingStrategy = None, //read more about this in the groupingStrategy doc
             |      throttle =
             |        (levelMeter: LevelMeter) =>
@@ -106,7 +106,7 @@ object ConfiguringLevelsDoc {
             |    )
             |    .addTrashLevel //level3
             |
-            |import swaydb.order.KeyOrder.default //import default sorting
+            |implicit val ordering = KeyOrder.default //import default sorting
             |implicit val ec = SwayDB.defaultExecutionContext //import default ExecutionContext
             |
             |val db = //initialise the database with the above configuration

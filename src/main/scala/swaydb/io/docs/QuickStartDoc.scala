@@ -24,6 +24,7 @@ import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^._
 import swaydb.io.Main
+import swaydb.io.common.ScalaCode
 
 object QuickStartDoc {
 
@@ -33,7 +34,8 @@ object QuickStartDoc {
         <.h2(^.id := "quick-start", "Quick start")
       ),
       SetupDoc.body,
-      <.p("Quick start demo app.",
+      <.p(
+        "Quick start demo app.",
         <.a(
           ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/quickstart/QuickStartPersistentSpec.scala",
           ^.role := "button",
@@ -43,44 +45,41 @@ object QuickStartDoc {
           "View test"
         )
       ),
-      <.pre(
-        <.code(^.className := "scala")(
-          """
-            |object QuickStart extends App {
-            |
-            |  import swaydb._
-            |  import swaydb.serializers.Default._ //import default serializers
-            |
-            |  val db = memory.Map[Int, String]().get //Create an memory Map database.
-            |
-            |  db.put(1, "one").get
-            |  db.get(1).get
-            |  db.remove(1).get
-            |
-            |  //transactions
-            |  db.commit(
-            |    Prepare.Put(key = 1, value = "one value"),
-            |    Prepare.Update(from = 1, to = 100, value = "range update"),
-            |    Prepare.Remove(key = 1),
-            |    Prepare.Function(from = 1, to = 100, functionID = "some function")
-            |  ).get
-            |
-            |  //write 100 key-values
-            |  (1 to 100) foreach { i => db.put(key = i, value = i.toString).get }
-            |  //Iteration: fetch all key-values withing range 10 to 90, update values and batch write updated key-values
-            |  db
-            |    .from(10)
-            |    .tillKey(_ <= 90)
-            |    .map {
-            |      case (key, value) =>
-            |        (key, value + "_updated")
-            |    } andThen {
-            |       updatedKeyValues =>
-            |         db.put(updatedKeyValues).get
-            |  }
-            |}
-          """.stripMargin
-        )
+      ScalaCode(
+        """
+          |object QuickStart extends App {
+          |
+          |  import swaydb._
+          |  import swaydb.serializers.Default._ //import default serializers
+          |
+          |  val db = memory.Map[Int, String]().get //Create a memory database
+          |
+          |  db.put(1, "one").get
+          |  db.get(1).get
+          |  db.remove(1).get
+          |
+          |  //write 100 key-values atomically
+          |  (1 to 100) map {
+          |    key =>
+          |      (key, key.toString)
+          |  } andThen {
+          |    keyValues =>
+          |      db.put(keyValues)
+          |  }
+          |
+          |  //Iteration: fetch all key-values withing range 10 to 90, update values and atomically write updated key-values
+          |  db
+          |    .from(10)
+          |    .tillKey(_ <= 90)
+          |    .map {
+          |      case (key, value) =>
+          |        (key, value + "_updated")
+          |    } andThen {
+          |      updatedKeyValues =>
+          |        db.put(updatedKeyValues)
+          |  }
+          |}
+        """.stripMargin
       ),
 
       <.div(

@@ -56,8 +56,8 @@ object TransactionDoc {
             |  Prepare.Expire(from = 2, to = 100, after = 1.day),
             |  Prepare.Update(key = 1, value = "value updated"),
             |  Prepare.Update(from = 2, to = 100, value = "range update"),
-            |  Prepare.Function(key = 1, functionID = "increment likes"),
-            |  Prepare.Function(from = 2, to = 100, functionID = "increment likes")
+            |  Prepare.ApplyFunction(key = 1, functionID = "increment likes"),
+            |  Prepare.ApplyFunction(from = 2, to = 100, functionID = "increment likes")
             |)
           """.stripMargin
         )
