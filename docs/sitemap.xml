@@ -132,7 +132,7 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write/batchExpire/
+            http://www.swaydb.io/api/write/expire/
         </loc>
     </url>
     <url>
@@ -147,7 +147,7 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write/batchUpdate/
+            http://www.swaydb.io/api/write/update/
         </loc>
     </url>
     <url>

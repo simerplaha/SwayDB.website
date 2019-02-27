@@ -38,7 +38,7 @@ object IntroDoc {
       ),
       <.p(^.className := "heading")(
         <.img(^.className := "dark-logo", ^.src := "/img/logo-dark.png"),
-        "SwayDB is a type-safe & non-blocking key-value storage library for ",
+        "SwayDB is a key-value storage library for ",
         <.strong("single/multiple disks"),
         <.span(" and "),
         <.strong("in-memory "),
@@ -49,25 +49,14 @@ object IntroDoc {
           ^.href := "https://en.wikipedia.org/wiki/Log-structured_merge-tree",
           ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - Log-structured merge-tree")),
           ^.target := "blank")("Log-structured merge-tree"),
-        " written in Scala with asynchronous Leveled Compaction based on push-pull strategy built on the ",
+        " with asynchronous Leveled Compaction based on push-pull strategy built on the ",
         <.a(^.href := "https://en.wikipedia.org/wiki/Actor_model",
           ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - Actor model")),
           ^.target := "blank")("Actor model"),
         "."
       ),
-      <.p(^.className := "heading")(
-        "It supports configurable graph like file format via ",
-        LinkIn(Page.Group, "Grouping"),
-        " for faster reads and has ",
-        <.u("compression support for both"),
-        " ",
-        LinkIn(Page.Memory),
-        " & ",
-        LinkIn(Page.Persistent),
-        " databases."
-      ),
 
-      <.h3(^.id := "type-safe", "Type-safe"),
+      <.h3(^.id := "types", "Types"),
       <.p(
         RouterController.router.link(Page.API)("APIs"),
         " are typed and are based on Scala's ",
@@ -104,14 +93,22 @@ object IntroDoc {
 
       <.h3(^.id := "non-blocking", "Non-blocking"),
       <.p(
-        "Threads are never blocked. ",
-        "Reads and writes occur independent to each other."
+        "Reads and writes occur independent to each other and do not block each other. "
+      ),
+      <.p(
+        "Reads can be performed in a blocking manner using ",
+        Snippet("IO.Async[T].safeGetBlocking"),
+        " API or non-blocking ",
+        Snippet("IO.Async[T].safeGetFuture"),
+        " API (work in progress - ",
+        LinkOut("https://github.com/simerplaha/SwayDB/issues/50", "See"),
+        ")."
       ),
 
       <.h3("Atomic writes"),
       <.p(
-        "ACID like transactions can be implemented using ",
-        RouterController.router.link(Page.Batch)("batch"),
+        "Atomic writes using ",
+        RouterController.router.link(Page.Transaction)("transaction"),
         " API."
       ),
 
@@ -188,13 +185,12 @@ object IntroDoc {
         " can be configured to asynchronously drop uncompressed/un-grouped in-memory key-values on cache overflow."
       ),
 
-      <.h3("High compression configuration with LZ4 & Snappy"),
+      <.h3("Configurable compression with LZ4 & Snappy"),
       <.p(
-        "SwayDB has full support for ",
         LinkOut("https://github.com/lz4/lz4-java", "LZ4"),
         " and ",
         LinkOut("https://github.com/xerial/snappy-java", "Snappy"),
-        " which can be used for both persistent and memory databases."
+        " fully supported and can be used to compress data in both persistent and memory databases."
       ),
       <.p(
         "All LZ4 instances, compressors and decompressors are ",

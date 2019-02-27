@@ -32,7 +32,7 @@ object PutDoc {
       <.i(
         api,
         " can also be combined with other write operations and written atomically using ",
-        RouterController.router.link(Page.Batch)(<.span(^.className := "snippet", "batch")),
+        RouterController.router.link(Page.Transaction)(<.span(^.className := "snippet", "transaction")),
         "."
       )
     )
@@ -43,24 +43,30 @@ object PutDoc {
         <.h2(Page.Put.name)
       ),
       <.h3("Key-value"),
-      <.p("Insert a single key-value."),
       <.pre(
         <.code(^.className := "scala")(
           """
+            |//single key-value put
             |db.put(key = 1, value = "one")
+            |//or multiple
+            |db.put(keyValues = (1, "one"), (2, "two"))
+            |//or
+            |db.put(keyValues = Seq((1, "one"), (2, "two")))
             |
             |""".stripMargin
         )
       ),
 
       <.h3("Set"),
-      <.p(
-        "Insert a single item."
-      ),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |setDB.put(elem = "some data")
+            |//single add
+            |setDB.add(elem = "some data")
+            |//or multiple adds
+            |setDB.add(elems = "some data 1", "some data 2")
+            |//or
+            |setDB.add(elems = Seq("some data 1", "some data 2"))
             |
             |""".stripMargin
         )

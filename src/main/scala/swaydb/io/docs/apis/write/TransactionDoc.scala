@@ -24,7 +24,7 @@ import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.{Page, RouterController}
 
-object BatchDoc {
+object TransactionDoc {
 
   def guarantee =
     <.p(^.className := "heading",
@@ -34,7 +34,7 @@ object BatchDoc {
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("batch")
+        <.h2("transaction")
       ),
       guarantee,
 
@@ -42,13 +42,13 @@ object BatchDoc {
         "The following code snippet shows how all ",
         RouterController.router.link(Page.WriteAPI)(<.span(^.className := "snippet", Page.WriteAPI.name)),
         "s can be combined to perform CRUD on single or multiple key-values and written as a single atomic entry with ",
-        <.span(^.className := "snippet", Page.Batch.name),
+        <.span(^.className := "snippet", Page.Transaction.name),
         "."
       ),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.batch(
+            |db.commit(
             |      Batch.Put(key = 1, value = "one value"),
             |      Batch.Put(key = 1, value = "one value", expireAfter = 10.seconds),
             |      Batch.Remove(key = 1),

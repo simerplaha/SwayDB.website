@@ -269,17 +269,13 @@ object Page {
       Seq(
         Put,
         PutExpire,
-        BatchPut,
         Remove,
         RemoveRange,
-        BatchRemove,
         Expire,
         ExpireRange,
-        BatchExpire,
         Update,
         UpdateRange,
-        BatchUpdate,
-        Batch
+        Transaction
       )
     override val url: String = "api/write/"
 
@@ -302,14 +298,6 @@ object Page {
     override def render(): VdomElement = PutExpireDoc()
   }
 
-  object BatchPut extends Page {
-    override val name: String = "batchPut"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write/batchPut/"
-
-    override def render(): VdomElement = BatchPutDoc()
-  }
-
   object Remove extends Page {
     override val name: String = "remove"
     override val subPages: Seq[Page] = Seq()
@@ -324,14 +312,6 @@ object Page {
     override val url: String = "api/write/remove-range/"
 
     override def render(): VdomElement = RemoveRangeDoc()
-  }
-
-  object BatchRemove extends Page {
-    override val name: String = "batchRemove"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write/batchRemove/"
-
-    override def render(): VdomElement = BatchRemoveDoc()
   }
 
   object Expire extends Page {
@@ -350,14 +330,6 @@ object Page {
     override def render(): VdomElement = ExpireRangeDoc()
   }
 
-  object BatchExpire extends Page {
-    override val name: String = "batchExpire"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write/batchExpire/"
-
-    override def render(): VdomElement = BatchExpireDoc()
-  }
-
   object Update extends Page {
     override val name: String = "update"
     override val subPages: Seq[Page] = Seq()
@@ -374,20 +346,12 @@ object Page {
     override def render(): VdomElement = UpdateRangeDoc()
   }
 
-  object BatchUpdate extends Page {
-    override val name: String = "batchUpdate"
+  object Transaction extends Page {
+    override val name: String = "transaction"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write/batchUpdate/"
+    override val url: String = "api/write/transaction/"
 
-    override def render(): VdomElement = BatchUpdateDoc()
-  }
-
-  object Batch extends Page {
-    override val name: String = "batch"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write/batch/"
-
-    override def render(): VdomElement = BatchDoc()
+    override def render(): VdomElement = TransactionDoc()
   }
 
   object ReadAPI extends Page {

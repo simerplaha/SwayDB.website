@@ -43,6 +43,19 @@ object RemoveDoc {
       ),
 
       <.p(
+        "Remove multiple key-values atomically."
+      ),
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |db.batchRemove(keys = 1, 2)
+            |//or
+            |db.batchRemove(keys = Seq(1, 2))
+          """.stripMargin
+        )
+      ),
+
+      <.p(
         PutDoc.atomicWrite(<.span(^.className := "snippet", Page.Remove.name))
       )
     )

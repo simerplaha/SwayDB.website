@@ -32,7 +32,7 @@ object ExpireDoc {
       <.div(^.className := "page-header",
         <.h2(Page.Expire.name)
       ),
-      <.h3("Key-value"),
+      <.h3("Map"),
       <.p("Expire a single key-value."),
       <.pre(
         <.code(^.className := "scala")(
@@ -44,6 +44,19 @@ object ExpireDoc {
             |db.expire(key = 1, at = Deadline(5.minutes))
             |
             |""".stripMargin
+        )
+      ),
+
+      <.p(
+        "Expire multiple key-values atomically."
+      ),
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |db.expire(keys = (1, 1.second.fromNow), (2, 2.second.fromNow))
+            |//or
+            |db.expire(keys = Seq((1, 1.second.fromNow), (2, 2.second.fromNow)))
+          """.stripMargin
         )
       ),
 
@@ -59,6 +72,19 @@ object ExpireDoc {
             |setDB.expire(elem = "some data", at = Deadline(5.minutes))
             |
             |""".stripMargin
+        )
+      ),
+
+      <.p(
+        "Expire multiple items atomically."
+      ),
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |setDB.expire(elems = ("data one", 1.second.fromNow), ("data 2", 2.seconds.fromNow))
+            |//or
+            |setDB.expire(elems = Seq(("data one", 1.second.fromNow), ("data 2", 2.seconds.fromNow)))
+          """.stripMargin
         )
       ),
 
