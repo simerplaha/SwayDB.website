@@ -45,24 +45,26 @@ object QuickStartDoc {
       ),
       <.pre(
         <.code(^.className := "scala")(
-          """import java.nio.file.Paths
-            |
+          """
             |object QuickStart extends App {
-            |  //initialise a root database directory in the target folder
-            |  val rootDBDir = Paths.get(getClass.getResource("").getPath).getParent.getParent.resolve("quickStartDB")
             |
-            |  import swaydb._ //import database API
+            |  import swaydb._
             |  import swaydb.serializers.Default._ //import default serializers
             |
-            |  //Create a persistent database. If the directories do not exist, they will be created.
-            |  val db = SwayDB.persistent[Int, String](dir = rootDBDir.resolve("disk1"), otherDirs = Seq(rootDBDir.resolve("disk2"))).get
+            |  val db = memory.Map[Int, String]().get //Create a memory database
             |
-            |  db.put(1, "one")
-            |  db.get(1) //returns "one"
-            |  db.remove(1)
+            |  db.put(1, "one").get
+            |  db.get(1).get
+            |  db.remove(1).get
+            |  db.commit(
+            |    Prepare.Put(key = 1, value = "one value"),
+            |    Prepare.Update(from = 1, to = 100, value = "range update"),
+            |    Prepare.Remove(key = 1),
+            |    Prepare.Remove(from = 1, to = 100)
+            |  ).get
             |
-            |  (1 to 100) foreach { i => db.put(key = i, value = i.toString) } //write 100 key-values
-            |
+            |  //write 100 key-values
+            |  (1 to 100) foreach { i => db.put(key = i, value = i.toString).get }
             |  //Iteration: fetch all key-values withing range 10 to 90, update values and batch write updated key-values
             |  db
             |    .from(10)
@@ -71,8 +73,8 @@ object QuickStartDoc {
             |      case (key, value) =>
             |        (key, value + "_updated")
             |    } andThen {
-            |       updatedKeyValues =>
-            |         db.batchPut(updatedKeyValues)
+            |    updatedKeyValues =>
+            |      db.put(updatedKeyValues).get
             |  }
             |}
           """.stripMargin

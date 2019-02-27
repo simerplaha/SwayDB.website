@@ -54,12 +54,12 @@ object IncreasingExpirationTimeDoc {
         " 6 with expiration set to ",
         <.u("1.second"),
         " and an update is submitted to ",
-        RouterController.router.link(Page.Level0)(Page.Level0.name),
+        RouterController.router.link(Page.LevelZero)(Page.LevelZero.name),
         " to increase the expiration to ",
         <.u("1.minute"),
         ". Depending on the compaction speed (",
         RouterController.router.link(Page.Throttle)(Page.Throttle.name),
-        ") the key in Level 6 could possibly get merged into Level 7 before the updated expiration in Level0",
+        ") the key in Level 6 could possibly get merged into Level 7 before the updated expiration in LevelZero",
         " reaches Level 6 during compaction hence expiring the target key."
       )
     )

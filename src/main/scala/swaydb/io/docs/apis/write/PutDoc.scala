@@ -42,13 +42,16 @@ object PutDoc {
       <.div(^.className := "page-header",
         <.h2(Page.Put.name)
       ),
-      <.h3("Key-value"),
+      <.h3("Map"),
+      <.p(
+        "Insert key-values atomically."
+      ),
       <.pre(
         <.code(^.className := "scala")(
           """
             |//single key-value put
             |db.put(key = 1, value = "one")
-            |//or multiple
+            |//multiple
             |db.put(keyValues = (1, "one"), (2, "two"))
             |//or
             |db.put(keyValues = Seq((1, "one"), (2, "two")))
@@ -63,7 +66,7 @@ object PutDoc {
           """
             |//single add
             |setDB.add(elem = "some data")
-            |//or multiple adds
+            |//multiple adds
             |setDB.add(elems = "some data 1", "some data 2")
             |//or
             |setDB.add(elems = Seq("some data 1", "some data 2"))

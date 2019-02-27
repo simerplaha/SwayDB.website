@@ -40,7 +40,7 @@ object MaxSegmentsOpenDoc {
       <.p(
         "It should be set based on the number of opened files allowed by the operating system. ",
         " This limit does not include ",
-        RouterController.router.link(Page.Level0)("Level0's"),
+        RouterController.router.link(Page.LevelZero)("LevelZero's"),
         " opened ",
         RouterController.router.link(Page.Map)("Map"),
         " files when should be accounted for in the ",
@@ -52,7 +52,7 @@ object MaxSegmentsOpenDoc {
         "the acceleration allows for a maximum of 10 ",
         RouterController.router.link(Page.Map)("Maps"),
         " be opened in ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         " then ",
         <.span(^.className:="snippet", "maxSegmentsOpen"),
         " should be set to 990 (1000 - 10) or 800 to also account for the ",

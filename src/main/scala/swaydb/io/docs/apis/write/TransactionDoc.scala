@@ -28,7 +28,7 @@ object TransactionDoc {
 
   def guarantee =
     <.p(^.className := "heading",
-      "Batch operations guarantee that all key-values are written atomically (All or none)."
+      "Prepare operations guarantee that all key-values are written atomically (All or none)."
     )
 
   def apply(showNote: Boolean = true): VdomElement = {
@@ -49,15 +49,15 @@ object TransactionDoc {
         <.code(^.className := "scala")(
           """
             |db.commit(
-            |      Batch.Put(key = 1, value = "one value"),
-            |      Batch.Put(key = 1, value = "one value", expireAfter = 10.seconds),
-            |      Batch.Remove(key = 1),
-            |      Batch.Remove(from = 1, to = 100),
-            |      Batch.Expire(key = 1, after = 10.seconds),
-            |      Batch.Expire(from = 1, to = 100, after = 1.day),
-            |      Batch.Update(key = 1, value = "value updated"),
-            |      Batch.Update(from = 1, to = 100, value = "range update")
-            |    )
+            |  Prepare.Put(key = 1, value = "one value"),
+            |  Prepare.Put(key = 1, value = "one value", expireAfter = 10.seconds),
+            |  Prepare.Remove(key = 1),
+            |  Prepare.Remove(from = 1, to = 100),
+            |  Prepare.Expire(key = 1, after = 10.seconds),
+            |  Prepare.Expire(from = 1, to = 100, after = 1.day),
+            |  Prepare.Update(key = 1, value = "value updated"),
+            |  Prepare.Update(from = 1, to = 100, value = "range update")
+            |)
           """.stripMargin
         )
       )

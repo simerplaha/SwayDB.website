@@ -40,7 +40,7 @@ object DirDoc {
 
       <.p(
         "In ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         " this directory stores all ",
         RouterController.router.link(Page.Map)("Map "),
         " files."

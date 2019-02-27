@@ -20,54 +20,45 @@
 
 package swaydb.io.docs.creatingdatabases
 
+import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.common.LinkIn
-import swaydb.io.{Page, RouterController}
+import swaydb.io.common.{LinkIn, Snippet}
+import swaydb.io.{Main, Page, RouterController}
 
-object CreatingDatabaseDoc {
+object EventuallyPersistentDatabaseDoc {
 
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2("Create databases")
-      ),
-      <.h3("Storage types"),
-      <.p(
-        "1. ",
-        RouterController.router.link(Page.Persistent)(Page.Persistent.name),
-        <.span(" - stores data to disk.")
+        <.h2("Create eventually persistent databases")
       ),
 
       <.p(
-        "2. ",
-        RouterController.router.link(Page.Memory)(Page.Memory.name),
-        <.span(" - stores data in-memory.")
+        "Configuration used: ",
+        <.a(
+          ^.href := "https://github.com/simerplaha/SwayDB/blob/master/configs/src/main/scala/swaydb/configs/level/DefaultEventuallyPersistentConfig.scala",
+          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - DefaultEventuallyPersistentConfig.scala")),
+          ^.target := "blank",
+          "Eventually persistent"
+        )
       ),
 
-      <.p(
-        "3. ",
-        RouterController.router.link(Page.EventuallyPersistent)(Page.EventuallyPersistent.name),
-        <.span(" - stores data in-memory that is periodically persisted based on it's "),
-        LinkIn(Page.ConfiguringLevels),
-        "."
-      ),
+      <.p("A 3 leveled database that writes 10 Segments to disk when memory level size reaches 100.mb."),
 
-      <.p(
-        "4. ",
-        RouterController.router.link(Page.Custom)(Page.Custom.name + " configuration"),
-        <.span(" - initialises custom configured Levels. See "),
-        LinkIn(Page.ConfiguringLevels),
-        "."
-      ),
-
-      <.div(
-        ^.className := "alert alert-info",
-        <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
-        <.i(
-          """ Default databases were configured experimenting on a MacBook Pro laptop.
-            |Further tuning of these configurations on production quality servers would
-            |result in better performance.""".stripMargin
+      <.h3("Key-value database"),
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |import swaydb._
+            |import swaydb.serializers.Default._
+            |
+            |//map database
+            |val mapDB = eventually.persistent.Map[Long, String](dir = "mapDB")
+            |
+            |//set database
+            |val setDB = eventually.persistent.Set[String](dir = "setDB")
+            |""".stripMargin
         )
       )
     )

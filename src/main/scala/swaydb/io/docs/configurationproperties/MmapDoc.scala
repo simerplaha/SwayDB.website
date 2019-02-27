@@ -38,7 +38,7 @@ object MmapDoc {
       ),
       <.p(
         "Setting mmap to true in ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         " will write key-values to memory-mapped write-ahead log files.",
       ),
       <.p(
@@ -47,7 +47,7 @@ object MmapDoc {
         " are used."
       ),
       <.p(
-        "This parameter is only configurable for persistent Level0. ",
+        "This parameter is only configurable for persistent LevelZero. ",
         "Memory Levels does not require memory-mapped files as they are already stored in-memory."
       )
     )

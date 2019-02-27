@@ -24,16 +24,16 @@ import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.{Page, RouterController}
 
-object Level0Doc {
+object LevelZeroDoc {
 
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2("Level0")
+        <.h2("LevelZero")
       ),
 
       <.p(
-        "Level0 is the root Level in a database's Level hierarchy. Its responsible for serving ",
+        "LevelZero is the root Level in a database's Level hierarchy. Its responsible for serving ",
         "all incoming write & read requests and forwarding read requests to the next ",
         RouterController.router.link(Page.Level)("Level"),
         " if it does not contain the requested key."),

@@ -116,7 +116,7 @@ object IntroDoc {
       <.p(
         "Back-pressure is required when writes occur faster than the compaction process. ",
         "Each write request returns the state of ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         " (",
         RouterController.router.link(Page.Level0Meter)("Level0Meter"),
         ") that can be used to implement asynchronous ",
@@ -264,7 +264,7 @@ object IntroDoc {
         "They can also be ",
         RouterController.router.link(Page.MMAP)("disabled"),
         " for ",
-        RouterController.router.link(Page.Level0)("Level0's"),
+        RouterController.router.link(Page.LevelZero)("LevelZero's"),
         " ",
         RouterController.router.link(Page.Map)("Map"),
         " files"

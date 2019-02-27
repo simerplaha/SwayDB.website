@@ -36,7 +36,7 @@ object GroupingStrategyDoc {
         "Optional property for all ",
         LinkIn(Page.Level),
         "s other than ",
-        LinkIn(Page.Level0),
+        LinkIn(Page.LevelZero),
         "."
       ),
       Info(

@@ -34,7 +34,7 @@ object Level0MeterDoc {
 
       <.p(
         "Contains information about the current state of ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         "."
       ),
 
@@ -81,7 +81,7 @@ object Level0MeterDoc {
         "Current total number of ",
         RouterController.router.link(Page.Map)("Maps"),
         " in ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         "."
       )
     )

@@ -40,7 +40,7 @@ object ConfiguringLevelsDoc {
         )
       ),
       <.p(
-        "The overall goal with these configuration is to merge key-values from Level0 to the lowest Level efficiently in batches ",
+        "The overall goal with these configuration is to merge key-values from LevelZero to the lowest Level efficiently in batches ",
         "with least amount IO and CPU usage so that majority of the resources are reserved for serving reads and write requests.",
       ),
       <.p(
@@ -50,7 +50,7 @@ object ConfiguringLevelsDoc {
       ),
 
       <.ul(
-        <.li("Level0 - Persistent"),
+        <.li("LevelZero - Persistent"),
         <.li("Level1 - Memory"),
         <.li("Level2 - Persistent"),
         <.li("Level3 - Trash (Segments pushed to this Level are deleted.)")

@@ -192,7 +192,7 @@ object Page {
       Seq(
         Persistent,
         Memory,
-        MemoryPersistent,
+        EventuallyPersistent,
         Custom
       )
     override val url: String = "create-databases/"
@@ -216,12 +216,12 @@ object Page {
     override def render(): VdomElement = MemoryDatabaseDoc()
   }
 
-  object MemoryPersistent extends Page {
-    override val name: String = "Memory-persistent"
+  object EventuallyPersistent extends Page {
+    override val name: String = "Eventually persistent"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "create-databases/memory-persistent/"
+    override val url: String = "create-databases/eventually-persistent/"
 
-    override def render(): VdomElement = MemoryPersistentDatabaseDoc()
+    override def render(): VdomElement = EventuallyPersistentDatabaseDoc()
   }
 
   object Custom extends Page {
@@ -748,7 +748,7 @@ object Page {
     override val name: String = "Implementation"
     override val subPages: Seq[Page] =
       Seq(
-        Level0,
+        LevelZero,
         Level,
         TrashLevel,
         Segment,
@@ -762,12 +762,12 @@ object Page {
     override def render(): VdomElement = ImplementationDoc()
   }
 
-  object Level0 extends Page {
-    override val name: String = "Level0"
+  object LevelZero extends Page {
+    override val name: String = "LevelZero"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "implementation/level0/"
+    override val url: String = "implementation/levelZero/"
 
-    override def render(): VdomElement = Level0Doc()
+    override def render(): VdomElement = LevelZeroDoc()
   }
 
   object Level extends Page {

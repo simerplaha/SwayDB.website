@@ -23,10 +23,19 @@ package swaydb.io.docs.creatingdatabases
 import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.common.{Info, LinkIn, Snippet}
+import swaydb.io.common.{Info, LinkIn, ScalaCode, Snippet}
 import swaydb.io.{Main, Page, RouterController}
 
 object PersistentDatabaseDoc {
+
+  def zeroInfo =
+    <.p(
+      "A ",
+      LinkIn(Page.LevelZero),
+      " only persistent database. ",
+      "These databases do no perform compaction and do not have any background processes running. ",
+      "They can be used to store small static data or data that rarely changes."
+    )
 
   def apply(): VdomElement =
     <.div(
@@ -44,81 +53,37 @@ object PersistentDatabaseDoc {
       ),
 
       <.p(
-        """An 8 leveled persistent database configured to store 2 times more data in "Disks/db". Read more on distribution ratio at """,
-        RouterController.router.link(Page.OtherDirs)("otherDirs: Seq[Dir]"),
-        "."
+        "An 8 leveled persistent database."
       ),
 
-      <.p(
-        "In this default configuration ",
-        LinkIn(Page.GroupingStrategy),
-        "/compression is disabled for the first 5 ",
-        LinkIn(Page.Level),
-        "s for ",
-        <.u("faster compaction speed"),
-        ". Key-values only get compressed in last 3 Levels in groups of 1.mb each with LZ4 compression (",
-        Snippet("FastestJavaInstance"),
-        "), see ",
-        <.a(
-          ^.href := "https://github.com/simerplaha/SwayDB/blob/master/configs/src/main/scala/swaydb/configs/level/DefaultPersistentConfig.scala",
-          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - DefaultPersistentConfig.scala")),
-          ^.target := "blank",
-          "DefaultPersistentConfig"
-        ),
-        " to view the ",
-        LinkIn(Page.GroupingStrategy),
-        " configured."
+      ScalaCode(
+        """
+          |import swaydb._
+          |import swaydb.serializers.Default._
+          |
+          |//map database
+          |val mapDB = persistent.Map[Long, String](dir = "mapDB")
+          |
+          |//set database
+          |val setDB = persistent.Set[String](dir = "setDB")
+          |
+          |""".stripMargin
       ),
 
-      Info(
-        <.span(
-          "When a ",
-          LinkIn(Page.Segment),
-          " is copied (no merge is required) from one ",
-          LinkIn(Page.Level),
-          " to another during compaction, compression will not get triggered for uncompressed ",
-          LinkIn(Page.Segment),
-          "s. ",
-          "So if the database contains mostly immutable data then ",
-          LinkIn(Page.GroupingStrategy),
-          " should be updated to perform compression in higher ",
-          LinkIn(Page.Level),
-          "s."
-        )
-      ),
+      zeroInfo,
 
-      <.h3("Key-value database"),
-      <.pre(
-        <.code(^.className := "scala")(
-          """
-            |import swaydb._
-            |import swaydb.serializers.Default._
-            |
-            |val db =
-            |  SwayDB.persistent[Long, String](
-            |    dir = "/Disk1/db",
-            |    otherDirs = Seq(Dir("/Disk2/db", distributionRatio = 2))
-            |  )
-            |
-            |""".stripMargin
-        )
-      ),
-
-      <.h3("Set database"),
-      <.pre(
-        <.code(^.className := "scala")(
-          """
-            |import swaydb._
-            |import swaydb.serializers.Default._
-            |
-            |val db =
-            |  SwayDB.persistentSet[String](
-            |    dir = "/Disk1/db",
-            |    otherDirs = Seq(Dir("/Disk2/db", distributionRatio = 2))
-            |  )
-            |
-            |""".stripMargin
-        )
+      ScalaCode(
+        """
+          |import swaydb._
+          |import swaydb.serializers.Default._
+          |
+          |//level zero only map database
+          |val mapDB = persistent.zero.Map[Long, String](dir = "mapDB")
+          |
+          |//level zero only set database
+          |val setDB = persistent.zero.Set[String](dir = "setDB")
+          |
+          |""".stripMargin
       )
     )
 }

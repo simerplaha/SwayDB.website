@@ -40,7 +40,7 @@ object MapSizeDoc {
         "Specifies the initial size of each ",
         RouterController.router.link(Page.Map)("Map"),
         " file in ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         " before it's closed and submitted to ",
         RouterController.router.link(Page.Level)("Level1"),
         " for conversion into ",
@@ -54,7 +54,7 @@ object MapSizeDoc {
       ),
       <.p(
         "Increasing the size of the Map during runtime can increase read & write throughput by reducing ",
-        "the number of Maps in Level0, therefore reducing ",
+        "the number of Maps in LevelZero, therefore reducing ",
         RouterController.router.link(Page.Compaction)("Compaction"),
         " workload.",
       ),
