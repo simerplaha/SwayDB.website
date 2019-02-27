@@ -67,7 +67,7 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/create-databases/memory-persistent/
+            http://www.swaydb.io/create-databases/eventually-persistent/
         </loc>
     </url>
     <url>
@@ -102,22 +102,12 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write/batchPut/
-        </loc>
-    </url>
-    <url>
-        <loc>
             http://www.swaydb.io/api/write/remove/
         </loc>
     </url>
     <url>
         <loc>
             http://www.swaydb.io/api/write/remove-range/
-        </loc>
-    </url>
-    <url>
-        <loc>
-            http://www.swaydb.io/api/write/batchRemove/
         </loc>
     </url>
     <url>
@@ -132,11 +122,6 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write/expire/
-        </loc>
-    </url>
-    <url>
-        <loc>
             http://www.swaydb.io/api/write/update/
         </loc>
     </url>
@@ -147,12 +132,17 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write/update/
+            http://www.swaydb.io/api/write/registerFunction/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/write/batch/
+            http://www.swaydb.io/api/write/applyFunction/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://www.swaydb.io/api/write/transaction/
         </loc>
     </url>
     <url>
@@ -402,11 +392,6 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/configuring-levels/minTimeLeftToIncreaseExpiration/
-        </loc>
-    </url>
-    <url>
-        <loc>
             http://www.swaydb.io/configuring-levels/compressDuplicateValues/
         </loc>
     </url>
@@ -492,7 +477,7 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/implementation/level0/
+            http://www.swaydb.io/implementation/levelZero/
         </loc>
     </url>
     <url>

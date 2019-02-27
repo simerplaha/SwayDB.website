@@ -22,7 +22,7 @@ package swaydb.io.docs.creatingdatabases
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.common.LinkIn
+import swaydb.io.common.{LinkIn, Snippet}
 import swaydb.io.{Page, RouterController}
 
 object CreatingDatabaseDoc {
@@ -35,19 +35,19 @@ object CreatingDatabaseDoc {
       <.h3("Storage types"),
       <.p(
         "1. ",
-        RouterController.router.link(Page.Persistent)(Page.Persistent.name),
+        LinkIn(Page.Persistent),
         <.span(" - stores data to disk.")
       ),
 
       <.p(
         "2. ",
-        RouterController.router.link(Page.Memory)(Page.Memory.name),
+        LinkIn(Page.Memory),
         <.span(" - stores data in-memory.")
       ),
 
       <.p(
         "3. ",
-        RouterController.router.link(Page.EventuallyPersistent)(Page.EventuallyPersistent.name),
+        LinkIn(Page.EventuallyPersistent),
         <.span(" - stores data in-memory that is periodically persisted based on it's "),
         LinkIn(Page.ConfiguringLevels),
         "."
@@ -55,10 +55,28 @@ object CreatingDatabaseDoc {
 
       <.p(
         "4. ",
-        RouterController.router.link(Page.Custom)(Page.Custom.name + " configuration"),
+        LinkIn(Page.Custom, Page.Custom.name + " configuration"),
         <.span(" - initialises custom configured Levels. See "),
         LinkIn(Page.ConfiguringLevels),
         "."
+      ),
+
+      <.h3("Zero databases"),
+      <.p(
+        "Both ",
+        LinkIn(Page.Persistent),
+        " & ",
+        LinkIn(Page.Memory),
+        " databases can also be initialised as single leveled, ",
+        LinkIn(Page.LevelZero),
+        " only databases with ",
+        Snippet(".zero"),
+        " extension."
+      ),
+      <.p(
+        Snippet(".zero"),
+        " databases are lightweight databases that do not run compaction and do not have any background process running. ",
+        " They can be used to store static data or data that rarely changes."
       ),
 
       <.div(

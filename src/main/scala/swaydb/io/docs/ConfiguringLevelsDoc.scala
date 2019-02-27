@@ -31,6 +31,7 @@ object ConfiguringLevelsDoc {
       <.div(^.className := "page-header",
         <.h2(^.id := "configuring-levels", "Configuring Levels")
       ),
+
       <.p(
         <.i(
           """A SwayDB instance is a hierarchy of persistent and in-memory Levels where each Level is responsible for

@@ -22,13 +22,14 @@ package swaydb.io.docs.apis.write
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.common.Snippet
 import swaydb.io.{Page, RouterController}
 
 object TransactionDoc {
 
   def guarantee =
     <.p(^.className := "heading",
-      "Prepare operations guarantee that all key-values are written atomically (All or none)."
+      "Transactions guarantee that all operations are performed atomically (All or none)."
     )
 
   def apply(showNote: Boolean = true): VdomElement = {
@@ -40,10 +41,8 @@ object TransactionDoc {
 
       <.p(
         "The following code snippet shows how all ",
-        RouterController.router.link(Page.WriteAPI)(<.span(^.className := "snippet", Page.WriteAPI.name)),
-        "s can be combined to perform CRUD on single or multiple key-values and written as a single atomic entry with ",
-        <.span(^.className := "snippet", Page.Transaction.name),
-        "."
+        RouterController.router.link(Page.WriteAPI)(Snippet(Page.WriteAPI.name.toLowerCase + " APIs")),
+        " can be combined to perform CRUD on single or multiple key-values and written as a single atomic entry."
       ),
       <.pre(
         <.code(^.className := "scala")(
@@ -52,11 +51,13 @@ object TransactionDoc {
             |  Prepare.Put(key = 1, value = "one value"),
             |  Prepare.Put(key = 1, value = "one value", expireAfter = 10.seconds),
             |  Prepare.Remove(key = 1),
-            |  Prepare.Remove(from = 1, to = 100),
+            |  Prepare.Remove(from = 2, to = 100),
             |  Prepare.Expire(key = 1, after = 10.seconds),
-            |  Prepare.Expire(from = 1, to = 100, after = 1.day),
+            |  Prepare.Expire(from = 2, to = 100, after = 1.day),
             |  Prepare.Update(key = 1, value = "value updated"),
-            |  Prepare.Update(from = 1, to = 100, value = "range update")
+            |  Prepare.Update(from = 2, to = 100, value = "range update"),
+            |  Prepare.Function(key = 1, functionID = "increment likes"),
+            |  Prepare.Function(from = 2, to = 100, functionID = "increment likes")
             |)
           """.stripMargin
         )

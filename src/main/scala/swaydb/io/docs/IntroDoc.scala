@@ -38,31 +38,30 @@ object IntroDoc {
       ),
       <.p(^.className := "heading")(
         <.img(^.className := "dark-logo", ^.src := "/img/logo-dark.png"),
-        "SwayDB is a key-value storage library for ",
+        "SwayDB is an embeddable database for ",
         <.strong("single/multiple disks"),
         <.span(" and "),
         <.strong("in-memory "),
         <.span("storage.")
       ),
-      <.p(^.className := "heading")("It's an implementation of ",
-        <.a(
-          ^.href := "https://en.wikipedia.org/wiki/Log-structured_merge-tree",
-          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - Log-structured merge-tree")),
-          ^.target := "blank")("Log-structured merge-tree"),
-        " with asynchronous Leveled Compaction based on push-pull strategy built on the ",
-        <.a(^.href := "https://en.wikipedia.org/wiki/Actor_model",
-          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - Actor model")),
-          ^.target := "blank")("Actor model"),
-        "."
+
+      <.p(
+        "It provides data structures like ",
+        Snippet("Map[K, V]"),
+        " & ",
+        Snippet("Set[T]"),
+        " and implements ",
+        LinkIn(Page.API, Page.API.name + "s"),
+        " to easily create, read, update & delete data atomically."
       ),
 
       <.h3(^.id := "types", "Types"),
       <.p(
         RouterController.router.link(Page.API)("APIs"),
         " are typed and are based on Scala's ",
-        <.span(^.className := "snippet", "mutable.SortedMap[K, V]"),
+        <.span(^.className := "snippet", "mutable.Map[K, V]"),
         " and ",
-        <.span(^.className := "snippet", "mutable.SortedSet[T]"),
+        <.span(^.className := "snippet", "mutable.Set[T]"),
         ". All APIs expected from a Scala collection like ",
         <.span(^.className := "snippet", "foreach"),
         ", ",
@@ -91,25 +90,47 @@ object IntroDoc {
         " perform reverse iterations."
       ),
 
-      <.h3(^.id := "non-blocking", "Non-blocking"),
+      <.h3("Updates using JVM functions"),
       <.p(
-        "Reads and writes occur independent to each other and do not block each other. "
-      ),
-      <.p(
-        "Reads can be performed in a blocking manner using ",
-        Snippet("IO.Async[T].safeGetBlocking"),
-        " API or non-blocking ",
-        Snippet("IO.Async[T].safeGetFuture"),
-        " API (work in progress - ",
-        LinkOut("https://github.com/simerplaha/SwayDB/issues/50", "See"),
-        ")."
+        "Any Scala or Java functions can be submitted to perform complex updates and deletes. See ",
+        LinkIn(Page.RegisterFunction),
+        " & ",
+        LinkIn(Page.ApplyFunction),
+        "."
       ),
 
-      <.h3("Atomic writes"),
+      <.h3("Transactions"),
       <.p(
         "Atomic writes using ",
         RouterController.router.link(Page.Transaction)("transaction"),
         " API."
+      ),
+
+      <.h3(^.id := "ttl", "Auto expiring key-values (TTL)"),
+      <.p(
+        "Expiring key-values is a light weight process with nanosecond precision expiration."
+      ),
+      <.p(
+        "Key-values are asynchronously deleted from the database on expiration claiming the disk/RAM space instantly."
+      ),
+
+      <.h3(^.id := "non-blocking", "Non-blocking"),
+      <.p(
+        "SwayDB's internals are non-blocking. "
+      ),
+      <.p(
+        "Asynchronous reads can be performed using ",
+        Snippet("IO.Async[T].safeGetFuture"),
+        " or blocking with ",
+        Snippet("IO.Async[T].safeGetBlocking")
+      ),
+      <.p(
+        LinkOut("https://monix.io/", "Monix"),
+        " integration is work in progress for a simpler non-blocking API similar to ",
+        Snippet("Iterable[T]"),
+        " - ",
+        LinkOut("https://github.com/simerplaha/SwayDB/issues/50", "#50"),
+        "."
       ),
 
       <.h3(^.id := "back-pressure", "Back-pressure"),
@@ -123,14 +144,6 @@ object IntroDoc {
         "back-pressure with external streaming libraries. An implementation of blocking back-pressure (",
         RouterController.router.link(Page.Brake)("Acceleration.brake"),
         ") is provided to get up and running quickly."
-      ),
-
-      <.h3(^.id := "ttl", "Expiring key-values (TTL)"),
-      <.p(
-        "Expiring key-values is a light weight process with nanosecond precision expiration."
-      ),
-      <.p(
-        "Key-values are asynchronously deleted from the database on expiration claiming the disk/RAM space instantly."
       ),
 
       <.h3(^.id := "extendable", "Extendable"),
@@ -158,7 +171,7 @@ object IntroDoc {
 
       <.h3(^.id := "configurable", "Configurable Levels"),
       <.p(
-        "A SwayDB database instance is a hierarchy of persistent and in-memory Levels where each Level can be ",
+        "A SwayDB instance is a hierarchy of persistent and in-memory Levels where each Level can be ",
         RouterController.router.link(Page.ConfiguringLevels)("configured"),
         " to have different file sizes, directories, compression strategies & compaction speeds (",
         RouterController.router.link(Page.Throttle)("Throttle"),

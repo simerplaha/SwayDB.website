@@ -275,6 +275,8 @@ object Page {
         ExpireRange,
         Update,
         UpdateRange,
+        RegisterFunction,
+        ApplyFunction,
         Transaction
       )
     override val url: String = "api/write/"
@@ -344,6 +346,22 @@ object Page {
     override val url: String = "api/write/update-range/"
 
     override def render(): VdomElement = UpdateRangeDoc()
+  }
+
+  object RegisterFunction extends Page {
+    override val name: String = "registerFunction"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/write/registerFunction/"
+
+    override def render(): VdomElement = RegisterFunctionDoc()
+  }
+
+  object ApplyFunction extends Page {
+    override val name: String = "applyFunction"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/write/applyFunction/"
+
+    override def render(): VdomElement = ApplyFunctionDoc()
   }
 
   object Transaction extends Page {
@@ -898,7 +916,6 @@ object Page {
         MapSize,
         MMAP,
         RecoveryMode,
-        MinTimeLeftToIncreaseExpiration,
         CompressDuplicateValues,
         GroupingStrategy,
         Acceleration,
@@ -956,14 +973,6 @@ object Page {
     override val url: String = "configuring-levels/recoveryMode/"
 
     override def render(): VdomElement = RecoveryModeDoc()
-  }
-
-  object MinTimeLeftToIncreaseExpiration extends Page {
-    override val name: String = "minTimeLeftToIncreaseExpiration"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "configuring-levels/minTimeLeftToIncreaseExpiration/"
-
-    override def render(): VdomElement = MinTimeLeftToIncreaseExpirationDoc()
   }
 
   object Acceleration extends Page {

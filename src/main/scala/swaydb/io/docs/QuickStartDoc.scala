@@ -51,16 +51,18 @@ object QuickStartDoc {
             |  import swaydb._
             |  import swaydb.serializers.Default._ //import default serializers
             |
-            |  val db = memory.Map[Int, String]().get //Create a memory database
+            |  val db = memory.Map[Int, String]().get //Create an memory Map database.
             |
             |  db.put(1, "one").get
             |  db.get(1).get
             |  db.remove(1).get
+            |
+            |  //transactions
             |  db.commit(
             |    Prepare.Put(key = 1, value = "one value"),
             |    Prepare.Update(from = 1, to = 100, value = "range update"),
             |    Prepare.Remove(key = 1),
-            |    Prepare.Remove(from = 1, to = 100)
+            |    Prepare.Function(from = 1, to = 100, functionID = "some function")
             |  ).get
             |
             |  //write 100 key-values
@@ -73,8 +75,8 @@ object QuickStartDoc {
             |      case (key, value) =>
             |        (key, value + "_updated")
             |    } andThen {
-            |    updatedKeyValues =>
-            |      db.put(updatedKeyValues).get
+            |       updatedKeyValues =>
+            |         db.put(updatedKeyValues).get
             |  }
             |}
           """.stripMargin

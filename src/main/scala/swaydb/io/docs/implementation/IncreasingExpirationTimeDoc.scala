@@ -44,8 +44,7 @@ object IncreasingExpirationTimeDoc {
         <.u("increasing"),
         " a key or keys' ",
         RouterController.router.link(Page.Expiration)(Page.Expiration.name),
-        " is dependant on the time taken for compaction & the configuration property ",
-        RouterController.router.link(Page.MinTimeLeftToIncreaseExpiration)(Page.MinTimeLeftToIncreaseExpiration.name)
+        " is dependant on the time taken for compaction.",
       ),
       <.p(
         <.strong("For example:"),

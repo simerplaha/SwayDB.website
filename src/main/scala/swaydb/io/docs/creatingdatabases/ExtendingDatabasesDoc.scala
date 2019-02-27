@@ -82,7 +82,7 @@ object ExtendingDatabasesDoc {
             |  import swaydb.extension._
             |
             |  //add .extend to enable extension
-            |  val rootMap = SwayDB.memory[Key[String], Option[String]]().get.extend.get
+            |  val rootMap = memory.Map[Key[String], Option[String]]().flatMap(_.extend).get
             |
             |  //Nested map hierarchy
             |  //rootMap
@@ -91,9 +91,9 @@ object ExtendingDatabasesDoc {
             |  //
             |  //now we can create nested maps.
             |  val subMap1 =
-            |    rootMap
-            |      .maps
-            |      .put(key = "sub map 1", value = "another map").get
+            |  rootMap
+            |    .maps
+            |    .put(key = "sub map 1", value = "another map").get
             |
             |  val subMap2 =
             |    subMap1

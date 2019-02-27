@@ -18,49 +18,39 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.creatingdatabases
+package swaydb.io.docs.apis.write
 
-import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.Page
 import swaydb.io.common.{LinkIn, Snippet}
-import swaydb.io.{Main, Page, RouterController}
 
-object EventuallyPersistentDatabaseDoc {
+object ApplyFunctionDoc {
 
-  def apply(): VdomElement =
+  def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("Create eventually persistent databases")
+        <.h2(Page.ApplyFunction.name)
       ),
-
       <.p(
-        "Configuration used: ",
-        <.a(
-          ^.href := "https://github.com/simerplaha/SwayDB/blob/master/configs/src/main/scala/swaydb/configs/level/DefaultEventuallyPersistentConfig.scala",
-          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - DefaultEventuallyPersistentConfig.scala")),
-          ^.target := "blank",
-          "Eventually persistent"
-        )
+        LinkIn(Page.RegisterFunction, "Registered functions"),
+        " can be applied to keys or range of keys."
       ),
-
-      <.p("A 3 leveled database that writes 10 Segments to disk when memory level size reaches 100.mb."),
-
-      <.h3("Key-value database"),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |import swaydb._
-            |import swaydb.serializers.Default._
+            |//apply function to a key
+            |likesMap.applyFunction(key = "user1", functionID = "increment likes counts")
             |
-            |//map database
-            |val mapDB = eventually.persistent.Map[Long, String](dir = "mapDB")
-            |
-            |//set database
-            |val setDB = eventually.persistent.Set[String](dir = "setDB")
+            |//apply function to a range of users
+            |likesMap.applyFunction(from = "user1", to = "user100", functionID = "increment likes counts")
             |
             |""".stripMargin
         )
+      ),
+      <.p(
+        PutDoc.atomicWrite(Snippet(Page.ApplyFunction.name))
       )
     )
+  }
 }
