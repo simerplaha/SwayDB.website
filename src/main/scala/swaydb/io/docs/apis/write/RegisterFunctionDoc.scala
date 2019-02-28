@@ -43,7 +43,7 @@ object RegisterFunctionDoc {
         "Since these functions are basic ",
         <.strong("JVM functions"),
         " they can implement ",
-        " complex update logic and are not restricted by a query language. ",
+        " complex logic and are not restricted by a query language. ",
         "Any external JVM library can be used within these functions."
       ),
 
