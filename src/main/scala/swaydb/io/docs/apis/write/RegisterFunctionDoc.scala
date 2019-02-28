@@ -60,7 +60,7 @@ object RegisterFunctionDoc {
 
       <.h3("Example functions"),
       <.a(
-        ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/function/LikesSpec.scala",
+        ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/functions/LikesSpec.scala",
         ^.role := "button",
         ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - LikesSpec")),
         ^.className := "btn btn-xs btn-info pull-right",
