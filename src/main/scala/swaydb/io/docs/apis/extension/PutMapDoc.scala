@@ -42,10 +42,8 @@ object PutMapDoc {
       <.p(
         "See ",
         LinkIn(Page.Put),
-        ", ",
-        LinkIn(Page.PutExpire),
         " & ",
-        LinkIn(Page.BatchPut),
+        LinkIn(Page.PutExpire),
         "."
       ),
       <.h3("Creating a sub-map"),

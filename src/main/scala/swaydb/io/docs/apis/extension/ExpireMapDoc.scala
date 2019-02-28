@@ -36,10 +36,8 @@ object ExpireMapDoc {
       <.p(
         "See ",
         LinkIn(Page.Expire),
-        ", ",
-        LinkIn(Page.ExpireRange),
         " & ",
-        LinkIn(Page.BatchExpire),
+        LinkIn(Page.ExpireRange),
         "."
       ),
       <.h3("Expiring a sub-map"),

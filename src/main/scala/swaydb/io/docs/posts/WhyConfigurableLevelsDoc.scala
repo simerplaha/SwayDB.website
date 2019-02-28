@@ -75,7 +75,7 @@ object WhyConfigurableLevelsDoc {
       ),
       <.p(
         "These applications do not require multiple Levels as the data rarely changes. Changing the database configuration to only 2 Levels (",
-        LinkIn(Page.Level0),
+        LinkIn(Page.LevelZero),
         " & ",
         LinkIn(Page.Level),
         "1) can provide a higher throughput database. Since no merge process is triggered having multiple Levels is not required as that would just be wasting resources."
@@ -96,7 +96,7 @@ object WhyConfigurableLevelsDoc {
       <.p(
         "Some applications require in-memory databases for faster reads & writes but have less RAM limitations. These applications can take advantage of both ",
         "in-memory and persistent Levels (see ",
-        LinkIn(Page.MemoryPersistent),
+        LinkIn(Page.EventuallyPersistent),
         ") to write data to disk only when there is not enough RAM."
       ),
       <.p(

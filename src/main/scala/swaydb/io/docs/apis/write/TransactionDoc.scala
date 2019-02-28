@@ -22,45 +22,46 @@ package swaydb.io.docs.apis.write
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.common.Snippet
 import swaydb.io.{Page, RouterController}
 
-object BatchPutDoc {
+object TransactionDoc {
+
+  def guarantee =
+    <.p(^.className := "heading",
+      "Transactions guarantee that all operations are performed atomically (All or none)."
+    )
 
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.BatchPut.name)
+        <.h2("transaction")
       ),
+      guarantee,
 
-      BatchDoc.guarantee,
-      <.h3("Key-value"),
       <.p(
-        "Insert multiple key-values pairs atomically."
+        "The following code snippet shows how all ",
+        RouterController.router.link(Page.WriteAPI)(Snippet(Page.WriteAPI.name.toLowerCase + " APIs")),
+        " can be combined to perform CRUD on single or multiple key-values and written as a single atomic entry."
       ),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db.batchPut(keyValues = (1, "one"), (2, "two"))
-            |//or
-            |db.batchPut(keyValues = Seq((1, "one"), (2, "two")))
+            |db.commit(
+            |  Prepare.Put(key = 1, value = "one value"),
+            |  Prepare.Put(key = 1, value = "one value", expireAfter = 10.seconds),
+            |  Prepare.Remove(key = 1),
+            |  Prepare.Remove(from = 2, to = 100),
+            |  Prepare.Expire(key = 1, after = 10.seconds),
+            |  Prepare.Expire(from = 2, to = 100, after = 1.day),
+            |  Prepare.Update(key = 1, value = "value updated"),
+            |  Prepare.Update(from = 2, to = 100, value = "range update"),
+            |  Prepare.ApplyFunction(key = 1, functionID = "increment likes"),
+            |  Prepare.ApplyFunction(from = 2, to = 100, functionID = "increment likes")
+            |)
           """.stripMargin
         )
-      ),
-      <.h3("Set"),
-      <.p(
-        "Insert multiple items to a Set database atomically."
-      ),
-      <.pre(
-        <.code(^.className := "scala")(
-          """
-            |setDB.batchAdd(elems = "data1", "data2")
-            |//or
-            |setDB.batchAdd(elems = Seq("data1", "data2"))
-            |
-            |""".stripMargin
-        )
-      ),
-      PutDoc.atomicWrite(<.span(^.className := "snippet", Page.BatchPut.name))
+      )
     )
   }
 

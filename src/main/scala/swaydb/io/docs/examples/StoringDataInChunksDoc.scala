@@ -62,8 +62,8 @@ object StoringDataInChunksDoc {
           |
           |val slices = Slice(file).groupedSlice(3) //splits of 3 slices of 1.mb each without creating copies of original array
           |
-          |//batch write the file slices.
-          |db.batchPut((1, slices(0)), (2, slices(1)), (3, slices(2)))
+          |//write multiple file slices atomically.
+          |db.put((1, slices(0)), (2, slices(1)), (3, slices(2)))
         """.stripMargin
       )
     )

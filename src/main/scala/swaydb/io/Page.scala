@@ -192,7 +192,7 @@ object Page {
       Seq(
         Persistent,
         Memory,
-        MemoryPersistent,
+        EventuallyPersistent,
         Custom
       )
     override val url: String = "create-databases/"
@@ -216,12 +216,12 @@ object Page {
     override def render(): VdomElement = MemoryDatabaseDoc()
   }
 
-  object MemoryPersistent extends Page {
-    override val name: String = "Memory-persistent"
+  object EventuallyPersistent extends Page {
+    override val name: String = "Eventually persistent"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "create-databases/memory-persistent/"
+    override val url: String = "create-databases/eventually-persistent/"
 
-    override def render(): VdomElement = MemoryPersistentDatabaseDoc()
+    override def render(): VdomElement = EventuallyPersistentDatabaseDoc()
   }
 
   object Custom extends Page {
@@ -269,17 +269,15 @@ object Page {
       Seq(
         Put,
         PutExpire,
-        BatchPut,
         Remove,
         RemoveRange,
-        BatchRemove,
         Expire,
         ExpireRange,
-        BatchExpire,
         Update,
         UpdateRange,
-        BatchUpdate,
-        Batch
+        RegisterFunction,
+        ApplyFunction,
+        Transaction
       )
     override val url: String = "api/write/"
 
@@ -302,14 +300,6 @@ object Page {
     override def render(): VdomElement = PutExpireDoc()
   }
 
-  object BatchPut extends Page {
-    override val name: String = "batchPut"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write/batchPut/"
-
-    override def render(): VdomElement = BatchPutDoc()
-  }
-
   object Remove extends Page {
     override val name: String = "remove"
     override val subPages: Seq[Page] = Seq()
@@ -324,14 +314,6 @@ object Page {
     override val url: String = "api/write/remove-range/"
 
     override def render(): VdomElement = RemoveRangeDoc()
-  }
-
-  object BatchRemove extends Page {
-    override val name: String = "batchRemove"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write/batchRemove/"
-
-    override def render(): VdomElement = BatchRemoveDoc()
   }
 
   object Expire extends Page {
@@ -350,14 +332,6 @@ object Page {
     override def render(): VdomElement = ExpireRangeDoc()
   }
 
-  object BatchExpire extends Page {
-    override val name: String = "batchExpire"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write/batchExpire/"
-
-    override def render(): VdomElement = BatchExpireDoc()
-  }
-
   object Update extends Page {
     override val name: String = "update"
     override val subPages: Seq[Page] = Seq()
@@ -374,20 +348,28 @@ object Page {
     override def render(): VdomElement = UpdateRangeDoc()
   }
 
-  object BatchUpdate extends Page {
-    override val name: String = "batchUpdate"
+  object RegisterFunction extends Page {
+    override val name: String = "registerFunction"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write/batchUpdate/"
+    override val url: String = "api/write/registerFunction/"
 
-    override def render(): VdomElement = BatchUpdateDoc()
+    override def render(): VdomElement = RegisterFunctionDoc()
   }
 
-  object Batch extends Page {
-    override val name: String = "batch"
+  object ApplyFunction extends Page {
+    override val name: String = "applyFunction"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/write/batch/"
+    override val url: String = "api/write/applyFunction/"
 
-    override def render(): VdomElement = BatchDoc()
+    override def render(): VdomElement = ApplyFunctionDoc()
+  }
+
+  object Transaction extends Page {
+    override val name: String = "transaction"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "api/write/transaction/"
+
+    override def render(): VdomElement = TransactionDoc()
   }
 
   object ReadAPI extends Page {
@@ -784,7 +766,7 @@ object Page {
     override val name: String = "Implementation"
     override val subPages: Seq[Page] =
       Seq(
-        Level0,
+        LevelZero,
         Level,
         TrashLevel,
         Segment,
@@ -798,12 +780,12 @@ object Page {
     override def render(): VdomElement = ImplementationDoc()
   }
 
-  object Level0 extends Page {
-    override val name: String = "Level0"
+  object LevelZero extends Page {
+    override val name: String = "LevelZero"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "implementation/level0/"
+    override val url: String = "implementation/levelZero/"
 
-    override def render(): VdomElement = Level0Doc()
+    override def render(): VdomElement = LevelZeroDoc()
   }
 
   object Level extends Page {
@@ -934,8 +916,8 @@ object Page {
         MapSize,
         MMAP,
         RecoveryMode,
-        MinTimeLeftToIncreaseExpiration,
         CompressDuplicateValues,
+        DeleteSegmentsEventually,
         GroupingStrategy,
         Acceleration,
         SegmentSize,
@@ -992,14 +974,6 @@ object Page {
     override val url: String = "configuring-levels/recoveryMode/"
 
     override def render(): VdomElement = RecoveryModeDoc()
-  }
-
-  object MinTimeLeftToIncreaseExpiration extends Page {
-    override val name: String = "minTimeLeftToIncreaseExpiration"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "configuring-levels/minTimeLeftToIncreaseExpiration/"
-
-    override def render(): VdomElement = MinTimeLeftToIncreaseExpirationDoc()
   }
 
   object Acceleration extends Page {
@@ -1064,6 +1038,14 @@ object Page {
     override val url: String = "configuring-levels/compressDuplicateValues/"
 
     override def render(): VdomElement = CompressDuplicateValuesDoc()
+  }
+
+  object DeleteSegmentsEventually extends Page {
+    override val name: String = "deleteSegmentsEventually"
+    override val subPages: Seq[Page] = Seq()
+    override val url: String = "configuring-levels/deleteSegmentsEventually/"
+
+    override def render(): VdomElement = DeleteSegmentsEventuallyDoc()
   }
 
   object GroupingStrategy extends Page {

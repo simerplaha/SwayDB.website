@@ -36,7 +36,7 @@ object Level0MeterDoc {
         "Returns the size of the current ",
         RouterController.router.link(Page.Map)("Map"),
         " & the total number of Maps ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         "."
       ),
       <.pre(

@@ -23,8 +23,8 @@ package swaydb.io.docs.creatingdatabases
 import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^._
-import swaydb.io.common.{Info, LinkIn}
-import swaydb.io.{Main, Page}
+import swaydb.io.Main
+import swaydb.io.common.ScalaCode
 
 object MemoryDatabaseDoc {
 
@@ -44,42 +44,36 @@ object MemoryDatabaseDoc {
         )
       ),
 
-      <.p("A 2 leveled in-memory database where each Segment is of size 8.mb."),
+      <.p("A 2 leveled in-memory database."),
 
-      Info(
-        <.span(
-          "This default configuration does perform compression. See ",
-          LinkIn(Page.GroupingStrategy),
-          " to enable compression for Memory databases.",
-        )
+      ScalaCode(
+        """
+          |import swaydb._
+          |import swaydb.serializers.Default._
+          |
+          |//map database
+          |val mapDB = memory.Map[Long, String](dir = "mapDB")
+          |
+          |//set database
+          |val setDB = memory.Set[String](dir = "setDB")
+          |
+          |""".stripMargin
       ),
 
-      <.h3("Key-value database"),
-      <.pre(
-        <.code(^.className := "scala")(
-          """
-            |import swaydb._
-            |import swaydb.serializers.Default._
-            |
-            |val db = SwayDB.memory[Double, String](segmentSize = 8.mb)
-            |
-            |""".stripMargin
-        )
-      ),
+      PersistentDatabaseDoc.zeroInfo,
 
-      <.h3("Set database"),
-      <.pre(
-        <.code(^.className := "scala")(
-          """
-            |import swaydb._
-            |import swaydb.serializers.Default._
-            |
-            |val db = SwayDB.memorySet[String](segmentSize = 8.mb)
-            |
-            |""".stripMargin
-        )
+      ScalaCode(
+        """
+          |import swaydb._
+          |import swaydb.serializers.Default._
+          |
+          |//level zero only map database
+          |val mapDB = memory.zero.Map[Long, String](dir = "mapDB")
+          |
+          |//level zero only set database
+          |val setDB = memory.zero.Set[String](dir = "setDB")
+          |
+          |""".stripMargin
       )
-
-
     )
 }

@@ -23,7 +23,7 @@ package swaydb.io.docs.implementation.meters
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.{Page, RouterController}
-import swaydb.io.docs.implementation.Level0Doc
+import swaydb.io.docs.implementation.LevelZeroDoc
 
 object LevelMeterDoc {
 

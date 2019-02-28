@@ -22,6 +22,7 @@ package swaydb.io.docs.creatingdatabases
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.common.{LinkIn, Snippet}
 import swaydb.io.{Page, RouterController}
 
 object CreatingDatabaseDoc {
@@ -31,6 +32,53 @@ object CreatingDatabaseDoc {
       <.div(^.className := "page-header",
         <.h2("Create databases")
       ),
+      <.h3("Storage types"),
+      <.p(
+        "1. ",
+        LinkIn(Page.Persistent),
+        <.span(" - stores data to disk.")
+      ),
+
+      <.p(
+        "2. ",
+        LinkIn(Page.Memory),
+        <.span(" - stores data in-memory.")
+      ),
+
+      <.p(
+        "3. ",
+        LinkIn(Page.EventuallyPersistent),
+        <.span(" - stores data in-memory that is periodically persisted based on it's "),
+        LinkIn(Page.ConfiguringLevels),
+        "."
+      ),
+
+      <.p(
+        "4. ",
+        LinkIn(Page.Custom, Page.Custom.name + " configuration"),
+        <.span(" - initialises custom configured Levels. See "),
+        LinkIn(Page.ConfiguringLevels),
+        "."
+      ),
+
+      <.h3("Zero databases"),
+      <.p(
+        "Both ",
+        LinkIn(Page.Persistent),
+        " & ",
+        LinkIn(Page.Memory),
+        " databases can also be initialised as single leveled, ",
+        LinkIn(Page.LevelZero),
+        " only databases with ",
+        Snippet(".zero"),
+        " extension."
+      ),
+      <.p(
+        Snippet(".zero"),
+        " databases are lightweight databases that do not run compaction and do not have any background process running. ",
+        " They can be used to store static data or data that rarely changes."
+      ),
+
       <.div(
         ^.className := "alert alert-info",
         <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
@@ -39,56 +87,6 @@ object CreatingDatabaseDoc {
             |Further tuning of these configurations on production quality servers would
             |result in better performance.""".stripMargin
         )
-      ),
-      <.h3("Database types"),
-      <.h4(<.u(RouterController.router.link(Page.Persistent)("Persistent"))),
-      <.p("Stores data to disk."),
-
-      <.h4(<.u(RouterController.router.link(Page.Memory)("Memory"))),
-      <.p("Stores data in-memory."),
-
-      <.h4(<.u(RouterController.router.link(Page.MemoryPersistent)("Memory-persistent"))),
-      <.p("Stores data in-memory that is periodically persistent."),
-
-      <.h4(<.u(RouterController.router.link(Page.Custom)("Custom"))),
-      <.p("Custom configurations."),
-
-      <.h3("Data structures"),
-      <.h4("swaydb.Map[K, V]"),
-      <.p(
-        "APIs are similar to ",
-        <.span(^.className := "snippet", "mutable.SortedMap[K, V]"),
-        "."
-      ),
-      <.p("Values are fetched lazily. Keys and Values are stored independently to each other."),
-
-      <.h4("swaydb.Set[T]"),
-      <.p(
-        "APIs are similar to ",
-        <.span(^.className := "snippet", "mutable.SortedSet[T]"),
-        ". "
-      ),
-      <.p("Data is stored in the same location."),
-      <.p(
-        "This type is useful for applications that do not require conditional/lazy value fetches. ",
-        "For example: ",
-        RouterController.router.link(Page.EventSourcing)("Event-sourcing"),
-        " & Time-series data.",
       )
-
-
-
-      //      <.p(
-      //        ^.className := "heading",
-      //        "Key only databases can be created by invoking ",
-      //        <.span(^.className := "snippet", "db.keys"),
-      //        " on any database instance which provides APIs similar to ",
-      //        <.span(^.className := "snippet", "mutable.SortedSet[T]"),
-      //        "."
-      //      ),
-      //      PersistentDatabaseDoc.apply(),
-      //      MemoryDatabaseDoc.apply(),
-      //      MemoryPersistentDatabaseDoc.apply(),
-      //      CustomDatabaseDoc.apply(),
     )
 }

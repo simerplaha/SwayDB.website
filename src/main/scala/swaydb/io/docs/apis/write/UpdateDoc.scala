@@ -46,6 +46,16 @@ object UpdateDoc {
         )
       ),
 
+      <.pre(
+        <.code(^.className := "scala")(
+          """
+            |db.update(keyValues = (1, "one"), (2, "two"))
+            |//or
+            |db.update(keyValues = Seq((1, "one"), (2, "two")))
+          """.stripMargin
+        )
+      ),
+
       <.p(
         PutDoc.atomicWrite(<.span(^.className := "snippet", Page.Update.name))
       )

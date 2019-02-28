@@ -20,34 +20,50 @@
 
 package swaydb.io.docs.apis.write
 
+import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.Page
+import swaydb.io.{Main, Page}
+import swaydb.io.common.{Info, LinkIn, ScalaCode, Snippet}
 
-object BatchRemoveDoc {
+object ApplyFunctionDoc {
 
   def apply(showNote: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.BatchRemove.name)
+        <.h2(Page.ApplyFunction.name)
       ),
-//      WriteAPIDoc.note(showNote),
-      BatchDoc.guarantee,
+      <.p(
+        LinkIn(Page.RegisterFunction, "Registered functions"),
+        " can be applied to keys or range of keys. "
+      ),
+      <.p(
+        <.strong("Note:"),
+        " Functions are applied atomically.",
+        <.a(
+          ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/function/LikesSpec.scala",
+          ^.role := "button",
+          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - LikesSpec")),
+          ^.className := "btn btn-xs btn-info pull-right",
+          ^.target := "blank",
+          "View example test"
+        ),
+      ),
+
+      ScalaCode(
+        """
+          |//apply function to a key
+          |likesMap.applyFunction(key = "user1", functionID = "increment likes count")
+          |
+          |//apply function to a range of users
+          |likesMap.applyFunction(from = "user1", to = "user100", functionID = "increment likes count")
+          |
+          |""".stripMargin
+      ),
 
       <.p(
-        "Remove multiple key-values atomically."
-      ),
-      <.pre(
-        <.code(^.className := "scala")(
-          """
-            |db.batchRemove(keys = 1, 2)
-            |//or
-            |db.batchRemove(keys = Seq(1, 2))
-          """.stripMargin
-        )
-      ),
-      PutDoc.atomicWrite(<.span(^.className := "snippet", Page.BatchRemove.name))
+        PutDoc.atomicWrite(Snippet(Page.ApplyFunction.name))
+      )
     )
   }
-
 }

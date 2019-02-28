@@ -36,10 +36,8 @@ object RemoveMapDoc {
       <.p(
         "See ",
         LinkIn(Page.Remove),
-        ", ",
-        LinkIn(Page.RemoveRange),
         " & ",
-        LinkIn(Page.BatchRemove),
+        LinkIn(Page.RemoveRange),
         "."
       ),
       <.h3("Removing a sub-map"),

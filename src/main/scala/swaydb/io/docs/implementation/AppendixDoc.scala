@@ -36,7 +36,7 @@ object AppendixDoc {
         "Each ",
         RouterController.router.link(Page.Level)("Level"),
         " other then ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         " has an Appendix file which stores information about all the ",
         RouterController.router.link(Page.Segment)("Segments"),
         " in the Level.",

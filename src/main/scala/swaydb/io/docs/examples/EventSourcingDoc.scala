@@ -49,10 +49,8 @@ object EventSourcingDoc {
           <.span(^.className := "snippet", RouterController.router.link(Page.Remove)("remove")),
           ", ",
           <.span(^.className := "snippet", RouterController.router.link(Page.RemoveRange)("remove (range)")),
-          ", ",
-          <.span(^.className := "snippet", RouterController.router.link(Page.BatchRemove)("batchRemove")),
           " or ",
-          <.span(^.className := "snippet", RouterController.router.link(Page.Batch)("batch")),
+          <.span(^.className := "snippet", RouterController.router.link(Page.Transaction)("transactions")),
           "."
         )
       ),
@@ -62,7 +60,7 @@ object EventSourcingDoc {
       ),
       <.p(
         "It also demos how ",
-        RouterController.router.link(Page.Batch)("batch"),
+        RouterController.router.link(Page.Transaction)("transactions"),
         " can be used to create pointer Events which allows for full database iteration ",
         " of Events in the order they were created."
       ),

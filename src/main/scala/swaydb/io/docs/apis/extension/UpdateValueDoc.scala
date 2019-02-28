@@ -36,10 +36,8 @@ object UpdateValueDoc {
       <.p(
         "See ",
         LinkIn(Page.Update),
-        ", ",
-        LinkIn(Page.UpdateRange),
         " & ",
-        LinkIn(Page.BatchUpdate)
+        LinkIn(Page.UpdateRange),
       ),
       <.h3("Updating a sub-map's value"),
       ScalaCode(

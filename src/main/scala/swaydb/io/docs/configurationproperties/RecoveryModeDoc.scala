@@ -45,7 +45,7 @@ object RecoveryModeDoc {
         "Reports any failure or corruption of ",
         RouterController.router.link(Page.Map)("Map"),
         " files in ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         " on startup and does not perform automatic recovery."
       ),
 
@@ -56,7 +56,7 @@ object RecoveryModeDoc {
         " file and continues recovering other ",
         RouterController.router.link(Page.Map)("Map"),
         " files in ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         "."
       ),
 
@@ -67,7 +67,7 @@ object RecoveryModeDoc {
         " file and also dropping all the entries in other ",
         RouterController.router.link(Page.Map)("Map"),
         " files that were created after the corrupted entry in ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         "."
       ),
     )

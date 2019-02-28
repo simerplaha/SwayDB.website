@@ -41,13 +41,13 @@ object AccelerationDoc {
         "'acceleration' defines settings for the write speed by controlling ",
         RouterController.router.link(Page.Map)("Maps"),
         " overflow in ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         " during runtime.",
       ),
 
       <.p(
         "It's a function that given the current state of ",
-        RouterController.router.link(Page.Level0)("Level0"),
+        RouterController.router.link(Page.LevelZero)("LevelZero"),
         " ",
         RouterController.router.link(Page.Level0Meter)("(Level0Meter)"),
         " returns ",
@@ -58,7 +58,7 @@ object AccelerationDoc {
         <.span(^.className := "snippet", "brake"),
         ". It's always invoked before creating a new ",
         RouterController.router.link(Page.Map)("Map"),
-        " file in Level0."
+        " file in LevelZero."
       ),
 
       <.p(
@@ -81,7 +81,7 @@ object AccelerationDoc {
 
       <.h3("Why increase mapSize ?"),
       <.p(
-        "Increasing the mapSize reduces the total number of Maps in Level0 ",
+        "Increasing the mapSize reduces the total number of Maps in LevelZero ",
         "therefore, reducing overall Compaction workload which gives Compaction a chance to catch up ",
         "without effecting write throughput and before applying back-pressure."
       ),

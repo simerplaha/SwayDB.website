@@ -31,6 +31,7 @@ object ConfiguringLevelsDoc {
       <.div(^.className := "page-header",
         <.h2(^.id := "configuring-levels", "Configuring Levels")
       ),
+
       <.p(
         <.i(
           """A SwayDB instance is a hierarchy of persistent and in-memory Levels where each Level is responsible for
@@ -40,7 +41,7 @@ object ConfiguringLevelsDoc {
         )
       ),
       <.p(
-        "The overall goal with these configuration is to merge key-values from Level0 to the lowest Level efficiently in batches ",
+        "The overall goal with these configuration is to merge key-values from LevelZero to the lowest Level efficiently in batches ",
         "with least amount IO and CPU usage so that majority of the resources are reserved for serving reads and write requests.",
       ),
       <.p(
@@ -50,7 +51,7 @@ object ConfiguringLevelsDoc {
       ),
 
       <.ul(
-        <.li("Level0 - Persistent"),
+        <.li("LevelZero - Persistent"),
         <.li("Level1 - Memory"),
         <.li("Level2 - Persistent"),
         <.li("Level3 - Trash (Segments pushed to this Level are deleted.)")
@@ -74,8 +75,8 @@ object ConfiguringLevelsDoc {
             |      segmentSize = 4.mb,
             |      pushForward = false,
             |      bloomFilterFalsePositiveRate = 0.1,
-            |      minTimeLeftToUpdateExpiration = 10.seconds,
             |      compressDuplicateValues = true,
+            |      deleteSegmentsEventually = true,
             |      groupingStrategy = None, //read more about this in the groupingStrategy doc
             |      throttle =
             |        (levelMeter: LevelMeter) =>
@@ -93,8 +94,8 @@ object ConfiguringLevelsDoc {
             |      appendixFlushCheckpointSize = 4.mb,
             |      pushForward = false,
             |      bloomFilterFalsePositiveRate = 0.1,
-            |      minTimeLeftToUpdateExpiration = 10.seconds,
             |      compressDuplicateValues = true,
+            |      deleteSegmentsEventually = true,
             |      groupingStrategy = None, //read more about this in the groupingStrategy doc
             |      throttle =
             |        (levelMeter: LevelMeter) =>
@@ -105,7 +106,7 @@ object ConfiguringLevelsDoc {
             |    )
             |    .addTrashLevel //level3
             |
-            |import swaydb.order.KeyOrder.default //import default sorting
+            |implicit val ordering = KeyOrder.default //import default sorting
             |implicit val ec = SwayDB.defaultExecutionContext //import default ExecutionContext
             |
             |val db = //initialise the database with the above configuration

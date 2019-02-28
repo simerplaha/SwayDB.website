@@ -18,36 +18,47 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.apis.write
+package swaydb.io.docs.implementation
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.{Page, RouterController}
 
-object BatchUpdateDoc {
+object LevelZeroDoc {
 
-  def apply(showNote: Boolean = true): VdomElement = {
+  def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.BatchUpdate.name)
+        <.h2("LevelZero")
       ),
 
-      BatchDoc.guarantee,
       <.p(
-        "Update multiple key-values pairs atomically without updating the expiration (",
-        RouterController.router.link(Page.BatchUpdate)(<.span(^.className := "snippet", Page.Expire.name)),
-        ")."
+        "LevelZero is the root Level in a database's Level hierarchy. Its responsible for serving ",
+        "all incoming write & read requests and forwarding read requests to the next ",
+        RouterController.router.link(Page.Level)("Level"),
+        " if it does not contain the requested key."),
+      <.p(
+        "It also maintains a sequence ",
+        RouterController.router.link(Page.Map)("Maps"),
+        " that store newly written key-values. When a Map",
+        " is full, a new Map is created to store the next batch of write requests."
       ),
-      <.pre(
-        <.code(^.className := "scala")(
-          """
-            |db.batchUpdate(keyValues = (1, "one"), (2, "two"))
-            |//or
-            |db.batchUpdate(keyValues = Seq((1, "one"), (2, "two")))
-          """.stripMargin
-        )
+      <.p(
+        "Maps that are full are read-only that eventually get pushed to the next ",
+        RouterController.router.link(Page.Level)("Level"),
+        " where they get converted into ",
+        RouterController.router.link(Page.Segment)("Segments"),
+        " during the ",
+        RouterController.router.link(Page.Compaction)("Compaction"),
+        " processes.",
       ),
-      PutDoc.atomicWrite(<.span(^.className := "snippet", Page.BatchUpdate.name))
+
+      <.p(
+        RouterController.router.link(Page.Map)("Map"),
+        " files can be memory-mapped by configuring the property ",
+        RouterController.router.link(Page.MMAP)("mmap"),
+        "."
+      ),
+
     )
-  }
 }

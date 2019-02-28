@@ -18,52 +18,49 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.apis.write
+package swaydb.io.docs.creatingdatabases
 
+import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.Page
-import swaydb.io.docs.apis.read.ExpirationDoc
+import swaydb.io.common.{LinkIn, Snippet}
+import swaydb.io.{Main, Page, RouterController}
 
-object BatchExpireDoc {
+object EventuallyPersistentDatabaseDoc {
 
-  def apply(showNote: Boolean = true): VdomElement = {
+  def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.BatchExpire.name)
+        <.h2("Create eventually persistent databases")
       ),
-      BatchDoc.guarantee,
 
-      <.h3("Key-value"),
       <.p(
-        "Expire multiple key-values atomically."
-      ),
-      <.pre(
-        <.code(^.className := "scala")(
-          """
-            |db.batchExpire(keys = (1, 1.second.fromNow), (2, 2.second.fromNow))
-            |//or
-            |db.batchExpire(keys = Seq((1, 1.second.fromNow), (2, 2.second.fromNow)))
-          """.stripMargin
+        "Configuration used: ",
+        <.a(
+          ^.href := "https://github.com/simerplaha/SwayDB/blob/master/configs/src/main/scala/swaydb/configs/level/DefaultEventuallyPersistentConfig.scala",
+          ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - DefaultEventuallyPersistentConfig.scala")),
+          ^.target := "blank",
+          "Eventually persistent"
         )
       ),
 
-      <.h3("Set"),
-      <.p(
-        "Expire multiple items atomically."
-      ),
+      <.p("A 3 leveled database that writes 10 Segments to disk when memory level size reaches 100.mb."),
+
+      <.h3("Key-value database"),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |setDB.batchExpire(elems = ("data one", 1.second.fromNow), ("data 2", 2.seconds.fromNow))
-            |//or
-            |setDB.batchExpire(elems = Seq(("data one", 1.second.fromNow), ("data 2", 2.seconds.fromNow)))
-          """.stripMargin
+            |import swaydb._
+            |import swaydb.serializers.Default._
+            |
+            |//map database
+            |val mapDB = eventually.persistent.Map[Long, String](dir = "mapDB")
+            |
+            |//set database
+            |val setDB = eventually.persistent.Set[String](dir = "setDB")
+            |
+            |""".stripMargin
         )
-      ),
-      PutDoc.atomicWrite(<.span(^.className := "snippet", Page.BatchExpire.name)),
-      ExpirationDoc.alert
+      )
     )
-  }
-
 }

@@ -18,47 +18,44 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.implementation
+package swaydb.io.docs.configurationproperties
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
+import swaydb.io.common.{LinkIn, Snippet}
 import swaydb.io.{Page, RouterController}
 
-object Level0Doc {
+object DeleteSegmentsEventuallyDoc {
+
+  def name = "deleteSegmentsEventually: Boolean"
+
+  def link =
+    RouterController.router.link(Page.DeleteSegmentsEventually)(name)
 
   def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2("Level0")
+        <.h2(name)
+      ),
+      <.p(
+        "If true and after successful compaction ",
+        LinkIn(Page.Segment, Page.Segment.name + "s"),
+        " are deleted eventually when the ",
+        LinkIn(Page.MaxSegmentsOpen),
+        " limit is reached. If false, Segments are deleted immediately."
       ),
 
+      <.h3("Why?"),
       <.p(
-        "Level0 is the root Level in a database's Level hierarchy. Its responsible for serving ",
-        "all incoming write & read requests and forwarding read requests to the next ",
-        RouterController.router.link(Page.Level)("Level"),
-        " if it does not contain the requested key."),
-      <.p(
-        "It also maintains a sequence ",
-        RouterController.router.link(Page.Map)("Maps"),
-        " that store newly written key-values. When a Map",
-        " is full, a new Map is created to store the next batch of write requests."
+        "Immediately deleting a ",
+        LinkIn(Page.Segment, Page.Segment.name),
+        " while a read is in progress ",
+        " can cause reads to fail and which would result in the read being retried. "
       ),
       <.p(
-        "Maps that are full are read-only that eventually get pushed to the next ",
-        RouterController.router.link(Page.Level)("Level"),
-        " where they get converted into ",
-        RouterController.router.link(Page.Segment)("Segments"),
-        " during the ",
-        RouterController.router.link(Page.Compaction)("Compaction"),
-        " processes.",
-      ),
-
-      <.p(
-        RouterController.router.link(Page.Map)("Map"),
-        " files can be memory-mapped by configuring the property ",
-        RouterController.router.link(Page.MMAP)("mmap"),
-        "."
-      ),
-
+        "Setting this config to ",
+        Snippet("true"),
+        " reduces the number of read retires since the Segments are not immediately deleted."
+      )
     )
 }

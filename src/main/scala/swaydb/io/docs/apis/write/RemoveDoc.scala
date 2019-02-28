@@ -32,11 +32,16 @@ object RemoveDoc {
         <.h2(Page.Remove.name)
       ),
       //      WriteAPIDoc.note(showNote),
-      <.p("Remove a single key-value."),
+      <.p("Remove a single or multiple key-values."),
       <.pre(
         <.code(^.className := "scala")(
           """
+            |//single remove
             |db.remove(key = 1)
+            |//multiple removes
+            |db.remove(keys = 1, 2)
+            |//or
+            |db.remove(keys = Seq(1, 2))
             |
             |""".stripMargin
         )

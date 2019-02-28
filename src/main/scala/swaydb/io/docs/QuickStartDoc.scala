@@ -24,6 +24,7 @@ import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^._
 import swaydb.io.Main
+import swaydb.io.common.ScalaCode
 
 object QuickStartDoc {
 
@@ -33,7 +34,8 @@ object QuickStartDoc {
         <.h2(^.id := "quick-start", "Quick start")
       ),
       SetupDoc.body,
-      <.p("Quick start demo app.",
+      <.p(
+        "Quick start demo app.",
         <.a(
           ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/quickstart/QuickStartPersistentSpec.scala",
           ^.role := "button",
@@ -43,40 +45,41 @@ object QuickStartDoc {
           "View test"
         )
       ),
-      <.pre(
-        <.code(^.className := "scala")(
-          """import java.nio.file.Paths
-            |
-            |object QuickStart extends App {
-            |  //initialise a root database directory in the target folder
-            |  val rootDBDir = Paths.get(getClass.getResource("").getPath).getParent.getParent.resolve("quickStartDB")
-            |
-            |  import swaydb._ //import database API
-            |  import swaydb.serializers.Default._ //import default serializers
-            |
-            |  //Create a persistent database. If the directories do not exist, they will be created.
-            |  val db = SwayDB.persistent[Int, String](dir = rootDBDir.resolve("disk1"), otherDirs = Seq(rootDBDir.resolve("disk2"))).get
-            |
-            |  db.put(1, "one")
-            |  db.get(1) //returns "one"
-            |  db.remove(1)
-            |
-            |  (1 to 100) foreach { i => db.put(key = i, value = i.toString) } //write 100 key-values
-            |
-            |  //Iteration: fetch all key-values withing range 10 to 90, update values and batch write updated key-values
-            |  db
-            |    .from(10)
-            |    .tillKey(_ <= 90)
-            |    .map {
-            |      case (key, value) =>
-            |        (key, value + "_updated")
-            |    } andThen {
-            |       updatedKeyValues =>
-            |         db.batchPut(updatedKeyValues)
-            |  }
-            |}
-          """.stripMargin
-        )
+      ScalaCode(
+        """
+          |object QuickStart extends App {
+          |
+          |  import swaydb._
+          |  import swaydb.serializers.Default._ //import default serializers
+          |
+          |  val db = memory.Map[Int, String]().get //Create a memory database
+          |
+          |  db.put(1, "one").get
+          |  db.get(1).get
+          |  db.remove(1).get
+          |
+          |  //write 100 key-values atomically
+          |  (1 to 100) map {
+          |    key =>
+          |      (key, key.toString)
+          |  } andThen {
+          |    keyValues =>
+          |      db.put(keyValues)
+          |  }
+          |
+          |  //Iteration: fetch all key-values withing range 10 to 90, update values and atomically write updated key-values
+          |  db
+          |    .from(10)
+          |    .tillKey(_ <= 90)
+          |    .map {
+          |      case (key, value) =>
+          |        (key, value + "_updated")
+          |    } andThen {
+          |      updatedKeyValues =>
+          |        db.put(updatedKeyValues)
+          |  }
+          |}
+        """.stripMargin
       ),
 
       <.div(
