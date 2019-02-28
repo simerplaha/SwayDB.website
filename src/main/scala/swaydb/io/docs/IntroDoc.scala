@@ -108,10 +108,10 @@ object IntroDoc {
 
       <.h3(^.id := "ttl", "Auto expiring key-values (TTL)"),
       <.p(
-        "Expiring key-values is a light weight process with nanosecond precision expiration."
+        "Expiring key-values is a light weight process with nanosecond precision."
       ),
       <.p(
-        "Key-values are asynchronously deleted from the database on expiration claiming the disk/RAM space instantly."
+        "Key-values are asynchronously deleted on expiration claiming storage space instantly."
       ),
 
       <.h3(^.id := "non-blocking", "Non-blocking"),
@@ -119,7 +119,7 @@ object IntroDoc {
         "SwayDB's internals are non-blocking. "
       ),
       <.p(
-        "Asynchronous reads can be performed using ",
+        "Asynchronous reads are performed using ",
         Snippet("IO.Async[T].safeGetFuture"),
         " or blocking with ",
         Snippet("IO.Async[T].safeGetBlocking")
