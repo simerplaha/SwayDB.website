@@ -34,9 +34,9 @@ object RegisterFunctionDoc {
         <.h2(Page.RegisterFunction.name)
       ),
       <.p(
-        "Updates & removes can be performed registering any Scala or Java function. No query language - ",
+        "Updates & removes can be performed registering any Scala or Java function. No query language (",
         LinkIn(Page.Goals, "one of the goals"),
-        "."
+        ")."
       ),
 
       <.p(

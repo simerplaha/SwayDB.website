@@ -31,10 +31,10 @@ object GoalsDoc {
         <.h2("Goals")
       ),
       <.h3("Speed & Storage"),
-      <.p("- To get maximum write & read performance on a single machine for persistent (single/multiple disks) and in-memory storage types."),
+      <.p("- Get maximum write & read performance for both persistent (single/multiple disks) & in-memory storage."),
       <.p(
-        "- To have efficient storage implementation (persistent & in-memory) in order to reduce the cost of hosting a set of ",
-        "data on a single machine without sacrificing read & write performance."
+        "- Reduce the cost of hosting data ",
+        " without sacrificing read & write performance for both persistent and in-memory storage."
       ),
 
       <.h3("Durability"),
@@ -45,8 +45,9 @@ object GoalsDoc {
 
       <.h3("No query language"),
       <.p(
-        "Query languages add a learning curve for us. SwayDB aims at ",
-        " providing type-safe API mimicking Scala's collection library.",
+        "Query languages add complexity and add learning curve for us accessing data. ",
+        " SwayDB aims at providing type-safe API mimicking Scala's collection library and providing ability to ",
+        " create, read, update & delete data any JVM functions."
       ),
 
       <.h3("Support for other data structures"),

@@ -92,7 +92,7 @@ object IntroDoc {
 
       <.h3("Updates using JVM functions"),
       <.p(
-        "Any Scala or Java functions can be submitted to perform complex updates and deletes. See ",
+        "Any Scala or Java functions can be submitted to perform custom updates and deletes. See ",
         LinkIn(Page.RegisterFunction),
         " & ",
         LinkIn(Page.ApplyFunction),
