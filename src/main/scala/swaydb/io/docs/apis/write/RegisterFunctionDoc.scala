@@ -108,12 +108,17 @@ object RegisterFunctionDoc {
           |  functionID = "set deadline if empty",
           |  function =
           |    (user: String, likes: Long, deadline: Option[Deadline]) =>
-          |      if (likes == 0 && deadline.isEmpty)
-          |        Apply.Expire(1.hour.fromNow)
-          |      else
-          |        Apply.Nothing //do not perform any update
-          |)
+          |      if (likes == 0) //if there were no likes
+          |        deadline match { //check if there exists a deadline
+          |          case Some(deadline) => //extend deadline
+          |            Apply.Update(likes, deadline)
           |
+          |          case None =>
+          |            Apply.Remove //if no deadline set, remove!
+          |        }
+          |      else
+          |        Apply.Nothing //otherwise do nothing
+          |)
           |""".stripMargin
       ),
 
