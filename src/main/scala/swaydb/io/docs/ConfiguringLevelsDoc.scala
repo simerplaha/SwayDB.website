@@ -35,7 +35,7 @@ object ConfiguringLevelsDoc {
       <.p(
         <.i(
           """A SwayDB instance is a hierarchy of persistent and in-memory Levels where each Level is responsible for
-            |maintaining a set of Segments (groups of key-values) that are periodically submitted to the next level for merge
+            |maintaining a set of Segments (groups of key-values) that are periodically merged to the lower levels
             |until all Segments reach the last Level.
           """.stripMargin
         )
