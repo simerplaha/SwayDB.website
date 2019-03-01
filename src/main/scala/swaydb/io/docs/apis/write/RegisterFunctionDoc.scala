@@ -109,9 +109,9 @@ object RegisterFunctionDoc {
           |  function =
           |    (user: String, likes: Long, deadline: Option[Deadline]) =>
           |      if (likes == 0) //if there were no likes
-          |        deadline match { //check if there exists a deadline
-          |          case Some(deadline) => //extend deadline
-          |            Apply.Update(likes, deadline)
+          |        deadline match { //check deadline exists
+          |          case Some(deadline) =>
+          |            Apply.Expire(deadline + 1.hour) //extend deadline by 1.hour
           |
           |          case None =>
           |            Apply.Remove //if no deadline set, remove!
