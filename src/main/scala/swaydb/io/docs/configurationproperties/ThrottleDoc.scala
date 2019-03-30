@@ -48,7 +48,7 @@ object ThrottleDoc {
         RouterController.router.link(Page.LevelMeter)("LevelMeter"),
         ") returns the next delay and number of Segments to ",
         "push/compact into the next Level. ",
-        "It's a always invoked after a each ",
+        "It's a always invoked after each ",
         RouterController.router.link(Page.Compaction)("Compaction"),
         " cycle."
       ),
@@ -69,7 +69,7 @@ object ThrottleDoc {
       <.p("Delay before executing the Push."),
 
       <.h4("segmentsToPush"),
-      <.p("The number of Segments to push as once."),
+      <.p("The number of Segments to push at once."),
 
       <.i(
         <.p(
