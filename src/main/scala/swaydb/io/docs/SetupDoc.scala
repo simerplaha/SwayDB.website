@@ -42,7 +42,7 @@ object SetupDoc {
           """
             |libraryDependencies += "io.swaydb" %% "swaydb" % "0.7.1"
             |//or the latest below (Documentation is WIP).
-            |libraryDependencies += "io.swaydb" %% "swaydb" % "0.8-beta.3"
+            |libraryDependencies += "io.swaydb" %% "swaydb" % "v0.8-beta.5"
             |
             |""".stripMargin
         )
