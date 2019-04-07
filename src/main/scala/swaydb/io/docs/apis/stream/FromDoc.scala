@@ -18,17 +18,24 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.apis.iteration
+package swaydb.io.docs.apis.stream
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 
-object BeforeAndAfterDoc {
+object FromDoc {
+
+  def reverse =
+    <.p(
+      <.i("Reverse iterations can be performed with "),
+      <.span(^.className := "snippet", ".reverse"),
+      <.i(". Note: For persistent databases reverse iterations are much slower then forward iterations."),
+    )
 
   def apply(showInfo: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("before & after")
+        <.h2("from, fromOrBefore & fromOrAfter")
       ),
       <.div(
         <.div(
@@ -36,37 +43,44 @@ object BeforeAndAfterDoc {
           <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
           <.i(" All APIs expected from a Scala collection (foreach, map, fold etc) are supported. The following documents SwayDB specific APIs only."),
         ),
-        <.p(
-          <.i("APIs ending with "),
-          <.span(^.className := "snippet", "*Right"),
-          <.i(" perform reverse iteration (Note: Reverse iterations are much slower then forward iterations for persistent databases)."),
-        )
+        reverse
       ).when(showInfo),
-
       <.p(
         <.ul(
           <.li(
-            <.strong("before"),
-            " - start iteration from a nearest key that falls before the input key."
+            <.strong("from"),
+            " - start iteration from the input key."
           ),
           <.li(
-            <.strong("after"),
-            " - start iteration from a nearest key that falls after the input key."
+            <.strong("fromOrBefore"),
+            " - start iteration from the input key if found, else starts from a nearest key that falls before the input key."
+          ),
+          <.li(
+            <.strong("fromOrAfter"),
+            " - start iteration from the input key if found, else starts from a nearest key that falls after the input key."
           )
         )
       ),
       <.pre(
         <.code(^.className := "scala")(
           """
-            |db
-            |  .before(10)
-            |  .foldLeft(0)(_ + _._1)
+            |map
+            |  .from(10)
+            |  .foreach(println)
             |
-            |db
+            |//for key only iterations
+            |map
             |  .keys
-            |  .after(10)
-            |  .take(1)
-            |  .head
+            |  .reverse
+            |  .fromOrBefore(10)
+            |  .take(5)
+            |
+            |map
+            |  .fromOrAfter(10)
+            |  .map {
+            |    case (key, value) =>
+            |      //do something
+            |  }
             |
             |""".stripMargin
         )

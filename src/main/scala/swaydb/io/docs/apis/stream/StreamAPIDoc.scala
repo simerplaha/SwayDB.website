@@ -18,18 +18,18 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.apis.iteration
+package swaydb.io.docs.apis.stream
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.{Page, RouterController}
 
-object IterationAPIDoc {
+object StreamAPIDoc {
 
   def apply(showInitialiseDB: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2("Iteration API")
+        <.h2("Stream API")
       ),
       <.div(
         ^.className := "alert alert-info",
@@ -41,7 +41,7 @@ object IterationAPIDoc {
         <.span(^.className := "snippet", "*Right"),
         <.i(" perform reverse iteration (Note: For persistent databases, reverse iterations are much slower than forward iterations).")
       ),
-      Page.IterationAPI.subPages.zipWithIndex map {
+      Page.StreamAPI.subPages.zipWithIndex map {
         case (page, index) =>
           <.h4(
             (index + 1) + ". ",

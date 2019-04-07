@@ -62,10 +62,10 @@ object PersistentDatabaseDoc {
           |import swaydb.serializers.Default._
           |
           |//map database
-          |val mapDB = persistent.Map[Long, String](dir = "mapDB")
+          |val map = persistent.Map[Long, String](dir = "myMap")
           |
           |//set database
-          |val setDB = persistent.Set[String](dir = "setDB")
+          |val set = persistent.Set[String](dir = "mySet")
           |
           |""".stripMargin
       ),
@@ -78,10 +78,10 @@ object PersistentDatabaseDoc {
           |import swaydb.serializers.Default._
           |
           |//level zero only map database
-          |val mapDB = persistent.zero.Map[Long, String](dir = "mapDB")
+          |val map = persistent.zero.Map[Long, String](dir = "myMap")
           |
           |//level zero only set database
-          |val setDB = persistent.zero.Set[String](dir = "setDB")
+          |val set = persistent.zero.Set[String](dir = "mySet")
           |
           |""".stripMargin
       )

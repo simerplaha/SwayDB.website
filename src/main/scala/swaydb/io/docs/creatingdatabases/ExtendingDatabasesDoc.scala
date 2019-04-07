@@ -53,16 +53,16 @@ object ExtendingDatabasesDoc {
         ", ",
         LinkIn(Page.WriteAPI, Page.WriteAPI.name.toLowerCase),
         " & ",
-        LinkIn(Page.IterationAPI, Page.IterationAPI.name.toLowerCase),
+        LinkIn(Page.StreamAPI, Page.StreamAPI.name.toLowerCase),
         " operations."
       ),
 
       <.h3("Extending a database"),
       <.div(
         <.p(
-          "In the following example a memory database is extended by invoking ",
-          Snippet(".extend"),
-          ". This returns a rootMap from where all the nested sub maps can be created.",
+          "In the following example a memory Map is created from ",
+          Snippet(".extensions"),
+          " package. This returns a rootMap from under which all the nested sub maps can be created.",
           <.a(
             ^.href := "https://github.com/simerplaha/SwayDB.examples/blob/master/src/test/scala/extended/ExtendedDBSpec.scala",
             ^.onClick --> Callback(Main.analytics.event("Outbound click", s"${this.getClass.getSimpleName} - ExtendedDBSpec")),
@@ -74,15 +74,15 @@ object ExtendingDatabasesDoc {
         ),
 
         ScalaCode(
-          """object ExtendDB extends App {
+          """
+            |object ExtendDB extends App {
             |
             |  import swaydb._
             |  import swaydb.serializers.Default._
             |  //including the above import all include the extension api.
-            |  import swaydb.extension._
             |
             |  //add .extend to enable extension
-            |  val rootMap = memory.Map[Key[String], Option[String]]().flatMap(_.extend).get
+            |  val rootMap = extensions.memory.Map[String, String]().get
             |
             |  //Nested map hierarchy
             |  //rootMap
@@ -99,7 +99,9 @@ object ExtendingDatabasesDoc {
             |    subMap1
             |      .maps
             |      .put(key = "sub map 2", value = "another nested map").get
-            |}""".stripMargin
+            |}
+            |
+            |""".stripMargin
         )
       ),
 
@@ -108,19 +110,6 @@ object ExtendingDatabasesDoc {
         "See ",
         LinkIn(Page.ExtensionAPI, "Extension API"),
         " to see the full list of APIs available from this extension."
-      ),
-
-      <.h3("Required type"),
-      <.p(
-        "Key should be of type ",
-        Snippet("swaydb.extension.Key[K]"),
-        " and value should be of type ",
-        Snippet("Option[V]"),
-        " where ",
-        Snippet("K"),
-        " & ",
-        Snippet("V"),
-        " can be of any type."
       ),
 
       <.h3("Building custom extensions"),

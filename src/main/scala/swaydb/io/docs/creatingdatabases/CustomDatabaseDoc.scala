@@ -45,22 +45,28 @@ object CustomDatabaseDoc {
       <.pre(
         <.code(^.className := "scala")(
           """
-            |import swaydb._
-            |import swaydb.serializers.Default._
+            |object CreateDB extends App {
             |
-            |//custom config
-            |val myConfig =
-            |  ConfigWizard
-            |    .addPersistentLevel0(???, ???, ???, ???)
-            |    .addMemoryLevel1(???, ???, ???, ???)
+            |  import swaydb._
+            |  import swaydb.serializers.Default._
             |
-            |//initialise database with custom config
-            |val db =
+            |  implicit val ec = swaydb.SwayDB.defaultExecutionContext
+            |  implicit val keyOrder = KeyOrder.default
+            |
+            |  //custom config
+            |  val myConfig =
+            |    ConfigWizard
+            |      .addPersistentLevel0(???, ???, ???, ???, ???)
+            |      .addMemoryLevel1(???, ???, ???, ???, ???, ???, ???)
+            |
+            |  //initialise map with custom config
+            |  val map =
             |    SwayDB[Long, String](config = myConfig, ???, ???, ???, ???)
             |
-            |//or
-            |val setDB =
+            |  //or a set
+            |  val set =
             |    SwayDB[String](config = myConfig, ???, ???, ???, ???)
+            |}
             |
             |""".stripMargin
         )

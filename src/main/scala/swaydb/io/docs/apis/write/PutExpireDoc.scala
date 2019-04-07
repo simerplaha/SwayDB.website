@@ -41,8 +41,6 @@ object PutExpireDoc {
             |db.put(key = 1, value = "one", expireAfter = 10.seconds)
             |//or
             |db.put(key = 1, value = "one", expireAt = 1.hour.fromNow)
-            |//or
-            |db.put(key = 1, value = "one", expireAt = Deadline(5.minutes))
             |
             |""".stripMargin
         )
@@ -58,8 +56,6 @@ object PutExpireDoc {
             |setDB.add(elem = "some data", expireAfter = 10.seconds)
             |//or
             |setDB.add(elem = "some data", expireAt = 1.hour.fromNow)
-            |//or
-            |setDB.add(elem = "some data", expireAt = Deadline(5.minutes))
             |
             |""".stripMargin
         )

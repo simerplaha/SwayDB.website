@@ -54,10 +54,10 @@ object EventuallyPersistentDatabaseDoc {
             |import swaydb.serializers.Default._
             |
             |//map database
-            |val mapDB = eventually.persistent.Map[Long, String](dir = "mapDB")
+            |val map = eventually.persistent.Map[Long, String](dir = "myMap")
             |
             |//set database
-            |val setDB = eventually.persistent.Set[String](dir = "setDB")
+            |val set = eventually.persistent.Set[String](dir = "mySet")
             |
             |""".stripMargin
         )

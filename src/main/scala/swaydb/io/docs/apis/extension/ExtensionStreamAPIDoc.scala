@@ -18,35 +18,39 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.apis.read
+package swaydb.io.docs.apis.extension
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.{Page, RouterController}
+import swaydb.io.Page
+import swaydb.io.common.{LinkIn, ScalaCode, SubPages}
 
-object Level1MeterDoc {
+object ExtensionStreamAPIDoc {
 
-  def apply(): VdomElement = {
+  def apply(): VdomElement =
     <.div(
       <.div(^.className := "page-header",
-        <.h2("level1Meter")
+        <.h2(Page.ExtensionStreamAPI.name)
       ),
       <.p(
-        "Returns the number ",
-        RouterController.router.link(Page.Segment)("Segments"),
-        " and the total size (in bytes) of all the Segments in ",
-        RouterController.router.link(Page.Level)("Level1"),
-        "."
+        "All default ",
+        LinkIn(Page.StreamAPI, "stream APIs"),
+        " are supported.",
       ),
-      <.pre(
-        <.code(^.className := "scala")(
+      <.h3("Example"),
+      <.p(
+        "To following example fetches all child map instances from a parent map.",
+        ScalaCode(
           """
-            |db.level1Meter
-            |
-            |""".stripMargin
+            |parentMap
+            |  .maps //iterate maps
+            |  .keys //fetch keys only
+            |  .map {
+            |    mapKey =>
+            |      map.maps.get(mapKey) //get the instance of the Map.
+            |  }
+          """.stripMargin
         )
       )
     )
-  }
-
 }

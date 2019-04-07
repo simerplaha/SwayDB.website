@@ -41,7 +41,7 @@ object ExtensionAPIDoc {
           ", ",
           LinkIn(Page.ReadAPI, Page.ReadAPI.name.toLowerCase),
           " & ",
-          LinkIn(Page.IterationAPI, Page.IterationAPI.name.toLowerCase),
+          LinkIn(Page.StreamAPI, Page.StreamAPI.name.toLowerCase),
           " APIs are support for each nested Map.",
           " This documentation is for extension specific APIs only."
         )

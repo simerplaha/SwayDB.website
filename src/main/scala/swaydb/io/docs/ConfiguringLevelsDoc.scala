@@ -66,7 +66,6 @@ object ConfiguringLevelsDoc {
             |      mapSize = 4.mb,
             |      mmap = true,
             |      recoveryMode = RecoveryMode.ReportFailure,
-            |      minTimeLeftToUpdateExpiration = 10.seconds,
             |      acceleration =
             |        (level0Meter: Level0Meter) =>
             |          Accelerator.cruise(level0Meter)
@@ -77,7 +76,7 @@ object ConfiguringLevelsDoc {
             |      bloomFilterFalsePositiveRate = 0.1,
             |      compressDuplicateValues = true,
             |      deleteSegmentsEventually = true,
-            |      groupingStrategy = None, //read more about this in the groupingStrategy doc
+            |      groupingStrategy = None,
             |      throttle =
             |        (levelMeter: LevelMeter) =>
             |          if (levelMeter.levelSize > 1.gb)
@@ -91,11 +90,11 @@ object ConfiguringLevelsDoc {
             |      segmentSize = 4.mb,
             |      mmapSegment = MMAP.WriteAndRead,
             |      mmapAppendix = true,
+            |      deleteSegmentsEventually = true,
             |      appendixFlushCheckpointSize = 4.mb,
             |      pushForward = false,
             |      bloomFilterFalsePositiveRate = 0.1,
             |      compressDuplicateValues = true,
-            |      deleteSegmentsEventually = true,
             |      groupingStrategy = None, //read more about this in the groupingStrategy doc
             |      throttle =
             |        (levelMeter: LevelMeter) =>
@@ -117,6 +116,7 @@ object ConfiguringLevelsDoc {
             |    cacheCheckDelay = 5.seconds,
             |    segmentsOpenCheckDelay = 5.seconds
             |  )
+            |
             |""".stripMargin
         )
       ),

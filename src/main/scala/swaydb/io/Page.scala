@@ -25,7 +25,7 @@ import swaydb.io.Page._
 import swaydb.io.docs._
 import swaydb.io.docs.apis._
 import swaydb.io.docs.apis.extension._
-import swaydb.io.docs.apis.iteration._
+import swaydb.io.docs.apis.stream._
 import swaydb.io.docs.apis.read._
 import swaydb.io.docs.apis.write._
 import swaydb.io.docs.posts.{BlogDoc, WhyConfigurableLevelsDoc}
@@ -246,7 +246,7 @@ object Page {
       Seq(
         WriteAPI,
         ReadAPI,
-        IterationAPI,
+        StreamAPI,
         ExtensionAPI,
         RepairAppendix
       )
@@ -392,7 +392,6 @@ object Page {
         Size,
         SizeOfSegments,
         Level0MeterReadAPI,
-        Level1MeterReadAPI,
         LevelMeterReadAPI
       )
     override val url: String = "api/read/"
@@ -504,14 +503,6 @@ object Page {
     override def render(): VdomElement = Level0MeterDoc()
   }
 
-  object Level1MeterReadAPI extends Page {
-    override val name: String = "level1Meter"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/read/level1Meter/"
-
-    override def render(): VdomElement = Level1MeterDoc()
-  }
-
   object LevelMeterReadAPI extends Page {
     override val name: String = "levelMeter"
     override val subPages: Seq[Page] = Seq()
@@ -544,18 +535,18 @@ object Page {
     override def render(): VdomElement = SizeOfSegmentsDoc()
   }
 
-  object IterationAPI extends Page {
-    override val name: String = "Iteration"
-    override val subPages: Seq[Page] = Seq(From, BeforeAndAfter, Till, AndThen)
-    override val url: String = "api/iteration/"
+  object StreamAPI extends Page {
+    override val name: String = "Stream"
+    override val subPages: Seq[Page] = Seq(From, BeforeAndAfter)
+    override val url: String = "api/stream/"
 
-    override def render(): VdomElement = IterationAPIDoc()
+    override def render(): VdomElement = StreamAPIDoc()
   }
 
   object From extends Page {
     override val name: String = "from"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/iteration/from/"
+    override val url: String = "api/stream/from/"
 
     override def render(): VdomElement = FromDoc()
   }
@@ -563,25 +554,9 @@ object Page {
   object BeforeAndAfter extends Page {
     override val name: String = "before & after"
     override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/iteration/beforeAfter/"
+    override val url: String = "api/stream/beforeAfter/"
 
     override def render(): VdomElement = BeforeAndAfterDoc()
-  }
-
-  object Till extends Page {
-    override val name: String = "till"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/iteration/till/"
-
-    override def render(): VdomElement = TillDoc()
-  }
-
-  object AndThen extends Page {
-    override val name: String = "andThen"
-    override val subPages: Seq[Page] = Seq()
-    override val url: String = "api/iteration/andThen/"
-
-    override def render(): VdomElement = AndThenDoc()
   }
 
   object ExtensionAPI extends Page {
@@ -590,7 +565,7 @@ object Page {
       Seq(
         ExtensionWriteAPI,
         ExtensionReadAPI,
-        ExtensionIterationAPI
+        ExtensionStreamAPI
       )
     override val url: String = "api/extension/"
 
@@ -627,13 +602,13 @@ object Page {
     override def render(): VdomElement = ExtensionReadAPIDoc()
   }
 
-  object ExtensionIterationAPI extends Page {
-    override val name: String = "Iteration"
+  object ExtensionStreamAPI extends Page {
+    override val name: String = "Stream"
     override val subPages: Seq[Page] =
       Seq()
-    override val url: String = "api/extension/iteration/"
+    override val url: String = "api/extension/stream/"
 
-    override def render(): VdomElement = ExtensionIterationAPIDoc()
+    override def render(): VdomElement = ExtensionStreamAPIDoc()
   }
 
   object PutMap extends Page {

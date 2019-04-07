@@ -18,39 +18,56 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package swaydb.io.docs.apis.extension
+package swaydb.io.docs.apis.stream
 
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import swaydb.io.Page
-import swaydb.io.common.{LinkIn, ScalaCode, SubPages}
 
-object ExtensionIterationAPIDoc {
+object BeforeAndAfterDoc {
 
-  def apply(): VdomElement =
+  def apply(showInfo: Boolean = true): VdomElement = {
     <.div(
       <.div(^.className := "page-header",
-        <.h2(Page.ExtensionIterationAPI.name)
+        <.h2("before & after")
       ),
+      <.div(
+        <.div(
+          ^.className := "alert alert-info",
+          <.span(^.className := "glyphicon glyphicon-info-sign", ^.fontSize := "15px"),
+          <.i(" All APIs expected from a Scala collection (foreach, map, fold etc) are supported. The following documents SwayDB specific APIs only."),
+        ),
+        FromDoc.reverse
+      ).when(showInfo),
+
       <.p(
-        "All default ",
-        LinkIn(Page.IterationAPI, "iteration APIs"),
-        " are supported.",
+        <.ul(
+          <.li(
+            <.strong("before"),
+            " - start iteration from a nearest key that falls before the input key."
+          ),
+          <.li(
+            <.strong("after"),
+            " - start iteration from a nearest key that falls after the input key."
+          )
+        )
       ),
-      <.h3("Example"),
-      <.p(
-        "To following example fetches all child map instances from a parent map.",
-        ScalaCode(
+      <.pre(
+        <.code(^.className := "scala")(
           """
-            |parentMap
-            |  .maps //iterate maps
-            |  .keys //fetch keys only
-            |  .map {
-            |    mapKey =>
-            |      map.maps.get(mapKey) //get the instance of the Map.
-            |  }
-          """.stripMargin
+            |map
+            |  .before(10)
+            |  .foldLeft(0)(_ + _._1)
+            |
+            |map
+            |  .keys
+            |  .after(10)
+            |  .take(1)
+            |  .head
+            |
+            |""".stripMargin
         )
       )
     )
+  }
+
 }

@@ -232,37 +232,22 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/read/level1Meter/
-        </loc>
-    </url>
-    <url>
-        <loc>
             http://www.swaydb.io/api/read/levelMeter/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/iteration/
+            http://www.swaydb.io/api/stream/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/iteration/from/
+            http://www.swaydb.io/api/stream/from/
         </loc>
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/iteration/beforeAfter/
-        </loc>
-    </url>
-    <url>
-        <loc>
-            http://www.swaydb.io/api/iteration/till/
-        </loc>
-    </url>
-    <url>
-        <loc>
-            http://www.swaydb.io/api/iteration/andThen/
+            http://www.swaydb.io/api/stream/beforeAfter/
         </loc>
     </url>
     <url>
@@ -332,7 +317,7 @@
     </url>
     <url>
         <loc>
-            http://www.swaydb.io/api/extension/iteration/
+            http://www.swaydb.io/api/extension/stream/
         </loc>
     </url>
     <url>

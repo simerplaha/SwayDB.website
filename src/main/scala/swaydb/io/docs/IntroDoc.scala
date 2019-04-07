@@ -20,14 +20,11 @@
 
 package swaydb.io.docs
 
-import com.karasiq.highlightjs.HighlightJS
 import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.vdom.VdomElement
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import swaydb.io.common.{LinkIn, LinkOut, Snippet}
 import swaydb.io.{Main, Page, RouterController}
-
-import scala.scalajs.js
 
 object IntroDoc {
 
@@ -39,30 +36,31 @@ object IntroDoc {
       <.p(^.className := "heading")(
         <.img(^.className := "dark-logo", ^.src := "/img/logo-dark.png"),
         "SwayDB is an embeddable database for ",
-        <.strong("single/multiple disks"),
+        <.strong("persistent"),
         <.span(" and "),
         <.strong("in-memory "),
         <.span("storage.")
       ),
 
       <.p(
-        "It provides data structures like ",
+        "It implements familiar data structures like ",
         Snippet("Map[K, V]"),
         " & ",
         Snippet("Set[T]"),
-        " and implements ",
+        " for data storage and provides ",
         LinkIn(Page.API, Page.API.name + "s"),
-        " to easily create, read, update & delete data atomically."
+        " to create, read, stream, update, delete & expire data atomically."
       ),
 
-      <.h3(^.id := "types", "Types"),
+      <.p(
+        "Complex updates can be performed using just Scala or Java functions."
+      ),
+
+      <.h3(^.id := "streaming", "Streaming"),
       <.p(
         RouterController.router.link(Page.API)("APIs"),
-        " are typed and are based on Scala's ",
-        <.span(^.className := "snippet", "mutable.Map[K, V]"),
-        " and ",
-        <.span(^.className := "snippet", "mutable.Set[T]"),
-        ". All APIs expected from a Scala collection like ",
+        " are typed and are based on Scala collections. ",
+        "All APIs expected from a collection like ",
         <.span(^.className := "snippet", "foreach"),
         ", ",
         <.span(^.className := "snippet", "map"),
@@ -72,22 +70,14 @@ object IntroDoc {
         <.span(^.className := "snippet", "filter"),
         ", ",
         <.span(^.className := "snippet", "foldLeft"),
-        ", ",
-        <.span(^.className := "snippet", "foldRight"),
-        ", ",
-        <.span(^.className := "snippet", "reduce"),
-        ", ",
-        <.span(^.className := "snippet", "reduceRight"),
-        " etc are supported including ",
-        <.span(^.className := "snippet", "foreachRight"),
-        " & ",
-        <.span(^.className := "snippet", "mapRight"),
-        "."
+        " etc are supported via Streaming. "
       ),
       <.p(
-        "APIs ending with ",
-        <.span(^.className := "snippet", "*Right"),
-        " perform reverse iterations."
+        "A ",
+        Snippet("Stream"),
+        " can iterate over infinite number of key-values and has very low memory overhead as it does ",
+        <.strong("not"),
+        " cache data."
       ),
 
       <.h3("Updates using JVM functions"),
@@ -114,23 +104,9 @@ object IntroDoc {
         "Key-values are asynchronously deleted on expiration claiming storage space instantly."
       ),
 
-      <.h3(^.id := "non-blocking", "Non-blocking"),
+      <.h3(^.id := "non-blocking", "Non-blocking & blocking APIs"),
       <.p(
-        "SwayDB's internals are non-blocking. "
-      ),
-      <.p(
-        "Asynchronous reads are performed using ",
-        Snippet("IO.Async[T].safeGetFuture"),
-        " or blocking with ",
-        Snippet("IO.Async[T].safeGetBlocking")
-      ),
-      <.p(
-        LinkOut("https://monix.io/", "Monix"),
-        " integration is work in progress for a simpler non-blocking API similar to ",
-        Snippet("Iterable[T]"),
-        " - ",
-        LinkOut("https://github.com/simerplaha/SwayDB/issues/50", "#50"),
-        "."
+        "SwayDB's internals are non-blocking but provides both blocking and non-blocking APIs."
       ),
 
       <.h3(^.id := "back-pressure", "Back-pressure"),
@@ -143,7 +119,13 @@ object IntroDoc {
         ") that can be used to implement asynchronous ",
         "back-pressure with external streaming libraries. An implementation of blocking back-pressure (",
         RouterController.router.link(Page.Brake)("Acceleration.brake"),
-        ") is provided to get up and running quickly."
+        ") is provided to get up and running quickly.",
+      ),
+      <.p(
+        "SwayDB is not biased towards read, write or space amplification as different applications can have unique read, write & space ",
+        "requirements. Instead it relies on back-pressure for reads & writes and ",
+        LinkIn(Page.GroupingStrategy, "compression configuration"),
+        " to tune the database in real-time for maximum throughput."
       ),
 
       <.h3(^.id := "extendable", "Extendable"),
@@ -259,7 +241,7 @@ object IntroDoc {
         RouterController.router.link(Page.Throttle)("throttling"),
         "."
       ),
-      <.p("Compaction uses an asynchronous push-pull approach built on the Actor model."),
+      <.p("Compaction uses an non-blocking push-pull approach built on the Actor model."),
 
       <.h3(^.id := "memory-mapped-files", "Memory-mapped files optional"),
       <.p(
@@ -280,13 +262,8 @@ object IntroDoc {
         RouterController.router.link(Page.LevelZero)("LevelZero's"),
         " ",
         RouterController.router.link(Page.Map)("Map"),
-        " files"
+        " files.",
       ),
-
-      <.h3(^.id := "scala-streams", "Scala Streams"),
-      <.p("Scala streams can be created by invoking ",
-        <.span(^.className := "snippet", ".toStream"),
-        " on a database instance."),
 
       <.h3(^.id := "bloom-filters", "Bloom filters"),
       <.p(

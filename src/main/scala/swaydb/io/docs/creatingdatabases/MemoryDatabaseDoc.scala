@@ -52,10 +52,10 @@ object MemoryDatabaseDoc {
           |import swaydb.serializers.Default._
           |
           |//map database
-          |val mapDB = memory.Map[Long, String](dir = "mapDB")
+          |val map = memory.Map[Long, String](dir = "myMap")
           |
           |//set database
-          |val setDB = memory.Set[String](dir = "setDB")
+          |val set = memory.Set[String](dir = "mySet")
           |
           |""".stripMargin
       ),
@@ -68,10 +68,10 @@ object MemoryDatabaseDoc {
           |import swaydb.serializers.Default._
           |
           |//level zero only map database
-          |val mapDB = memory.zero.Map[Long, String](dir = "mapDB")
+          |val map = memory.zero.Map[Long, String](dir = "myMap")
           |
           |//level zero only set database
-          |val setDB = memory.zero.Set[String](dir = "setDB")
+          |val set = memory.zero.Set[String](dir = "mySet")
           |
           |""".stripMargin
       )
