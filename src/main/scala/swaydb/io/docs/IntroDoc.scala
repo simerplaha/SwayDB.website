@@ -77,7 +77,7 @@ object IntroDoc {
         Snippet("Stream"),
         " can iterate over infinite number of key-values and has very low memory overhead as it does ",
         <.strong("not"),
-        " cache data."
+        " cache data and fetches data only if required by the stream."
       ),
 
       <.h3("Updates using JVM functions"),
