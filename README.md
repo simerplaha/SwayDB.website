@@ -1,4 +1,4 @@
-# SwayDB.io
+# SwayDB.website - OLD documentation (Inactive)
 
 http://swaydb.io/
 
